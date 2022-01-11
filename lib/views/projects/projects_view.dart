@@ -21,46 +21,46 @@ class ProjectsView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            width: double.infinity,
-            height: 400,
-            child: Obx(
-              () => AnimatedOpacity(
-                curve: Curves.easeInCirc,
-                opacity: _projectController.visible,
-                duration: const Duration(milliseconds: 500),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      RichText(
-                        text: TextSpan(
-                          text: "Hi, I'm ",
-                          style: TextStyles.heading5
-                              ?.copyWith(fontWeight: FontWeight.bold),
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: 'Farman Ullah',
-                                style: TextStyles.heading5?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.cyan)),
-                          ],
+      Container(
+        height: 400,
+        child: Obx(
+                () => AnimatedOpacity(
+                  curve: Curves.easeInCirc,
+                  opacity: _projectController.visible,
+                  duration: const Duration(milliseconds: 500),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            text: "Hi, I'm ",
+                            style: TextStyles.heading5
+                                ?.copyWith(fontWeight: FontWeight.bold),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Farman Ullah',
+                                  style: TextStyles.heading5?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.cyan)),
+                            ],
+                          ),
                         ),
-                      ),
-                      FittedBox(
-                        child: Text(
-                          "Flutter Developer ",
-                          style: TextStyles.heading2?.copyWith(
-                              color: Colors.red, fontWeight: FontWeight.bold),
+                        FittedBox(
+                          child: Text(
+                            "Flutter Developer ",
+                            style: TextStyles.heading2?.copyWith(
+                                color: Colors.red, fontWeight: FontWeight.bold),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
+      ),
+          
           _projectController.myProjects.isNotEmpty
               ? _addFetchedProjects()
               : _fetchProjectsAndAdd(),
@@ -74,6 +74,9 @@ class ProjectsView extends StatelessWidget {
     return Container(
       height: Get.height,
       child: FirestoreListView<Map<String, dynamic>>(
+          addAutomaticKeepAlives: false,
+
+        shrinkWrap: true,
         query: _projectController.fetchProjectQuery(),
         itemBuilder: (context, snapshot) {
           //save in a list so that when user changes tabs each time firestore would not call
@@ -97,10 +100,14 @@ class ProjectsView extends StatelessWidget {
     // ignore: sized_box_for_whitespace
     return Container(
         height: Get.height,
-        child: ListView.builder(
+        child: ListView.separated( 
+          addAutomaticKeepAlives: false,
+          
+          
+          shrinkWrap: true,
           itemBuilder: (_, index) =>
               ProjectCard(project: _projectController.myProjects[index]),
-          itemCount: _projectController.myProjects.length,
-        ));
+          itemCount: _projectController.myProjects.length, separatorBuilder: (context,index)=>
+          Container(color: Colors.white,width: Get.width,height: 1,)));
   }
 }

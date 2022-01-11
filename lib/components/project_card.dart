@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:farmanullah_portfolio/models/project_model.dart';
 import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class ProjectCard extends StatelessWidget {
@@ -24,78 +25,141 @@ class ProjectCard extends StatelessWidget {
               Colors.black,
             ],
           )),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Column(
-                children: [
-                  Text(
-                    project.name!,
-                    style: TextStyles.heading4,
-                  ),
-                  Container(
-                    width: 200,
-                    height: 10,
-                    decoration: BoxDecoration(
-                        color: Colors.white, borderRadius: borderRadius),
-                  ),
-                  Container(
-                    width: 150,
-                    height: 8,
-                    decoration: BoxDecoration(
-                        color: Colors.red, borderRadius: borderRadius),
-                  ),
-                  Container(
-                    width: 75,
-                    height: 6,
-                    decoration: BoxDecoration(
-                        color: Colors.teal, borderRadius: borderRadius),
-                  ),
-                ],
-              ),
+          child: ResponsiveRowColumn(
+          layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
+              ? ResponsiveRowColumnType.COLUMN
+              : ResponsiveRowColumnType.ROW,
+          // columnPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          // rowCrossAxisAlignment: CrossAxisAlignment.start,
+          // rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // columnCrossAxisAlignment: CrossAxisAlignment.center,
+          // rowPadding: EdgeInsets.only(left: 20),
+          //  rowSpacing: 20,
+          // columnSpacing: 10,
+          children: [
+            ResponsiveRowColumnItem(
+              child: _addDividers(),
+              // rowFlex: 1,
+              // rowFit: FlexFit.tight,
+            ),
+            ResponsiveRowColumnItem(
+              child:   
 
-              Container(
-                child: Text(project.description!),
-              ),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: project.screenshots!
-                      .map((e) => Flexible(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: CachedNetworkImage(
-                                fit: BoxFit.cover,
-                                imageUrl: e,
-                                imageBuilder: (context, imageProvider) =>
-                                    CircleAvatar(
-                                  radius: 100,
-                                  backgroundImage: imageProvider,
-                                ),
-                                placeholder: (context, url) =>
-                                    CircularProgressIndicator(),
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
-                              ),
-                            ),
-                          ))
-                      .toList()),
-              // CachedNetworkImage(
-              //   width: 200,
-              //   height: 100,
-              //   imageUrl: project.imageUrl!,
-              //   imageBuilder: (context, imageProvider) => Container(
-              //     decoration: BoxDecoration(
-              //       image: DecorationImage(
-              //         image: imageProvider,
-              //         fit: BoxFit.cover,
-              //       ),
-              //     ),
-              //   ),
-              //   placeholder: (context, url) => CircularProgressIndicator(),
-              //   errorWidget: (context, url, error) => Icon(Icons.error),
-              // )
+
+          _addImageCard(project)
+
+
+            ),
+           
+
+          // Container(
+          //   child: Text(project.description!),
+          // ),
+
+           
+          // Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //     children: project.screenshots!
+          //         .map((e) => Flexible(
+          //               child: Padding(
+          //                 padding: const EdgeInsets.all(8.0),
+          //                 child: CachedNetworkImage(
+          //                   fit: BoxFit.cover,
+          //                   imageUrl: e,
+          //                   imageBuilder: (context, imageProvider) =>
+          //                       CircleAvatar(
+          //                     radius: 100,
+          //                     backgroundImage: imageProvider,
+          //                   ),
+          //                   placeholder: (context, url) =>
+          //                       CircularProgressIndicator(),
+          //                   errorWidget: (context, url, error) =>
+          //                       Icon(Icons.error),
+          //                 ),
+          //               ),
+          //             ))
+          //         .toList()),
+          
             ],
-          )),
-    );
+          ),
+    ));
+  }
+  _addImageCard(Project project){
+   return Column(
+     crossAxisAlignment: CrossAxisAlignment.center,
+     children: [
+       Container(
+
+
+         
+                    height:
+                    
+                    ResponsiveWrapper.of(Get.context!).isSmallerThan(TABLET)?
+                     ResponsiveWrapper.of(Get.context!).scaledWidth*0.5:
+                     300,
+                    child: Card(
+              semanticContainer: true,
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child: Image.network(
+                project.imageUrl!,
+                fit: BoxFit.fill,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              elevation: 5,
+              margin: EdgeInsets.all(10),
+              
+            ),
+                  ),
+        Row(children: project.languages!.map((e) => Chip(label: Text(e))).toList(),)
+
+     ],
+   );
+
+  }
+  _addDividers(){
+
+      return Flexible(
+        child: Column(
+                  children: [
+                    FittedBox(
+                      child: Text(
+                        project.name!,
+                        
+                        style: TextStyles.heading4,
+                      ),
+                    ),
+                    Container(
+                      width: 200,
+                      height: 8,
+                      decoration: BoxDecoration(
+                          color: Colors.white, borderRadius: borderRadius),
+                    ),
+                    SizedBox(height: 2,),
+                    Container(
+                      width: 150,
+                      height: 6,
+                      decoration: BoxDecoration(
+                          color: Colors.red, borderRadius: borderRadius),
+                    ),
+                    SizedBox(height: 2,),
+      
+                    Container(
+                      width: 75,
+                      height: 5,
+                      decoration: BoxDecoration(
+                          color: Colors.teal, borderRadius: borderRadius),
+                    ),
+
+
+                    Expanded(child: Container(child:Text(project.description??"descriptioin",
+                    
+                    
+                  textAlign: TextAlign.center,
+                    )))
+                  ],
+                ),
+      );
   }
 }
