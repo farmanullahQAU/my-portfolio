@@ -21,7 +21,6 @@ class ProjectCard extends StatelessWidget {
               gradient: new LinearGradient(
             colors: [
               Colors.blueGrey.shade900,
-              // Colors.teal.shade900,
               Colors.black,
             ],
           )),
@@ -84,7 +83,7 @@ class ProjectCard extends StatelessWidget {
           ),
     ));
   }
-  _addImageCard(Project project){
+  _addImageCard(Project project ){
    return Column(
      crossAxisAlignment: CrossAxisAlignment.center,
      children: [
@@ -122,6 +121,7 @@ class ProjectCard extends StatelessWidget {
 
       return Flexible(
         child: Column(
+          crossAxisAlignment:CrossAxisAlignment.center ,
                   children: [
                     FittedBox(
                       child: Text(
@@ -153,10 +153,17 @@ class ProjectCard extends StatelessWidget {
                     ),
 
 
-                    Expanded(child: Container(child:Text(project.description??"descriptioin",
+                    Expanded(
+                      flex: 2,
+                      child: Container(child:Text(project.description
+                      
+                      
+                      
+                      ??"descriptioin",
+                      style: TextStyles.body1,
                     
                     
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.start,
                     )))
                   ],
                 ),

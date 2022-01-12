@@ -1,3 +1,4 @@
+import 'package:farmanullah_portfolio/contact/contact_me.dart';
 import 'package:farmanullah_portfolio/views/projects/projects_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,6 +6,7 @@ import 'package:get/get.dart';
 import '../menue_controller.dart';
 import '../route_names.dart';
 import '../textstyles.dart';
+import 'about/about_view.dart';
 import 'home_view.dart';
 
 class HomeController extends GetxController {
@@ -15,7 +17,11 @@ class HomeController extends GetxController {
   final List<Widget> screens = [
     HomePageContents(),
     ProjectsView(),
-    Text("Education"),
+    AboutView(),
+    ContactMeView(),
+    AboutView(),
+
+
   ];
 
   @override
@@ -43,12 +49,12 @@ class HomeController extends GetxController {
 
       NavBar(
         routeName: RouteNames.HOME,
-        item: Text("About", style: TextStyles.getNavigationBarItemColor(1)),
+        item: Text("Projects", style: TextStyles.getNavigationBarItemColor(1)),
         index: 1,
       ),
       NavBar(
         routeName: RouteNames.HOME,
-        item: Text("Projects",
+        item: Text("About",
             style: TextStyles.subtitle2?.copyWith(
                 color: this.currentIdex == 3 ? Colors.red : Colors.grey)),
         index: 3,

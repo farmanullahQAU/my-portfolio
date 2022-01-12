@@ -1,3 +1,4 @@
+import 'package:farmanullah_portfolio/contact/contact_me_controller.dart';
 import 'package:farmanullah_portfolio/menue_controller.dart';
 import 'package:farmanullah_portfolio/views/home_controller.dart';
 import 'package:farmanullah_portfolio/views/projects/projects_controller.dart';
@@ -10,5 +11,7 @@ class Binder extends Bindings {
     Get.lazyPut(() => MenuController());
     Get.lazyPut(() => HomeController());
     Get.lazyPut(() => ProjectsViewController());
+    Get.lazyPut(() => ContactUsController());
+
   }
 }

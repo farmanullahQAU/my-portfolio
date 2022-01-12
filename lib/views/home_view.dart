@@ -3,6 +3,7 @@ import 'package:farmanullah_portfolio/constants.dart';
 import 'package:farmanullah_portfolio/menue_controller.dart';
 import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -152,7 +153,20 @@ class HomePageContents extends StatelessWidget {
                   "I build top quality, and professional apps for android,iOs and web useing google's flutter",
                   style: TextStyles.subtitle1?.copyWith(color: Colors.white54),
                 ),
-              )
+              ),
+              SizedBox(height: 20,),
+         Container(
+           width: 100,
+           height: 50,
+           color: Colors.cyan.shade900,
+           
+           child: TextButton(onPressed: (){}, child: Text("Hire me"
+           
+           ,style: TextStyles.subtitle1?.copyWith(color: Colors.white),
+           
+           )))
+
+
             ],
           ),
         ),

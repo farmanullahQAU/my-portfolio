@@ -9,9 +9,9 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../textstyles.dart';
 
-class ProjectsView extends StatelessWidget {
+class AboutView extends StatelessWidget {
   final _projectController = Get.find<ProjectsViewController>();
-  ProjectsView({Key? key}) : super(key: key);
+  AboutView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,53 +63,16 @@ class ProjectsView extends StatelessWidget {
               ),
       ),
           
-          _projectController.myProjects.isNotEmpty
-              ? _addFetchedProjects()
-              : _fetchProjectsAndAdd(),
+  
         ],
       ),
     );
   }
 
-  _fetchProjectsAndAdd() {
-    _projectController.myProjects.clear();
-    return Container(
-      height: Get.height,
-      child: FirestoreListView<Map<String, dynamic>>(
-          addAutomaticKeepAlives: false,
 
-        shrinkWrap: true,
-        query: _projectController.fetchProjectQuery(),
-        itemBuilder: (context, snapshot) {
-          //save in a list so that when user changes tabs each time firestore would not call
-          //to fetch project documents
-          final project = Project.fromJson(snapshot.data(), snapshot.id);
 
-          _projectController.myProjects.add(project);
-          loadingBuilder:
-          (context) => LinearProgressIndicator();
-          errorBuilder:
-          (context, error, stackTrace) =>
-              Container(width: 200, height: 40, child: Text(error.toString()));
 
-          return ProjectCard(project: project);
-        },
-      ),
-    );
-  }
 
-  _addFetchedProjects() {
-    // ignore: sized_box_for_whitespace
-    return Container(
-        height: Get.height,
-        child: ListView.separated( 
-          addAutomaticKeepAlives: false,
-          
-          
-          shrinkWrap: true,
-          itemBuilder: (_, index) =>
-              ProjectCard(project: _projectController.myProjects[index]),
-          itemCount: _projectController.myProjects.length, separatorBuilder: (context,index)=>
-          Container(color: Colors.white,width: Get.width,height: 1,)));
-  }
+
+
 }
