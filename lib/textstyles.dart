@@ -18,40 +18,9 @@ class TextStyles {
 
   static TextStyle? headlin1 = Theme.of(Get.context!).textTheme.headline6;
 
-  static TextStyle? footerBody1 = Theme.of(Get.context!)
-      .textTheme
-      .bodyText1
-      ?.copyWith(
-          color: Colors.grey, fontWeight: FontWeight.normal, fontSize: 10);
 
-  static TextStyle? bottomLineTextStyle = Theme.of(Get.context!)
-      .textTheme
-      .bodyText1
-      ?.copyWith(
-          color: Colors.white, fontWeight: FontWeight.normal, fontSize: 10);
-  static TextStyle? headerBody1 =
-      TextStyles.subtitle1?.copyWith(color: Colors.grey);
 
-  static TextStyle? get backgroundImageHeaderTextStyle =>
-      ResponsiveWrapper.of(Get.context!).isSmallerThan(TABLET)
-          ? Theme.of(Get.context!)
-              .textTheme
-              .bodyText1
-              ?.copyWith(color: Colors.white)
-          : Theme.of(Get.context!)
-              .textTheme
-              .headline4
-              ?.copyWith(color: Colors.white);
-  static TextStyle? get backgroundImageSubtitleTextStyle =>
-      ResponsiveWrapper.of(Get.context!).isSmallerThan(TABLET)
-          ? Theme.of(Get.context!)
-              .textTheme
-              .bodyText2
-              ?.copyWith(color: Colors.white)
-          : Theme.of(Get.context!)
-              .textTheme
-              .headline6
-              ?.copyWith(color: Colors.white, fontWeight: FontWeight.normal);
+
 
   static TextStyle? getNavigationBarItemColor(int index) {
     return Theme.of(Get.context!).textTheme.subtitle1?.copyWith(

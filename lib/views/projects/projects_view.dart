@@ -74,7 +74,6 @@ class ProjectsView extends StatelessWidget {
   _fetchProjectsAndAdd() {
     _projectController.myProjects.clear();
     return Container(
-      height: Get.height,
       child: FirestoreListView<Map<String, dynamic>>(
           addAutomaticKeepAlives: false,
 
@@ -101,15 +100,13 @@ class ProjectsView extends StatelessWidget {
   _addFetchedProjects() {
     // ignore: sized_box_for_whitespace
     return Container(
-        height: Get.height,
-        child: ListView.separated( 
+        child: ListView.builder( 
           addAutomaticKeepAlives: false,
           
           
           shrinkWrap: true,
           itemBuilder: (_, index) =>
               ProjectCard(project: _projectController.myProjects[index]),
-          itemCount: _projectController.myProjects.length, separatorBuilder: (context,index)=>
-          Container(color: Colors.white,width: Get.width,height: 1,)));
+          itemCount: _projectController.myProjects.length));
   }
 }

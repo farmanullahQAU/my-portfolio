@@ -22,7 +22,10 @@ class HomeView extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
+              
+             
                 image: AssetImage(
+                  
           "assets/pic2.jpg",
         ))),
         child: Column(
@@ -104,70 +107,89 @@ class HomePageContents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.find<HomeController>().getVisibility();
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 80),
-      child: Obx(
-        () => AnimatedOpacity(
-          curve: Curves.easeInCirc,
-          opacity: Get.find<HomeController>().visible,
-          duration: const Duration(milliseconds: 500),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                  child: RichText(
-                text: TextSpan(
-                  text: "Hi, I'm ",
-                  style: TextStyles.heading5
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Farman Ullah',
-                        style: TextStyles.heading5?.copyWith(
-                            fontWeight: FontWeight.bold, color: Colors.cyan)),
-                  ],
-                ),
-              )),
-              FittedBox(
-                child: Text(
-                  "Flutter Developer ",
-                  style: TextStyles.heading2?.copyWith(
-                      color: Colors.red, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "I am a flutter developer has around 1+ years of experience",
-                      style:
-                          TextStyles.subtitle1?.copyWith(color: Colors.white60),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: Get.width * 0.6,
-                child: Text(
-                  "I build top quality, and professional apps for android,iOs and web useing google's flutter",
-                  style: TextStyles.subtitle1?.copyWith(color: Colors.white54),
-                ),
-              ),
-              SizedBox(height: 20,),
-         Container(
-           width: 100,
-           height: 50,
-           color: Colors.cyan.shade900,
-           
-           child: TextButton(onPressed: (){}, child: Text("Hire me"
-           
-           ,style: TextStyles.subtitle1?.copyWith(color: Colors.white),
-           
-           )))
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 80),
+        child: Obx(
+          () => AnimatedOpacity(
+            curve: Curves.easeInCirc,
+            opacity: Get.find<HomeController>().visible,
+            duration: const Duration(milliseconds: 500),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                    child: RichText(
+                  text: TextSpan(
+                    text: "Hi, I'm ",
+                    style: TextStyles.heading5
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'Farman Ullah',
+                          style: TextStyles.heading5?.copyWith(
+                              fontWeight: FontWeight.bold, color: Colors.cyan)),
+                    ],
+                  ),
+                )),
+                FittedBox(
+                  child: Text(
+                    "Flutter Developer ",
 
 
-            ],
+                    style: 
+                    
+                    ResponsiveWrapper.of(context).isSmallerThan(TABLET)?
+                    
+                    TextStyles.heading4?.copyWith(
+                        color: Colors.red, fontWeight: FontWeight.bold):
+                         TextStyles.heading2?.copyWith(
+                        color: Colors.red, fontWeight: FontWeight.bold)
+                  ),
+                ),
+                SizedBox(
+                  height: 100,
+                  child: Row(
+  mainAxisSize: MainAxisSize.min,
+  children: <Widget>[
+     Text(
+      'I BUILD TOP QUALITY ',
+      style: TextStyles.heading4?.copyWith(color: Colors.white
+      ,fontWeight: FontWeight.bold)
+    ),
+    DefaultTextStyle(
+       style: TextStyles.heading4!.copyWith(color: Colors.red
+      ,fontWeight: FontWeight.bold),
+      child: AnimatedTextKit(
+        totalRepeatCount: 3,
+        animatedTexts: [
+          RotateAnimatedText('ANDROID'),
+          RotateAnimatedText('iOS'),
+          RotateAnimatedText('& WEB APPS'),
+        ],
+        onTap: () {
+          print("Tap Event");
+        },
+      ),
+    ),
+  ],
+),
+                ),
+             
+           Container(
+             width: 100,
+             height: 50,
+             color: Colors.cyan.shade900,
+             
+             child: TextButton(onPressed: (){}, child: Text("Hire me"
+             
+             ,style: TextStyles.subtitle1?.copyWith(color: Colors.white),
+             
+             )))
+    
+    
+              ],
+            ),
           ),
         ),
       ),
