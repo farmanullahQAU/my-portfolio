@@ -56,39 +56,39 @@ class HomeController extends GetxController {
         routeName: RouteNames.HOME,
         item: Text("About",
             style: TextStyles.subtitle2?.copyWith(
-                color: this.currentIdex == 3 ? Colors.red : Colors.grey)),
-        index: 3,
+                color: this.currentIdex == 2 ? Colors.red : Colors.grey)),
+        index: 2,
       ),
 
       NavBar(
         routeName: RouteNames.HOME,
         item: Text("Contact",
             style: TextStyles.subtitle2?.copyWith(
-                color: this.currentIdex == 4 ? Colors.red : Colors.grey)),
-        index: 4,
+                color: this.currentIdex == 3 ? Colors.red : Colors.grey)),
+        index: 3,
       ),
       NavBar(
         routeName: RouteNames.HOME,
         item: Text("SUBSCRIPTION",
             style: TextStyles.subtitle2?.copyWith(
-                color: this.currentIdex == 5 ? Colors.blue : Colors.grey)),
-        index: 5,
+                color: this.currentIdex == 4 ? Colors.blue : Colors.grey)),
+        index: 4,
       ),
-      NavBar(
-        routeName: RouteNames.HOME,
-        item: Row(
-          children: [
-            Icon(
-              Icons.exit_to_app,
-              color: Colors.grey,
-            ),
-            Text("LOGIN",
-                style: TextStyles.subtitle2?.copyWith(
-                    color: this.currentIdex == 6 ? Colors.blue : Colors.grey)),
-          ],
-        ),
-        index: 6,
-      ),
+      // NavBar(
+      //   routeName: RouteNames.HOME,
+      //   item: Row(
+      //     children: [
+      //       Icon(
+      //         Icons.exit_to_app,
+      //         color: Colors.grey,
+      //       ),
+      //       Text("LOGIN",
+      //           style: TextStyles.subtitle2?.copyWith(
+      //               color: this.currentIdex == 6 ? Colors.blue : Colors.grey)),
+      //     ],
+      //   ),
+      //   index: 6,
+      // ),
       // Image.asset(logoPath),
       // TextButton(
       //     onPressed: () {

@@ -23,7 +23,7 @@ class ProjectsView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
       Container(
-        height: 400,
+        height: 300,
         child: Obx(
                 () => AnimatedOpacity(
                   curve: Curves.easeInCirc,
@@ -35,25 +35,12 @@ class ProjectsView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                       
-                        RichText(
-                          text: TextSpan(
-                            text: "Hi, I'm ",
-                            style: TextStyles.heading5
-                                ?.copyWith(fontWeight: FontWeight.bold),
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: 'Farman Ullah',
-                                  style: TextStyles.heading5?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.cyan)),
-                            ],
-                          ),
-                        ),
+                   
                         FittedBox(
                           child: Text(
                             "Projects Completed ",
                             style: TextStyles.heading2?.copyWith(
-                                color: Colors.white, fontWeight: FontWeight.bold),
+                                color: Colors.red, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ],
