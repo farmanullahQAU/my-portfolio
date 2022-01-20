@@ -30,6 +30,7 @@ class HomeView extends StatelessWidget {
         ))),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _addNavigationBar(),
             Expanded(
@@ -110,87 +111,97 @@ class HomePageContents extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 80),
-        child: Obx(
-          () => AnimatedOpacity(
-            curve: Curves.easeInCirc,
-            opacity: Get.find<HomeController>().visible,
-            duration: const Duration(milliseconds: 500),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                    child: RichText(
-                  text: TextSpan(
-                    text: "Hi, I'm ",
-                    style: TextStyles.heading5
-                        ?.copyWith(fontWeight: FontWeight.bold),
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'Farman Ullah',
-                          style: TextStyles.heading5?.copyWith(
-                              fontWeight: FontWeight.bold, color: Colors.cyan)),
-                    ],
-                  ),
-                )),
-                FittedBox(
-                  child: Text(
-                    "Flutter Developer ",
+        child: Column(
+          children: [
+            Obx(
+              () => AnimatedOpacity(
+                curve: Curves.easeInCirc,
+                opacity: Get.find<HomeController>().visible,
+                duration: const Duration(milliseconds: 500),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                        child: RichText(
+                      text: TextSpan(
+                        text: "Hi, I'm ",
+                        style: TextStyles.heading5
+                            ?.copyWith(fontWeight: FontWeight.bold),
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: 'Farman Ullah',
+                              style: TextStyles.heading5?.copyWith(
+                                  fontWeight: FontWeight.bold, color: Colors.cyan)),
+                        ],
+                      ),
+                    )),
+                    FittedBox(
+                      child: Text(
+                        "Flutter Developer ",
 
 
-                    style: 
-                    
-                    ResponsiveWrapper.of(context).isSmallerThan(TABLET)?
-                    
-                    TextStyles.heading4?.copyWith(
-                        color: Colors.red, fontWeight: FontWeight.bold):
-                         TextStyles.heading2?.copyWith(
-                        color: Colors.red, fontWeight: FontWeight.bold)
-                  ),
-                ),
-                SizedBox(
-                  height: 100,
-                  child: Row(
-  mainAxisSize: MainAxisSize.min,
+                        style: 
+                        
+                        ResponsiveWrapper.of(context).isSmallerThan(TABLET)?
+                        
+                        TextStyles.heading4?.copyWith(
+                            color: Colors.red, fontWeight: FontWeight.bold):
+                             TextStyles.heading2?.copyWith(
+                            color: Colors.red, fontWeight: FontWeight.bold)
+                      ),
+                    ),
+                    Container(
+                      height: 80,
+                      child: Row(
+  
   children: <Widget>[
-     Text(
-      'I BUILD TOP QUALITY ',
-      style: TextStyles.heading4?.copyWith(color: Colors.white
-      ,fontWeight: FontWeight.bold)
+     Flexible(
+       child: FittedBox(
+             child: Text(
+              'I BUILD TOP QUALITY ',
+              style: TextStyles.heading4?.copyWith(color: Colors.white
+              ,fontWeight: FontWeight.bold)
     ),
+       ),
+     ),
     DefaultTextStyle(
        style: TextStyles.heading4!.copyWith(color: Colors.red
       ,fontWeight: FontWeight.bold),
       child: AnimatedTextKit(
-        totalRepeatCount: 3,
-        animatedTexts: [
-          RotateAnimatedText('ANDROID'),
-          RotateAnimatedText('iOS'),
-          RotateAnimatedText('& WEB APPS'),
-        ],
-        onTap: () {
-          print("Tap Event");
-        },
+            totalRepeatCount: 3,
+            animatedTexts: [
+              RotateAnimatedText('ANDROID'),
+              RotateAnimatedText('iOS'),
+              RotateAnimatedText('& WEB APPS'),
+            ],
+            onTap: () {
+              print("Tap Event");
+            },
       ),
     ),
   ],
 ),
+                    ),
+                 
+               Container(
+                 width: 100,
+                 height: 50,
+                 color: Colors.cyan.shade900,
+                 
+                 child: TextButton(onPressed: (){}, child: Text("Hire me"
+                 
+                 ,style: TextStyles.subtitle1?.copyWith(color: Colors.white),
+                 
+                 )))
+    
+    
+                  ],
                 ),
-             
-           Container(
-             width: 100,
-             height: 50,
-             color: Colors.cyan.shade900,
-             
-             child: TextButton(onPressed: (){}, child: Text("Hire me"
-             
-             ,style: TextStyles.subtitle1?.copyWith(color: Colors.white),
-             
-             )))
-    
-    
-              ],
+              ),
             ),
-          ),
+
+            Icon(Icons.email,size: 30,)
+          ],
         ),
       ),
     );
