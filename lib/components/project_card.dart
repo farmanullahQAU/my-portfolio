@@ -16,7 +16,7 @@ class ProjectCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top:8.0),
       child: Container(
-          width: ResponsiveWrapper.of(context).scaledWidth,
+          width: ResponsiveWrapper.of(context).scaledWidth*0.5,
        
           decoration: new BoxDecoration(
               gradient: new LinearGradient(

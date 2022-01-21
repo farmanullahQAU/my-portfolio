@@ -61,6 +61,7 @@ class ProjectsView extends StatelessWidget {
   _fetchProjectsAndAdd() {
     _projectController.myProjects.clear();
     return Container(
+      margin: EdgeInsets.only(top: 100),
       child: FirestoreListView<Map<String, dynamic>>(
           addAutomaticKeepAlives: false,
 
@@ -78,7 +79,11 @@ class ProjectsView extends StatelessWidget {
           (context, error, stackTrace) =>
               Container(width: 200, height: 40, child: Text(error.toString()));
 
-          return ProjectCard(project: project);
+          return Container(
+            width: Get.width,
+            
+            height: 450,color: Colors.white,
+            child: ProjectCard(project: project));
         },
       ),
     );

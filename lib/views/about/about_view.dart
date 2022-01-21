@@ -1,5 +1,6 @@
 import 'package:farmanullah_portfolio/components/project_card.dart';
 import 'package:farmanullah_portfolio/models/project_model.dart';
+import 'package:farmanullah_portfolio/views/about/about_controller.dart';
 import 'package:farmanullah_portfolio/views/projects/projects_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/firestore.dart';
@@ -12,12 +13,12 @@ import 'package:responsive_framework/responsive_framework.dart';
 import '../../textstyles.dart';
 
 class AboutView extends StatelessWidget {
-  final _projectController = Get.find<ProjectsViewController>();
+  final _controller = Get.find<AboutController>();
   AboutView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.find<ProjectsViewController>().getVisibility();
+_controller.getVisibility();
 
     return SingleChildScrollView(
       child: Column(
@@ -67,24 +68,31 @@ class AboutView extends StatelessWidget {
       Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
- Container(
-               width: double.infinity,
-               child: FittedBox(
-                          child: Text(
-                            "GRADUATION ",
-           
-           
-                            style: 
-                            
-                            ResponsiveWrapper.of(context).isSmallerThan(TABLET)?
-                            
-                            TextStyles.heading4?.copyWith(
-                                color: Colors.cyan.shade900, fontWeight: FontWeight.bold):
-                                 TextStyles.heading3?.copyWith(
-                                color: Colors.cyan.shade900, fontWeight: FontWeight.bold)
-                          ),
-                        ),
-             ), 
+ Obx(()=>
+    AnimatedOpacity(
+       curve: Curves.easeInCirc,
+                  opacity: _controller.visible,
+                  duration: const Duration(milliseconds: 500),
+     child: Container(
+                   width: double.infinity,
+                   child: FittedBox(
+                              child: Text(
+                                "GRADUATION ",
+               
+               
+                                style: 
+                                
+                                ResponsiveWrapper.of(context).isSmallerThan(TABLET)?
+                                
+                                TextStyles.heading4?.copyWith(
+                                    color: Colors.cyan.shade900, fontWeight: FontWeight.bold):
+                                     TextStyles.heading3?.copyWith(
+                                    color: Colors.cyan.shade900, fontWeight: FontWeight.bold)
+                              ),
+                            ),
+                 ),
+   ),
+ ), 
 
              FittedBox(child: Text("MSC",style: TextStyles.heading1,)),
               FittedBox(child: Text("COMPUTER SCIENCE",style: TextStyles.heading1,)),
@@ -103,48 +111,120 @@ class AboutView extends StatelessWidget {
         ],
       ),
 
-         Container(
-           width: double.infinity,
-           height: ResponsiveWrapper.of(context).scaledWidth/3,
-           margin: EdgeInsets.zero,
-           
-           color: Colors.cyan.shade900.withOpacity(0.5),
-           child: Column(
-             mainAxisAlignment: MainAxisAlignment.center,
-             crossAxisAlignment: CrossAxisAlignment.center,
-             children: [
-               Text("I AM FARMAN ULLAH, AS A COMPUTER SCIENCE GRADUATE I HAVE STARTED MY CAREER AS A SOFTWARE DEVELOPER, I BUILD  TOP QUALITY APPLICATION FOR ANDROID iOS AND WEB  USING GOOGLE'S FLUTTER,",
-         textAlign:TextAlign.center,
-         
-         style: GoogleFonts.aclonica(  
-         
-         
-         ),
-         ),
-
-         Row(
+         Column(
            mainAxisAlignment: MainAxisAlignment.center,
+           crossAxisAlignment: CrossAxisAlignment.center,
+           children: [
+    
+Text("My Work"),
+         Container(
+            decoration: new BoxDecoration(
+              gradient: new LinearGradient(
+            colors: [
+              Colors.grey.shade900,
+              Colors.blueGrey ,
+                      ],
+          )),
+           
+           child: 
+           
+           
+           
+           Row(
+           mainAxisAlignment: MainAxisAlignment.start,
+           crossAxisAlignment: CrossAxisAlignment.center,
+           
            
            children: [
 
 
- Flexible(child: Icon(Icons.email,size: 40,),),
-             
-             Flexible(child: FittedBox(child: Text("farmanullahk437@gmail.com",style: TextStyles.heading4,)),),
+Flexible(
 
-         ],)
+  
+  child: Container(
+      decoration: new BoxDecoration(
+              gradient: new LinearGradient(
+            colors: [
+              Colors.grey.shade900,
+              Colors.blueGrey  ,
+                 Colors.grey.shade900,        ],
+                        
+          )),
+width: Get.width,
+ 
+  child:   Expanded(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Hi, Greetings",
+        
+           style: GoogleFonts.aldrich
+        
+        (
+textStyle: TextStyles.heading3
+
+        ),
+        ),
+        Text("As a computer science graduate i have started my career as a software developer, i build top quality apps for android, iOS and web using google's flutter"
+        ,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.almarai
+        
+        (
+textStyle: TextStyles.heading5
+
+        ),
+        
+        )
+      ],
+    ),
+  ),
+),),
+Flexible(
+
+  
+  child: SizedBox(
+width: Get.width,
+      height: 400,
+  child:   Card(
+  
+    margin: EdgeInsets.zero,
+    
+  
+    
+  
+    child: Text("kkdkd"),
+  
+    color: Colors.red,),
+),),
+      Flexible(
+
+  
+  child: SizedBox(
+  height: 400,
+
+width: Get.width,
+ 
+  child:   Card(
+  
+    margin: EdgeInsets.zero,
+    
+  
+    
+  
+    child: Text("kkdkd"),
+  
+    color: Colors.red,),
+),),       
+
+           ],),
+         )
          
-            ,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-
-                Flexible(child: Icon(Icons.phone,size: 40,),),
-             
-             Flexible(child: Text("+923049575366",style: TextStyles.heading4,),)
-            ],)
-             ],
-           ),)
+          ,
+        
+           ],
+         )
         ],
       ),
     );
