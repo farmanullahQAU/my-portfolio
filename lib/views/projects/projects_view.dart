@@ -38,7 +38,7 @@ class ProjectsView extends StatelessWidget {
                    
                         FittedBox(
                           child: Text(
-                            "Projects Completed ",
+                            "Projects ",
                             style: TextStyles.heading2?.copyWith(
                                 color: Colors.red, fontWeight: FontWeight.bold),
                           ),
