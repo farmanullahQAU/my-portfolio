@@ -117,6 +117,8 @@ _controller.getVisibility();
            children: [
     
 Text("My Work"),
+
+/*
          Container(
             decoration: new BoxDecoration(
               gradient: new LinearGradient(
@@ -221,7 +223,199 @@ width: Get.width,
            ],),
          )
          
-          ,
+          */
+
+        ResponsiveRowColumn(layout: 
+        
+        
+           ResponsiveWrapper.of(context).isSmallerThan(TABLET)
+              ? ResponsiveRowColumnType.COLUMN
+              : ResponsiveRowColumnType.ROW,
+          // columnPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+           rowCrossAxisAlignment: CrossAxisAlignment.start,
+           rowMainAxisAlignment: MainAxisAlignment.center,
+          // columnCrossAxisAlignment: CrossAxisAlignment.center,
+
+           children: [
+ResponsiveRowColumnItem(
+  
+  rowFlex: 1,
+  
+  child: 
+
+ SizedBox(
+ height: 400,
+ width: double.infinity,
+
+ 
+ child:   Container(
+ 
+
+  decoration: new BoxDecoration(
+              gradient: new LinearGradient(
+            colors: [
+              Colors.grey.shade900,
+              Colors.blueGrey ,
+                      ],
+          )),
+   margin: EdgeInsets.zero,
+   
+ 
+   
+ 
+   child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Hi, Greetings",
+        
+           style: GoogleFonts.aldrich
+        
+        (
+textStyle: TextStyles.heading3
+
+        ),
+        ),
+        Text("As a computer science graduate i have started my career as a software developer, i build top quality apps for android, iOS and web using google's flutter"
+        ,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.almarai
+        
+        (
+textStyle: TextStyles.heading5
+
+        ),
+        
+        )
+      ],
+    ),
+ 
+   ),
+),       
+
+),
+ResponsiveRowColumnItem(
+  rowFlex: 1,
+  
+  child: 
+
+ SizedBox(
+ height: 400,
+
+width: double.infinity,
+ 
+ child:   Container(
+   decoration: new BoxDecoration(
+              gradient: new LinearGradient(
+            colors: [
+              Colors.black,
+              Colors.blueGrey ,
+                      ],
+          )),
+   margin: EdgeInsets.zero,
+   
+ 
+   
+ 
+   child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Hi, Greetings",
+        
+           style: GoogleFonts.aldrich
+        
+        (
+textStyle: TextStyles.heading3
+
+        ),
+        ),
+     
+             Text("Hi, Greetings",
+        
+           style: GoogleFonts.aldrich
+        
+        (
+textStyle: TextStyles.heading3
+
+        ),
+        ),
+
+
+        Lottie.asset("assets/lottie/completed.json",width: 200)
+      ],
+    ),
+ 
+ ),
+),       
+
+),
+ResponsiveRowColumnItem(
+  rowFlex: 1,
+  
+  child: 
+
+ SizedBox(
+ height: 400,
+
+width: double.infinity,
+ 
+ child:   Container(
+   decoration: new BoxDecoration(
+              gradient: new LinearGradient(
+            colors: [
+              Colors.black,
+              Colors.blueGrey ,
+                      ],
+          )),
+   margin: EdgeInsets.zero,
+   
+ 
+   
+ 
+   child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Hi, Greetings",
+        
+           style: GoogleFonts.aldrich
+        
+        (
+textStyle: TextStyles.heading3
+
+        ),
+        ),
+        Text("As a computer science graduate i have started my career as a software developer, i build top quality apps for android, iOS and web using google's flutter"
+        ,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.almarai
+        
+        (
+textStyle: TextStyles.heading5
+
+        ),
+        
+        ),
+             Text("Hi, Greetings",
+        
+           style: GoogleFonts.aldrich
+        
+        (
+textStyle: TextStyles.heading3
+
+        ),
+        ),
+      ],
+    ),
+ 
+ ),
+),       
+
+)
+
+           ],
+        )
         
            ],
          )
