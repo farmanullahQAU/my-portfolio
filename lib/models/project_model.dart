@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Project {
+  String? assetPath;
   String? ProjectId;
 
   String? name;
+  
   String? imageUrl;
   String? playstoreUrl;
   String? appStoreUrl;
@@ -13,6 +15,7 @@ class Project {
 
   Project(
       {this.ProjectId,
+      this.assetPath,
       this.name,
       this.playstoreUrl,
       this.appStoreUrl,
@@ -27,6 +30,7 @@ class Project {
     this.appStoreUrl = json["appstore_url"] ?? null;
 
     description = json["description"] ?? null;
+    assetPath = json["asset_path"] ?? null;
 
     screenshots =
         json["screenshots"] != null ? List.from(json["screenshots"]) : null;

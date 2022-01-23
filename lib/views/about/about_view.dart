@@ -265,9 +265,11 @@ ResponsiveRowColumnItem(
  
    child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text("Hi, Greetings",
+
+             Expanded(child: Lottie.asset("assets/lottie/completed.json",fit: BoxFit.contain)),
+                     Text("Hi, Greetings",
         
            style: GoogleFonts.aldrich
         
@@ -276,17 +278,23 @@ textStyle: TextStyles.heading3
 
         ),
         ),
-        Text("As a computer science graduate i have started my career as a software developer, i build top quality apps for android, iOS and web using google's flutter"
-        ,
-        textAlign: TextAlign.center,
-        style: GoogleFonts.almarai
-        
-        (
+
+        Align(
+          alignment: Alignment.center,
+          child: Text("As a computer science graduate i have started my career as a software developer, i build top quality apps for android, iOS and web using google's flutter"
+          ,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.almarai
+          
+          (
 textStyle: TextStyles.heading5
 
+          ),
+          
+          ),
         ),
-        
-        )
+        SizedBox(height: 10,)
+
       ],
     ),
  
@@ -321,28 +329,55 @@ width: double.infinity,
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Hi, Greetings",
-        
-           style: GoogleFonts.aldrich
-        
-        (
-textStyle: TextStyles.heading3
 
-        ),
-        ),
+        SizedBox(height: 10,),
      
-             Text("Hi, Greetings",
+
+           FittedBox(
+             
+             child: Container(
+               margin: EdgeInsets.all(8),
+               child: Text("Projects Completed",
+                     
+               style: GoogleFonts.aldrich
+                     
+                     (
+           textStyle: TextStyles.heading3
+           
+                     ),
+                     ),
+             ),
+           ),
+        Expanded(child: Lottie.asset("assets/lottie/projects.json",)),
+        Column(
+          
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+
+     Text("COMPANY 8+",
         
-           style: GoogleFonts.aldrich
+           style: GoogleFonts.acme
         
         (
-textStyle: TextStyles.heading3
+textStyle: TextStyles.heading4,
+color: Colors.cyan
+
+        ),
+        ),
+                 Text("FIVERR 4",
+        
+           style: GoogleFonts.acme
+        
+        (
+textStyle: TextStyles.heading4,
+color: Colors.cyan
 
         ),
         ),
 
-
-        Lottie.asset("assets/lottie/completed.json",width: 200)
+        ],)
+      
+     
       ],
     ),
  
@@ -397,15 +432,8 @@ textStyle: TextStyles.heading5
         ),
         
         ),
-             Text("Hi, Greetings",
-        
-           style: GoogleFonts.aldrich
-        
-        (
-textStyle: TextStyles.heading3
+             Expanded(child: Lottie.asset("assets/lottie/about_me.json",)),
 
-        ),
-        ),
       ],
     ),
  

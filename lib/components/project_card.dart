@@ -101,9 +101,9 @@ class ProjectCard extends StatelessWidget {
                     child: Card(
               semanticContainer: true,
               clipBehavior: Clip.antiAliasWithSaveLayer,
-              child: Image.network(
+              child: Image.asset(
                 
-                project.imageUrl!,
+                project.assetPath!,
                 fit: BoxFit.cover,
               ),
               shape: RoundedRectangleBorder(
