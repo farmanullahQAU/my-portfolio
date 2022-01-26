@@ -39,11 +39,18 @@ class MyApp extends StatelessWidget {
 
           scaffoldBackgroundColor: Colors.black87,
 
-          textTheme:
-              GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme).apply(
+          // textTheme:
+          //     GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme).apply(
+          //   bodyColor: Colors.white,
+          //   displayColor: Colors.white,
+          // ),
+         textTheme:   GoogleFonts.abelTextTheme(
+
+            
+          ).apply(
             bodyColor: Colors.white,
             displayColor: Colors.white,
-          ),
+          )
           // canvasColor: secondaryColor,
           // appBarTheme:AppBarTheme(backgroundColor:
           // secondaryColor.withGreen(44)

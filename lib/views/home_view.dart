@@ -18,7 +18,7 @@ class HomeView extends StatelessWidget {
       backgroundColor: Colors.black,
       key: Get.find<MenuController>().scaffoldKey,
       drawer:
-          ResponsiveWrapper.of(context).isMobile ? _addMobileDrawer() : null,
+          ResponsiveWrapper.of(context).isSmallerThan(TABLET) ? _addMobileDrawer() : null,
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
@@ -112,6 +112,9 @@ class HomePageContents extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 80),
         child: Column(
+
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Obx(
               () => AnimatedOpacity(
@@ -125,12 +128,12 @@ class HomePageContents extends StatelessWidget {
                         child: RichText(
                       text: TextSpan(
                         text: "Hi, I'm ",
-                        style: TextStyles.heading5
+                        style: TextStyles.heading4
                             ?.copyWith(fontWeight: FontWeight.bold),
                         children: <TextSpan>[
                           TextSpan(
                               text: 'Farman Ullah',
-                              style: TextStyles.heading5?.copyWith(
+                              style: TextStyles.heading4?.copyWith(
                                   fontWeight: FontWeight.bold, color: Colors.cyan)),
                         ],
                       ),
@@ -145,9 +148,9 @@ class HomePageContents extends StatelessWidget {
                         ResponsiveWrapper.of(context).isSmallerThan(TABLET)?
                         
                         TextStyles.heading4?.copyWith(
-                            color: Colors.red, fontWeight: FontWeight.bold):
+                            color: Colors.cyan, fontWeight: FontWeight.bold):
                              TextStyles.heading2?.copyWith(
-                            color: Colors.red, fontWeight: FontWeight.bold)
+                            color: Colors.cyan, fontWeight: FontWeight.bold)
                       ),
                     ),
                     Container(
@@ -165,7 +168,7 @@ class HomePageContents extends StatelessWidget {
        ),
      ),
     DefaultTextStyle(
-       style: TextStyles.heading4!.copyWith(color: Colors.red
+       style: TextStyles.heading4!.copyWith(color: Colors.cyan
       ,fontWeight: FontWeight.bold),
       child: AnimatedTextKit(
             totalRepeatCount: 3,
@@ -199,11 +202,46 @@ class HomePageContents extends StatelessWidget {
                 ),
               ),
             ),
+SizedBox(height: 40,),
+            
+Row(
+  crossAxisAlignment: CrossAxisAlignment.end,
+  children: [
 
-            Icon(Icons.email,size: 30,)
+
+
+  addAvator("Flutter"),
+  addAvator("Flutter"),
+    addAvator("Flutter"),
+  addAvator("Flutter"),
+    addAvator("Flutter"),
+  addAvator("Flutter"),
+
+
+],)
           ],
         ),
       ),
     );
+  }
+
+  addAvator(String skill){
+return Flexible(
+  child:   Padding(
+    padding: const EdgeInsets.only(left:8.0),
+    child: CircleAvatar(
+    
+      backgroundColor: Colors.cyan.shade900,
+    
+      
+    
+      radius: 60,
+    
+      
+    
+      child: Text(skill),),
+  ),
+);
+
   }
 }

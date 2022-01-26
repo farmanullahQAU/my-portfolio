@@ -41,15 +41,15 @@ class ProjectCard extends StatelessWidget {
               child: _addDividers(),
               // rowFit: FlexFit.tight,
             ),
-            ResponsiveRowColumnItem(
+          //   ResponsiveRowColumnItem(
               
-              child:   
+          //     child:   
 
 
-          _addImageCard(project)
+          // _addImageCard(project)
 
 
-            ),
+          //   ),
            
 
           // Container(
