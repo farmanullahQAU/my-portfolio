@@ -79,11 +79,7 @@ class ProjectsView extends StatelessWidget {
           (context, error, stackTrace) =>
               Container(width: 200, height: 40, child: Text(error.toString()));
 
-          return Container(
-            width: Get.width,
-            
-            height: 450,color: Colors.white,
-            child: ProjectCard(project: project));
+          return ProjectCard(project: project);
         },
       ),
     );

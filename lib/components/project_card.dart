@@ -16,7 +16,7 @@ class ProjectCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top:8.0),
       child: Container(
-          width: ResponsiveWrapper.of(context).scaledWidth*0.5,
+          width: ResponsiveWrapper.of(context).scaledWidth,
        
           decoration: new BoxDecoration(
               gradient: new LinearGradient(
@@ -25,63 +25,60 @@ class ProjectCard extends StatelessWidget {
               Colors.black
             ],
           )),
-          child: ResponsiveRowColumn(
-          layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
-              ? ResponsiveRowColumnType.COLUMN
-              : ResponsiveRowColumnType.ROW,
-          // columnPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-           rowCrossAxisAlignment: CrossAxisAlignment.start,
-           rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
-          // columnCrossAxisAlignment: CrossAxisAlignment.center,
-           rowPadding: EdgeInsets.only(left: 20),
-          //  rowSpacing: 20,
-          // columnSpacing: 10,
-          children: [
-            ResponsiveRowColumnItem(
-              child: _addDividers(),
-              // rowFit: FlexFit.tight,
-            ),
-          //   ResponsiveRowColumnItem(
-              
-          //     child:   
+          child:  Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              // _addDividers(),
+                  Column(
+                    children: [
+                      FittedBox(
+                        child: Text(
+                          project.name!,
+                          
+                          style: TextStyles.heading2,
+                        ),
+                      ),
+                          Container(
+                    width: 300,
+                    height: 6,
+                    decoration: BoxDecoration(
+                        color: Colors.white, borderRadius: borderRadius),
+                  ),
 
-
-          // _addImageCard(project)
-
-
-          //   ),
-           
-
-          // Container(
-          //   child: Text(project.description!),
-          // ),
-
-           
-          // Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //     children: project.screenshots!
-          //         .map((e) => Flexible(
-          //               child: Padding(
-          //                 padding: const EdgeInsets.all(8.0),
-          //                 child: CachedNetworkImage(
-          //                   fit: BoxFit.cover,
-          //                   imageUrl: e,
-          //                   imageBuilder: (context, imageProvider) =>
-          //                       CircleAvatar(
-          //                     radius: 100,
-          //                     backgroundImage: imageProvider,
-          //                   ),
-          //                   placeholder: (context, url) =>
-          //                       CircularProgressIndicator(),
-          //                   errorWidget: (context, url, error) =>
-          //                       Icon(Icons.error),
-          //                 ),
-          //               ),
-          //             ))
-          //         .toList()),
+                  SizedBox(height: 10,),
+                        Container(
+                        
+                  width: ResponsiveWrapper.of(Get.context!).scaledWidth*0.9,
+                        child:Text(project.description
+                  
+                  
+                  
+                  ??"descriptioin",
+                  style: TextStyles.heading4,
+                  
+                  
+                textAlign: TextAlign.center,
+                  )),
+                    ],
+                  ),
+                  SizedBox(height: 20,),
+                   Row(
+                           
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: project.languages!.map((e) => Padding(
+                           padding: const EdgeInsets.all(8.0),
+                             child: Chip(
+                               backgroundColor: Colors.cyan.shade900,
+                               
+                               label: Text(e,style: TextStyles.body1?.copyWith(color: Colors.white,))),
+                           )).toList(),),
+                  SizedBox(height: 10,),
+                  
+          
           
             ],
           ),
+          height: 400,
       ),
     );
   }
@@ -126,51 +123,44 @@ class ProjectCard extends StatelessWidget {
    );
 
   }
-  _addDividers(){
+  
+  
+  
+  
+  
+  Widget _addDividers(){
 
       return Column(
         crossAxisAlignment:CrossAxisAlignment.center ,
+        mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   FittedBox(
                     child: Text(
                       project.name!,
                       
-                      style: TextStyles.heading4,
+                      style: TextStyles.heading2,
                     ),
                   ),
+          
+                  SizedBox(height: 2,),
                   Container(
-                    width: 200,
-                    height: 8,
+                    width: 300,
+                    height: 6,
                     decoration: BoxDecoration(
                         color: Colors.white, borderRadius: borderRadius),
                   ),
                   SizedBox(height: 2,),
-                  Container(
-                    width: 150,
-                    height: 6,
-                    decoration: BoxDecoration(
-                        color: Colors.red, borderRadius: borderRadius),
-                  ),
-                  SizedBox(height: 2,),
       
-                  Container(
-                    width: 75,
-                    height: 5,
-                    decoration: BoxDecoration(
-                        color: Colors.teal, borderRadius: borderRadius),
-                  ),
+            
       
       
-                  Container(child:Text(project.description
-                  
-                  
-                  
-                  ??"descriptioin",
-                  style: TextStyles.body1,
-                  
-                  
-                textAlign: TextAlign.start,
-                  ))
+             
+
+
+     
+
+
+          
                 ],
               );
   }
