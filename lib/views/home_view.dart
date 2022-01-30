@@ -5,7 +5,9 @@ import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'home_controller.dart';
 
@@ -48,7 +50,7 @@ class HomeView extends StatelessWidget {
 
   Widget _addNavigationBar() {
     return Container(
-      child: ResponsiveWrapper.of(Get.context!).isMobile
+      child: ResponsiveWrapper.of(Get.context!).isSmallerThan(TABLET)
           ? IconButton(
               onPressed: () {
                 key:
@@ -114,7 +116,7 @@ class HomePageContents extends StatelessWidget {
         child: Column(
 
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Obx(
               () => AnimatedOpacity(
@@ -140,7 +142,7 @@ class HomePageContents extends StatelessWidget {
                     )),
                     FittedBox(
                       child: Text(
-                        "Flutter Developer ",
+                        "Senior Flutter Developer ",
 
 
                         style: 
@@ -204,44 +206,64 @@ class HomePageContents extends StatelessWidget {
             ),
 SizedBox(height: 40,),
             
-Row(
-  crossAxisAlignment: CrossAxisAlignment.end,
-  children: [
-
-
-
-  addAvator("Flutter"),
-  addAvator("Flutter"),
-    addAvator("Flutter"),
-  addAvator("Flutter"),
-    addAvator("Flutter"),
-  addAvator("Flutter"),
-
-
-],)
+Padding(
+  padding: const EdgeInsets.only(left:20.0),
+  child: 
+  
+    Row(
+  
+    crossAxisAlignment: CrossAxisAlignment.end,
+  
+    children: [
+  
+  
+  
+  _addIcons("https://www.fiverr.com/s2/74e6e04f96",Image.asset('assets/fiverr-min.png',width: 65,) ),
+  
+      SizedBox(width: 30,),
+  
+  _addIcons("https://github.com/farmanullahQAU",FaIcon(FontAwesomeIcons.github,size: 50,color: Colors.white) ),
+  
+  
+  
+  
+  
+  
+  
+      SizedBox(width: 30,),
+  
+      _addIcons("https://www.linkedin.com/in/farman4", FaIcon(FontAwesomeIcons.linkedin,size: 50,color: Colors.white,))
+  
+  
+  
+  
+  
+  
+  
+  ],),
+)
           ],
         ),
       ),
     );
   }
+Widget _addIcons(String url, Widget icon){
 
-  addAvator(String skill){
-return Flexible(
-  child:   Padding(
-    padding: const EdgeInsets.only(left:8.0),
-    child: CircleAvatar(
-    
-      backgroundColor: Colors.cyan.shade900,
-    
-      
-    
-      radius: 60,
-    
-      
-    
-      child: Text(skill),),
-  ),
-);
+  return TextButton
+  
+  
+  (
+    onPressed: () async {
 
-  }
+
+          if (await canLaunch(url)) {
+                await launch(url, forceWebView: true);
+              } else {
+                throw 'Could not launch $url';
+              }
+    },
+    child: icon);
+
+}
+
 }

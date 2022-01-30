@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           //   bodyColor: Colors.white,
           //   displayColor: Colors.white,
           // ),
-         textTheme:   GoogleFonts.abelTextTheme(
+         textTheme:   GoogleFonts.openSansTextTheme(
 
             
           ).apply(
