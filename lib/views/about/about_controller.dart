@@ -14,4 +14,5 @@ class AboutController extends GetxController{
     _visible.value = 1.0;
   }
   CollectionReference<Map<String, dynamic>> get fetchProfileDataQuery=> FirebaseFirestore.instance.collection("profile");
+    CollectionReference<Map<String, dynamic>> get fetchSkillsQuery=> FirebaseFirestore.instance.collection("skills");
 }

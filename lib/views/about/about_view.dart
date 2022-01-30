@@ -77,18 +77,28 @@ class AboutView extends StatelessWidget {
             height: 20,
           ),
 
+
           Container(
        decoration: new BoxDecoration(
-                            gradient: new LinearGradient(
-                          colors: [
-                            Colors.blueGrey,
+         color: Colors.black,
 
-                            Colors.black,
-                          ],
-                        )
+         border: Border(
+           bottom:  BorderSide(color: Colors.cyan.shade900,width: 1.0),
+           top: BorderSide(color: Colors.cyan.shade900,width: 1.0,
+         
+         
+
+         ),
+                        //     gradient: new LinearGradient(
+                        //   colors: [
+                        //     Colors.blueGrey,
+
+                        //     Colors.black,
+                        //   ],
+                        // )
                         
                         
-                        ),
+       )),
             child: ResponsiveRowColumn(
               layout: ResponsiveWrapper.of(context).isLargerThan(MOBILE)
                   ? ResponsiveRowColumnType.ROW
@@ -114,164 +124,209 @@ class AboutView extends StatelessWidget {
                   child: Text("1 YEAR EXPERIENCE AT ESOLS TECHNOLOGIES ",
                       textAlign: TextAlign.center,
                       style:
-                          TextStyles.heading3?.copyWith(color: Colors.cyan,fontWeight: FontWeight.bold)),
+                          TextStyles.heading5?.copyWith(color: Colors.cyan,fontWeight: FontWeight.bold)),
                 )
               ],
             ),
           ),
 
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ResponsiveRowColumn(
-                layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
-                    ? ResponsiveRowColumnType.COLUMN
-                    : ResponsiveRowColumnType.ROW,
-                // columnPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                rowPadding: EdgeInsets.all( 10),
-                rowCrossAxisAlignment: CrossAxisAlignment.start,
-                rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
-                columnSpacing: 10,
-                // columnCrossAxisAlignment: CrossAxisAlignment.center,
+      _fetchAboutString(),
+_addSkills(),
 
-                children: [
-                  ResponsiveRowColumnItem(
-                    rowFlex: 1,
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Container(
-            
-                        margin: EdgeInsets.zero,
-                        child: Column(
-                          crossAxisAlignment:
-                          
-                          ResponsiveWrapper.of(context).isSmallerThan(TABLET)?
-
-                           CrossAxisAlignment.center: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            //  Expanded(child: Lottie.asset("assets/lottie/completed.json",fit: BoxFit.contain)),
-                          
-                            Text(
-                              "HI, GREETINGS",
-                              style: TextStyles.heading3?.copyWith(color: Colors.cyan,fontWeight: FontWeight.bold),
-                            ),
-SizedBox(height: 20,),
-                         _fetchAboutString(),
-
-                            // Text(
-                          
-                            //   "As a computer science graduate i have started my career as a software developer, i build top quality apps for android, iOS and web using google's flutter",
-
-
-                            //   style:      TextStyles.heading6?.copyWith(
-                            //           color: Colors.white,
-                            //        ),
-                             
-                            //   textAlign:ResponsiveWrapper.of(Get.context!).isSmallerThan(TABLET)?
-                              
-                            //    TextAlign.center:
-                            //     TextAlign.start
-                               
-                            
-                   
-                            // ),
-                            //    Text(
-                          
-                            //   "Current i am working as a senior flutter developer at  ESOLS TECHNOLOGIES ISLAMBAD",
-
-
-                            //   style:      TextStyles.heading6?.copyWith(
-                            //           color: Colors.white,
-                            //        ),
-                             
-                            //   textAlign:ResponsiveWrapper.of(Get.context!).isSmallerThan(TABLET)?
-                              
-                            //    TextAlign.center:
-                            //     TextAlign.start
-                               
-                            
-                   
-                            // ),
-                            // SizedBox(
-                            //   height: 10,
-                            // )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  ResponsiveRowColumnItem(
-                    rowFlex: 1,
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Container(
-                        decoration: new BoxDecoration(
-                            gradient: new LinearGradient(
-                          colors: [
-                            Colors.black,
-                            Colors.blueGrey,
-                          ],
-                        )),
-                        margin: EdgeInsets.zero,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                       
-                            FittedBox(
-                              child: Text(
-                                "PROJECTS COMPLETED",
-                                style: TextStyles.heading3?.copyWith(color: Colors.cyan,fontWeight: FontWeight.bold)
-                              ),
-                            ),
-SizedBox(height: 20,),
-
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    FittedBox(
-                                      child: Text(
-                                        "7+ Company projects",
-                                        style: TextStyles.heading6?.copyWith(
-                               color: Colors.white,
-                               ),
-                                      ),
-                                    ),
-                                            FittedBox(
-                                  child: Text(
-                                    "4 Project on Fiverr",
-                                    style: TextStyles.heading6?.copyWith(
-                               color: Colors.white,
-                               ),
-                                  ),
-                                ),
-                                  ],
-                                ),
-                        
-                                SizedBox(
-                                  height: 10,
-                                )
-                      
-                      ,
-                            Lottie.asset(
-                              "assets/lottie/projects.json",
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            ],
-          )
+     
+     
         ],
       ),
     );
   }
+_addSkills(){
+return Container(color: Colors.black,width: double.infinity,
 
+
+
+child: Column(
+  crossAxisAlignment: ResponsiveWrapper.of(Get.context!).isSmallerThan(TABLET)?
+  CrossAxisAlignment.center:CrossAxisAlignment.start
+  ,
+  children: [
+  Text("MY SKILLS",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyles.heading3?.copyWith(color: Colors.cyan,fontWeight: FontWeight.bold)),
+        FirestoreQueryBuilder<Map<String, dynamic>>(
+    
+      
+    
+    
+    
+      query: _controller.fetchSkillsQuery,
+    
+    
+    
+      builder: (context, snapshot, _) {
+    
+    
+    
+         if (snapshot.isFetching) {
+    
+    
+    
+          return const CircularProgressIndicator();
+    
+    
+    
+        }
+    
+    
+    
+        // ...
+    
+    
+    
+          if (snapshot.hasError) {
+    
+    
+    
+          return Text('Something went wrong! ${snapshot.error}');
+    
+    
+    
+        }
+    
+    
+    
+    
+    
+    
+    
+        final List<String> skills=List.from(snapshot.docs[0].data()['skills']);
+    
+    
+    
+        return GridView.builder(
+    
+          physics: NeverScrollableScrollPhysics(),
+    
+    
+    
+          padding: EdgeInsets.all(2),
+    
+    
+    
+           
+    
+    
+    
+           shrinkWrap: true,
+    
+    
+    
+          itemCount: skills.length,
+    
+    
+    
+          itemBuilder: (context, index) {
+    
+    
+    
+     
+    
+    
+    
+            
+    
+    
+    
+      // List<String> idList = List.castFrom(snap.data['idList'] as List ?? []);
+    
+    
+    
+    
+    
+    
+    
+          
+    
+    
+    
+    
+    
+    
+    
+            return Container(
+    
+    
+    
+              child: Chip(label:Text(skills[index],style: TextStyles.heading6)),
+    
+            );
+    
+    
+    
+    
+    
+    
+    
+            
+    
+    
+    
+          }, 
+    
+    
+    
+          
+    
+    
+    
+            gridDelegate:_addSilverDeligate()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        );
+    
+    
+    
+      },
+    
+    
+    
+    ),
+  ],
+));
+  
+}
+
+SliverGridDelegateWithFixedCrossAxisCount _addSilverDeligate(){
+
+   return SliverGridDelegateWithFixedCrossAxisCount(
+    
+    
+    
+                   crossAxisCount:ResponsiveWrapper.of(Get.context!).isSmallerThan(TABLET)?
+                   4:
+                   
+                    7,
+    
+                   mainAxisSpacing: 20,
+    
+                   crossAxisSpacing: 20
+    
+    
+    
+    
+    
+    
+    
+                 );
+}
   Widget _addGraduation() {
     return Obx(
       () => AnimatedOpacity(
@@ -321,19 +376,157 @@ SizedBox(height: 20,),
 
    return FirestoreListView<Map<String, dynamic>>(
      shrinkWrap: true,
-     itemBuilder: (context,snap)=>Column(children: [
-
-
-
-    Text(   snap.data()["about_text1"],     style: TextStyles.heading6?.copyWith(
-                               color: Colors.white,
-                               ),),
-       SizedBox(height: 10,),
-    Text(   snap.data()["about_text2"],    style: TextStyles.heading6?.copyWith(
-                               color: Colors.white,
-                               ),),
+     itemBuilder: (context,snap)=>    Column(
        
-     ]),
+       
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ResponsiveRowColumn(
+                layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
+                    ? ResponsiveRowColumnType.COLUMN
+                    : ResponsiveRowColumnType.ROW,
+                // columnPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                rowPadding: EdgeInsets.all( 10),
+                rowCrossAxisAlignment: CrossAxisAlignment.start,
+                rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
+                columnSpacing: 10,
+                // columnCrossAxisAlignment: CrossAxisAlignment.center,
+
+                children: [
+                  ResponsiveRowColumnItem(
+                    rowFlex: 1,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Container(
+            
+                        margin: EdgeInsets.zero,
+                        child: Column(
+                          crossAxisAlignment:
+                          
+                          ResponsiveWrapper.of(context).isSmallerThan(TABLET)?
+
+                           CrossAxisAlignment.center: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            //  Expanded(child: Lottie.asset("assets/lottie/completed.json",fit: BoxFit.contain)),
+                          
+                            Text(
+                              "HI, GREETINGS",
+                              style: TextStyles.heading3?.copyWith(color: Colors.cyan,fontWeight: FontWeight.bold),
+                            ),
+SizedBox(height: 20,),
+
+                            Text(
+                          
+                              snap.data()["about_text1"],
+
+
+                              style:      TextStyles.heading6?.copyWith(
+                                      color: Colors.white,
+                                   ),
+                             
+                              textAlign:ResponsiveWrapper.of(Get.context!).isSmallerThan(TABLET)?
+                              
+                               TextAlign.center:
+                                TextAlign.start
+                               
+                            
+                   
+                            ),
+                            SizedBox(height: 10,),
+                               Text(
+                          
+                               snap.data()["about_text2"],
+
+
+                              style:      TextStyles.heading6?.copyWith(
+                                      color: Colors.white,
+                                   ),
+                             
+                              textAlign:ResponsiveWrapper.of(Get.context!).isSmallerThan(TABLET)?
+                              
+                               TextAlign.center:
+                                TextAlign.start
+                               
+                            
+                   
+                            ),
+                            SizedBox(
+                              height: 10,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  ResponsiveRowColumnItem(
+                    rowFlex: 1,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Container(
+                        decoration: new BoxDecoration(
+                            gradient: new LinearGradient(
+                          colors: [
+                            Colors.black,
+                            Colors.blueGrey,
+                          ],
+                        )),
+                        margin: EdgeInsets.zero,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                       
+                            FittedBox(
+                              child: Text(
+                                "PROJECTS COMPLETED",
+                                style: TextStyles.heading3?.copyWith(color: Colors.cyan,fontWeight: FontWeight.bold)
+                              ),
+                            ),
+SizedBox(height: 20,),
+
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    FittedBox(
+                                      child: Text(
+                                        "${snap.data()['company_projects']} Company projects",
+                                        style: TextStyles.heading6?.copyWith(
+                               color: Colors.white,
+                               ),
+                                      ),
+                                    ),
+                                            FittedBox(
+                                  child: Text(
+                                    "${snap.data()['fiverr_projects']}",
+                                    style: TextStyles.heading6?.copyWith(
+                               color: Colors.white,
+                               ),
+                                  ),
+                                ),
+                                  ],
+                                ),
+                        
+                                SizedBox(
+                                  height: 10,
+                                )
+                      
+                      ,
+                            Lottie.asset(
+                              "assets/lottie/projects.json",
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+     
+     
      query: FirebaseFirestore.instance.collection("profile"),
   loadingBuilder: (context) => CircularProgressIndicator(),
   errorBuilder: (context, error, stackTrace) => Text(error.toString()),

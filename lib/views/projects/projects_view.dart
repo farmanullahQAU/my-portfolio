@@ -19,37 +19,23 @@ class ProjectsView extends StatelessWidget {
 
     return SingleChildScrollView(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
+        
+        crossAxisAlignment:
+        ResponsiveWrapper.of(context).isSmallerThan(TABLET)?
+        CrossAxisAlignment.center:CrossAxisAlignment.start,
+        
+        
+      
         children: [
-      Container(
-        height: 300,
-        child: Obx(
-                () => AnimatedOpacity(
-                  curve: Curves.easeInCirc,
-                  opacity: _projectController.visible,
-                  duration: const Duration(milliseconds: 500),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                      
-                   
-                        FittedBox(
-                          child: Text(
-                            "Projects ",
-                            style: TextStyles.heading2?.copyWith(
-                                color: Colors.red, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
+
+          Lottie.asset("lottie/projects.json",repeat: false),
+              FittedBox(
+                      child: Text(
+                        "PROJECTS DONE",
+                        style: TextStyles.heading2?.copyWith(
+                            color: Colors.cyan, fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-      ),
-          
           _projectController.myProjects.isNotEmpty
               ? _addFetchedProjects()
               : _fetchProjectsAndAdd(),
@@ -58,11 +44,11 @@ class ProjectsView extends StatelessWidget {
     );
   }
 
-  _fetchProjectsAndAdd() {
+  Widget _fetchProjectsAndAdd() {
     _projectController.myProjects.clear();
     return Container(
-      margin: EdgeInsets.only(top: 100),
       child: FirestoreListView<Map<String, dynamic>>(
+        physics: NeverScrollableScrollPhysics(),
           addAutomaticKeepAlives: false,
 
         shrinkWrap: true,
@@ -85,10 +71,12 @@ class ProjectsView extends StatelessWidget {
     );
   }
 
-  _addFetchedProjects() {
+  Widget _addFetchedProjects() {
     // ignore: sized_box_for_whitespace
     return Container(
         child: ListView.builder( 
+        physics: NeverScrollableScrollPhysics(),
+
           addAutomaticKeepAlives: false,
           
           

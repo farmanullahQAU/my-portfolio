@@ -13,9 +13,6 @@ class MenuController extends GetxController {
 
   GlobalKey<ScaffoldState> get scaffoldKey => _scaffoldKey;
 
-  var _currentIndex = 0;
-  int get currentIdex => _currentIndex;
-  set currentIdex(int index) => _currentIndex = index;
 
   void controlMenu() {
     if (!_scaffoldKey.currentState!.isDrawerOpen) {

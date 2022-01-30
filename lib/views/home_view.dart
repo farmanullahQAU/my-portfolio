@@ -17,12 +17,35 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+//       bottomNavigationBar: BottomNavigationBar(
+//         type: BottomNavigationBarType.fixed,
+        
+//         backgroundColor: Colors.black,
+//         items: [
+
+//         BottomNavigationBarItem(
+          
+          
+//           icon: Icon(Icons.email),label: "030494994993"),
+//          BottomNavigationBarItem(label: "farmanullahk437@gmail.com", icon: Icon(Icons.email) ),
+//          BottomNavigationBarItem(label: "farmanullahk437@gmail.com", icon: Icon(Icons.email) )
+// ,
+//          BottomNavigationBarItem(label: "farmanullahk437@gmail.com", icon: Icon(Icons.email) )
+
+        
+
+
+        
+//       ],),
       backgroundColor: Colors.black,
       key: Get.find<MenuController>().scaffoldKey,
       drawer:
           ResponsiveWrapper.of(context).isSmallerThan(TABLET) ? _addMobileDrawer() : null,
       body: Container(
-        decoration: BoxDecoration(
+        decoration:
+        ResponsiveWrapper.of(context).isSmallerThan(TABLET)?null:
+         BoxDecoration(
             image: DecorationImage(
               
              
@@ -60,18 +83,30 @@ class HomeView extends StatelessWidget {
           : Container(
               height: 60,
               color: secondaryColor,
-              child: Obx(
-                () => Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: Get.find<HomeController>()
-                      .getNavBar()
-                      .map((e) => TextButton(
-                          onPressed: () {
-                            Get.find<HomeController>().currentIdex = e.index!;
-                          },
-                          child: e.item!))
-                      .toList(),
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  
+                  Flexible(
+                    flex: 2,
+                    child: Obx(
+                      () => Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: Get.find<HomeController>()
+                            .getNavBar()
+                            .map((e) => TextButton(
+                                onPressed: () {
+                                  Get.find<HomeController>().currentIdex = e.index!;
+                                },
+                                child: e.item!))
+                            .toList(),
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                  Flexible(flex: 2,child: Text("OPEN TO WORK"),),
+
+                ],
               ),
             ),
     );
@@ -79,27 +114,36 @@ class HomeView extends StatelessWidget {
 
   Widget _addMobileDrawer() {
     return Drawer(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blueGrey,
 
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
+
         child: ListView(
-            // Important: Remove any padding from the ListView.
+           
             padding: EdgeInsets.zero,
             children: [
-              const DrawerHeader(
+               DrawerHeader(
+                padding: EdgeInsets.all(1),
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.white70,
                 ),
-                child: Text('Drawer Header'),
+                child:Image.asset("assets/pic.jpeg",fit:BoxFit.cover),
               ),
-              ...Get.find<HomeController>().getNavBar().map((e) => ListTile(
-                    onTap: () {
-                      Get.find<HomeController>().currentIdex = e.index!;
-                    },
-                    title: e.item,
-                  ))
+              ...Get.find<HomeController>().getNavBar().map((e) => 
+                ListTile(
+                  selectedTileColor: Colors.grey,
+                  selectedColor: Colors.red,
+                  
+              
+        
+
+                      onTap: () {
+                        Get.back();
+
+                        Get.find<HomeController>().currentIdex = e.index!;
+                      },
+                      title: e.item,
+                    ),
+              )
             ]));
   }
 }
@@ -193,7 +237,10 @@ class HomePageContents extends StatelessWidget {
                  height: 50,
                  color: Colors.cyan.shade900,
                  
-                 child: TextButton(onPressed: (){}, child: Text("Hire me"
+                 child: TextButton(onPressed: (){
+
+                   Get.find<HomeController>().currentIdex=3;
+                 }, child: Text("Hire me"
                  
                  ,style: TextStyles.subtitle1?.copyWith(color: Colors.white),
                  
@@ -241,7 +288,14 @@ Padding(
   
   
   ],),
-)
+
+),
+
+
+        
+        
+        
+        
           ],
         ),
       ),
