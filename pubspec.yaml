@@ -47,6 +47,8 @@ dependencies:
   lottie: ^1.2.1
   url_launcher: ^6.0.18
   flutter_placeholder_textlines: ^1.1.2
+  carousel_slider: ^4.0.0
+  flutter_staggered_grid_view: ^0.6.1
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,5 @@
-import 'package:farmanullah_portfolio/views/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 class TextStyles {
   static TextStyle? body1 = Theme.of(Get.context!).textTheme.bodyText1;
@@ -14,6 +12,8 @@ class TextStyles {
   static TextStyle? heading4 = Theme.of(Get.context!).textTheme.headline4;
   static TextStyle? heading5 = Theme.of(Get.context!).textTheme.headline5;
   static TextStyle? heading6 = Theme.of(Get.context!).textTheme.headline6;
+  static TextStyle? bodyLarge = Theme.of(Get.context!).textTheme.bodyLarge;
+
 //headline theme
 
   static TextStyle? headlin1 = Theme.of(Get.context!).textTheme.headline6;
@@ -22,10 +22,22 @@ class TextStyles {
 
 
 
-  static TextStyle? getNavigationBarItemColor(int index) {
-    return Theme.of(Get.context!).textTheme.subtitle1?.copyWith(
-        color: Get.find<HomeController>().currentIdex == index
-            ? Colors.cyan[200]
-            : null);
-  }
+  // static TextStyle? getNavigationBarItemColor(int index) {
+  //   return Theme.of(Get.context!).textTheme.subtitle1?.copyWith(
+  //       color: Get.find<HomeController>().currentIdex == index
+  //           ? Colors.cyan[200]
+  //           : null);
+  // }
+
+
+  //MY SKILLS PAGE TEXTSTYLES
+
+  static TextStyle? skillsTitleTextStyle = Theme.of(Get.context!).textTheme.subtitle1?.copyWith(
+    fontWeight: FontWeight.bold,
+    letterSpacing: 1,
+    color: Colors.white);
+      static TextStyle? skillsDescTextStyle = Theme.of(Get.context!).textTheme.subtitle1?.copyWith(
+    color: Colors.white);
+
+
 }

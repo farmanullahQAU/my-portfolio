@@ -1,8 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Project {
   String? assetPath;
-  String? ProjectId;
+  String? projectId;
 
   String? name;
   
@@ -14,7 +13,7 @@ class Project {
   List<String>? languages;
 
   Project(
-      {this.ProjectId,
+      {this.projectId,
       this.assetPath,
       this.name,
       this.playstoreUrl,
@@ -24,19 +23,19 @@ class Project {
       this.screenshots,
       this.languages});
 
-  Project.fromJson(Map<String, dynamic> json, String ProjectId) {
-    this.ProjectId = ProjectId;
-    this.playstoreUrl = json["playstore_url"] ?? null;
-    this.appStoreUrl = json["appstore_url"] ?? null;
+  Project.fromJson(Map<String, dynamic> json, String id) {
+    projectId = id;
+    playstoreUrl = json["playstore_url"];
+    appStoreUrl = json["appstore_url"];
 
-    description = json["description"] ?? null;
-    assetPath = json["asset_path"] ?? null;
+    description = json["description"];
+    assetPath = json["asset_path"];
 
     screenshots =
         json["screenshots"] != null ? List.from(json["screenshots"]) : null;
     languages = json["languages"] != null ? List.from(json["languages"]) : null;
 
-    name = json['name'] ?? null;
-    imageUrl = json['image_url'] ?? null;
+    name = json['name'];
+    imageUrl = json['image_url'];
   }
 }

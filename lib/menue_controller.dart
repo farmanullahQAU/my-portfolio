@@ -1,5 +1,3 @@
-import 'package:farmanullah_portfolio/route_names.dart';
-import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,5 +23,7 @@ class NavBar {
   Widget? item;
   String routeName;
   int? index;
-  NavBar({this.item, this.index, required this.routeName});
+
+  VoidCallback? onTap;
+  NavBar({this.item, this.index, required this.routeName,this.onTap});
 }

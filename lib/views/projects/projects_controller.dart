@@ -7,10 +7,6 @@ class ProjectsViewController extends GetxController {
 
   List<Project> get myProjects => _myProjects;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   Query<Map<String, dynamic>> fetchProjectQuery() {
     return FirebaseFirestore.instance.collection("projects");

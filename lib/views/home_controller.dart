@@ -1,60 +1,99 @@
-import 'package:farmanullah_portfolio/contact/contact_me.dart';
-import 'package:farmanullah_portfolio/views/projects/projects_view.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../menue_controller.dart';
 import '../route_names.dart';
-import '../textstyles.dart';
-import 'about/about_view.dart';
 import 'home_view.dart';
 
 class HomeController extends GetxController {
-  var _currentIndex = 0.obs;
+
+    final aboutGlobalKey = GlobalKey();
+  final projectGlobalKey = GlobalKey();
+  final homeGlobalKey = GlobalKey();
+    RxBool isHover=false.obs;
+
+  final _currentIndex = 0.obs;
   int get currentIdex => _currentIndex.value;
   set currentIdex(int index) => _currentIndex.value = index;
 
   final List<Widget> screens = [
-    HomePageContents(),
-    ProjectsView(),
-    AboutView(),
-    ContactMeView(),
-    AboutView(),
+    HomeView(),
+    // ProjectsView(),
+    // AboutView(),
+    // ContactMeView(),
+    // AboutView(),
 
 
   ];
 
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-  }
 
-  List<NavBar> getNavBar() {
+  List<NavBar> getNavigationBarItems() {
     return [
       NavBar(
-        item: Text("Home", style: TextStyles.getNavigationBarItemColor(0)),
+        item: const Text("HOME"),
+
+        onTap: (){
+              currentIdex=0;
+               Scrollable.ensureVisible(
+                        homeGlobalKey.currentContext!,
+                        duration: const Duration(seconds: 1),
+                      );
+        },
         index: 0,
         routeName: RouteNames.HOME,
       ),
 
       NavBar(
+
+        onTap: (){
+              currentIdex=1;
+
+
+              Scrollable.ensureVisible(
+                        aboutGlobalKey.currentContext!,
+                        duration: const Duration(seconds: 1),
+                      );
+        },
         routeName: RouteNames.HOME,
-        item: Text("Projects", style: TextStyles.getNavigationBarItemColor(1)),
+        item: const Text("ABOUT ME"),
         index: 1,
       ),
       NavBar(
+              onTap: ()
+            {
+
+              currentIdex=2;
+
+              Scrollable.ensureVisible(
+                
+                        projectGlobalKey.currentContext!,
+                        duration: const Duration(seconds: 1),
+                      );
+        }
+        ,
         routeName: RouteNames.HOME,
-        item: Text("About",
-            style: TextStyles.getNavigationBarItemColor(2)),
+        item: const Text("PROJECTS",
+            ),
         index: 2,
       ),
 
       NavBar(
         routeName: RouteNames.HOME,
-        item: Text("Contact",
-            style: TextStyles.getNavigationBarItemColor(3)),
+        item: const Text("CONTACT",
+            ),
         index: 3,
+      ),
+
+
+
+
+      NavBar(
+        routeName: RouteNames.HOME,
+        item: const FaIcon(FontAwesomeIcons.linkedin),
+        index: 4,
+
+
       ),
 
     ].obs;

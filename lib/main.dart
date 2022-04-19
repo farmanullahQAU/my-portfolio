@@ -1,17 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmanullah_portfolio/binder.dart';
-import 'package:farmanullah_portfolio/constants.dart';
 import 'package:farmanullah_portfolio/firebase_options.dart';
 import 'package:farmanullah_portfolio/pages.dart';
 import 'package:farmanullah_portfolio/route_names.dart';
+import 'package:farmanullah_portfolio/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
-import 'package:responsive_framework/utils/scroll_behavior.dart';
 // Import the generated file
 
 void main() async {
@@ -20,59 +17,46 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        // theme: ThemeData(
-        //   // Define the default Brightness and Colors
-        //   brightness: Brightness.dark,
-        //   primaryColor: Colors.lightBlue[800],
-        //   accentColor: Colors.cyan[600],
-        // ),
+  themeMode: ThemeMode.system,
 
-        theme: ThemeData.dark().copyWith(
-          brightness: Brightness.dark,
+     darkTheme: ThemeData.dark(),
+      theme: AppTheme.blueTheme,
 
-          scaffoldBackgroundColor: Colors.black87,
-
-          // textTheme:
-          //     GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme).apply(
-          //   bodyColor: Colors.white,
-          //   displayColor: Colors.white,
-          // ),
-         textTheme:   GoogleFonts.openSansTextTheme(
-
-            
-          ).apply(
-            bodyColor: Colors.white,
-            displayColor: Colors.white,
-          )
-          // canvasColor: secondaryColor,
-          // appBarTheme:AppBarTheme(backgroundColor:
-          // secondaryColor.withGreen(44)
-
-          // )
-        ),
         title: "Farman Ullah",
         initialBinding: Binder(),
 
 // getPages: pages,
-
+// builder: (context, child) => ResponsiveWrapper.builder(
+//           child,
+//           maxWidth: 1200,
+//           minWidth: 480,
+//           defaultScale: true,
+//           breakpoints: [
+//             ResponsiveBreakpoint.resize(480, name: MOBILE),
+//             ResponsiveBreakpoint.autoScale(800, name: TABLET),
+//             ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+//           ],
+//           background: Container(color: Color(0xFFF5F5F5))),
         builder: (context, widget) => ResponsiveWrapper.builder(
-              BouncingScrollWrapper.builder(context, widget!),
+              widget,
               //      maxWidth: 1300,
               minWidth: 450,
               defaultScale: true,
               breakpoints: [
-                ResponsiveBreakpoint.resize(450, name: MOBILE),
-                ResponsiveBreakpoint.autoScale(800, name: TABLET),
-                ResponsiveBreakpoint.autoScale(1000, name: TABLET),
-                ResponsiveBreakpoint.resize(1200, name: DESKTOP),
-                ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+                const ResponsiveBreakpoint.resize(450, name: MOBILE),
+                const ResponsiveBreakpoint.autoScale(800, name: TABLET),
+                const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
+                const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
+                const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
               ],
               // background: Container(color: Color(0xFFF5F5F5))
             ),
