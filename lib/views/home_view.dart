@@ -1,105 +1,142 @@
 import 'package:farmanullah_portfolio/assets_path.dart';
-import 'package:farmanullah_portfolio/components/material_button.dart';
 import 'package:farmanullah_portfolio/constants/text_const.dart';
 import 'package:farmanullah_portfolio/textstyles.dart';
+import 'package:farmanullah_portfolio/views/intro_view.dart';
+import 'package:farmanullah_portfolio/views/projects/projects_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 import '../responsive/responsive_wrapper.dart';
+import 'about/about_view.dart';
 import 'home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  final _scrollController = ScrollController();
 
 
 
-  HomeView({Key? key}) : super(key: key);
+   HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth=Get.width;
+// if(controller.scrollController!=null)
+//     if(controller.scrollController.position.haveDimensions)
+// {
+//   print("yyyyyyyy");
+// }
+// else print("nnnnnnnn");
     return Scaffold(
+
+      
+      floatingActionButton: _buildFab(),
+      
       backgroundColor: Colors.black,
-      body: LayoutBuilder(builder: (context, constraints) {
-        return SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
-          child: Container(
-            height: Get.height,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/background.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: CustomScrollView(
-                controller: _scrollController,
-                slivers: [
-                           SliverAppBar(
-                             toolbarHeight: 30,
-                             backgroundColor: Colors.black,
-                             elevation: 0.0,
+      body:
+       SingleChildScrollView(
+       
         
-                   pinned: false,
-                            snap: true,
-                            floating: true,  
-                              //    backgroundColor: Colors.transparent,
+          physics: const ScrollPhysics(),
+          child: Stack(
+            
+            children: [
+              Container(
+                height: Get.height,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/pic2.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: CustomScrollView(
+                  physics: ScrollPhysics(),
+                    controller: controller.scrollController,
+                    slivers: [
+                      
+                               SliverAppBar(
+                                 toolbarHeight: 30,
+                                 backgroundColor: Colors.black,
+                                 elevation: 0.0,
         
-                                  actions: [
-                                    Row(
-                                      children: [
-                                        MaterialButton(
-                                          onPressed: (){
+                       pinned: false,
+                                snap: true,
+                                floating: true,  
+                                  //    backgroundColor: Colors.transparent,
         
-               
+                                      actions: [
+                                        Row(
+                                          children: [
+                                            MaterialButton(
+                                              onPressed: (){
         
-                                          },
-                                          highlightColor: Colors.white60,
-                                          child: Text(
-                                            'About Me',
-                                            style: TextStyle(
-                                                color: Colors.white, fontWeight: FontWeight.bold),
-                                          ),
+                   
+        
+                                              },
+                                              highlightColor: Colors.white60,
+                                              child: Column(
+                                                children: [
+       
+       
+                                                  Text(
+                                                    'About Meee',
+                                                    style: TextStyle(
+                                                        color: Colors.white, fontWeight: FontWeight.bold),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            MaterialButton(
+                                              hoverColor: Colors.grey[800],
+                                              onPressed: (){
+       
+                                                Get.to(()=>Carroussel());
+                                              },
+                                              child: Text(
+                                                'Experience',
+                                                style: TextStyle(
+                                                    color: Colors.white, fontWeight: FontWeight.bold),
+                                              ),
+                                            ),
+        
+                                            TextButton(
+                                              onPressed: (){
+                                                Get.to(()=>MyStatefulWidget());
+        
+                   
+        
+                                              },
+        
+                                              child: Text(
+                                                'Contact Me',
+                                                style: TextStyle(
+                                                    color: Colors.white, fontWeight: FontWeight.bold),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        MaterialButton(
-                                          hoverColor: Colors.grey[800],
-                                          onPressed: (){},
-                                          child: Text(
-                                            'Experience',
-                                            style: TextStyle(
-                                                color: Colors.white, fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-        
-                                        TextButton(
-                                          onPressed: (){
-                                            Get.to(()=>MyStatefulWidget());
-        
-               
-        
-                                          },
-        
-                                          child: Text(
-                                            'Contact Me',
-                                            style: TextStyle(
-                                                color: Colors.white, fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
+                                        SizedBox(width: MediaQuery.of(context).size.width * .15),
                                       ],
                                     ),
-                                    SizedBox(width: MediaQuery.of(context).size.width * .15),
-                                  ],
-                                ),
-                  ...slivers(),
-                ],
+                     
+                     
+                     
+                     
+                     
+                     
+                      ...slivers(screenWidth),
+                    ],
+                  ),
               ),
+          
+          
+            ],
           ),
-        );
-      }),
+        
+           ),
     );
   }
 
-  List<Widget> slivers() => [
+  List<Widget> slivers(double screenWidth) => [
         SliverToBoxAdapter(
           key:controller.homeGlobalKey ,
           child: Container(
@@ -282,441 +319,105 @@ final index=e.index;
                 ),
 
 
-                const Expanded(
-                    child: Home(
-                )),
+                  Expanded(
+
+                   //first slide contents
+                    child: IntroView(screenWidth: screenWidth,
+                                  )),
 
 
               ],
             ),
-            height: 600,
+            height: 700,
             width: Get.width,
           ),
         ),
-      
-          SliverToBoxAdapter(
-          key: controller.projectGlobalKey,
-          child: Projects(),
-        ),
-       SliverToBoxAdapter(
-          child: Container(
-            height: 500,
-            width: Get.width,
-            color: Colors.cyan
-          ),
-        ),
-        SliverToBoxAdapter(
+         SliverToBoxAdapter(
           key: controller.aboutGlobalKey,
           child:const About()
         ),
+       SliverToBoxAdapter(child: ProjectView(screenWidth: screenWidth,)),
+
+      
+       
       
       
            SliverToBoxAdapter(
           child: Container(
             height: 500,
-            width: Get.width,
-            color: Colors.pink,
-          ),
-        )
-      ];
-}
-class About extends StatelessWidget {
-  const About({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final screenWidth=Get.width;
-    return ResponsiveWidget(
-      largeScreen: 
-      
-      
-      Container(
-color: Colors.white,
-
-    child: Column(
-    
-      children: [
-     
-    
-      
-     Container(
-
-        margin: EdgeInsets.only(left: screenWidth*0.1,top:20,bottom: 20,right: 20),
-
-    
-       child: Row(
-         mainAxisAlignment: MainAxisAlignment.start,
-         crossAxisAlignment: CrossAxisAlignment.start,
-     
-        
-        
-    
-       children: [
-     
-     
-     
-         Flexible(
-           flex: 1,
-           child: AnimatedSize(
-                 curve: Curves.easeIn,
-                 duration: const Duration(seconds: 1),
-                 child: _addImageAvatar(context)
-               ),
-         ),
-const SizedBox(width: 20,),
-          Flexible(
-            flex: 1,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-              
-                Text("About me",style: TextStyles.heading3,),
-                Text(aboutDescription,textAlign: TextAlign.justify,
-                
-                style: TextStyles.subtitle1?.copyWith(color: Colors.black87),
-                
-                ),
-              const SizedBox(height: 30,),
-                 Container(width: 200,height: 
-                 5,color: Colors.red,),
-              
-                 _addSocilaIcon(),
-            
-              ],
-            ),
-          )
-      
-      
-      ,
-      
-       
-     
-       ],
-       ),
-     ),
-      ],
-    ),
-    
-    
-      ),
-    
-    smallScreen:
-
-
-       Container(
-         decoration: const BoxDecoration(
-           
-        color: Colors.white,
-           
-          //  image: DecorationImage(
-    
-          
-          // opacity: 0.3,
-          // fit: BoxFit.cover,
-          // image: AssetImage('assets/pic2.jpg'))
-          
-          
-          ),
-    child: Column(
-    
-      children: [
-     
-    
-      
-     SizedBox(
-    
-       child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-     
-        
-        
-    
-       children: [
-     
-     
-     
-         AnimatedSize(
-               curve: Curves.easeIn,
-               duration: const Duration(seconds: 1),
-               child: _addImageAvatar(context)
-             ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-            
-              Text("About me",style: TextStyles.heading3,),
-              Text(aboutDescription,textAlign: TextAlign.center,
-              
-              style: TextStyles.subtitle1?.copyWith(color: Colors.black87),
-              
-              ),
-            // SizedBox(height: 30,),
-            //    Container(width: 200,height: 
-            //    5,color: Colors.red,),
-            
-               Align(
-                   alignment: Alignment.center,
-                   child: _addSocilaIcon()),
-          
-            ],
-          )
-      
-      
-      ,
-      
-       
-     
-       ],
-       ),
-     ),
-      ],
-    ),
-    
-    
-      ),
-    
-    
-    
-    
-    );
-  }
+        decoration: BoxDecoration(
 
 
 
-  Widget _addImageAvatar(BuildContext context){
-return CircleAvatar(
-backgroundColor: Colors.red,
- radius: ResponsiveWrapper.of(context).isSmallerThan(TABLET)?155:205,
-  child:   CircleAvatar(
-    radius: ResponsiveWrapper.of(context).isSmallerThan(TABLET)?150:200,
-    
-    backgroundImage: Image.asset(
-    
-    
-    "assets/background.jpg",fit: BoxFit.cover,).image,),
-);
 
-  }
-
- Widget _addSocilaIcon() {
-
-
-    return Row(children: const [
-    
-    ButtonBar(children: [
-    
-    FaIcon(FontAwesomeIcons.linkedin,),
-    FaIcon(FontAwesomeIcons.twitter,),
-    FaIcon(FontAwesomeIcons.mailBulk,),
-    FaIcon(FontAwesomeIcons.youtube,),
-    
-    
-    ],)
-    
-    ],);
-  }
-}
-class Home extends StatelessWidget {
-  const Home({Key? key, required }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-final screenWidth=Get.width;
-    return ResponsiveWidget(
-smallScreen: Column(
-       crossAxisAlignment: CrossAxisAlignment.center,
-       mainAxisAlignment: MainAxisAlignment.center,
-       
-        
-     
-        children: [
-
-       
-      
-       
-            RichText(
-              text: TextSpan(
-            text: "I'M ",
-            style: TextStyles.heading4?.copyWith(fontWeight: FontWeight.bold),
-            children: <TextSpan>[
-              TextSpan(
-                  text: "${myName.toUpperCase()} ",
-                  style: TextStyles.heading4
-                      ?.copyWith(fontWeight: FontWeight.bold)),
-            ],
-              ),
-            ),
-          Padding(
-            padding: const EdgeInsets.only(top:8.0,bottom: 10),
-            child: Text(designation.toUpperCase(),style: TextStyles.heading6?.copyWith(color: Colors.red),),
-          ),
-          const SizedBox(height: 20,),
-
-
-          SizedBox(
-            
-            child: Text(
-              homeDesctiption,
-              style: TextStyles.subtitle1?.copyWith(color: Colors.white),
-              textAlign:
-              
-            
-               TextAlign.center,
-            ),
-          ),
-      const SizedBox(height: 20,),
-           Column(
-             crossAxisAlignment: CrossAxisAlignment.center,
-          
-             children: [
-        
-        
-                SizedBox(
-                 width: 200,
-                 height: 50,
-                 child:MaterialButtonWidget(
-                   borderColor: Colors.red,
-                   color: Colors.redAccent.shade400,
-                   hoverColor: Colors.black,
+                 gradient: LinearGradient(
+                   tileMode: TileMode.clamp,
+                   
+                   colors: [
                    
                    
-                   child:const Text("Hire me",style: TextStyle(color: Colors.white),),onPressed: (){},)
-                ),
-      const SizedBox(height: 20,),
+                  Color.fromRGBO(207, 0, 15, 1),
+Colors.red
+,
+                   
+                  Color.fromARGB(228, 214, 29, 1),
 
-                   SizedBox(
-                     width: 200,
-                     height: 50,
-                     child:MaterialButtonWidget(
-                       
-                       
-                       borderColor: Colors.white,
-                       color: Colors.black,
-                       hoverColor: Colors.black45,
-                       child:SizedBox(
-      
-                       width: 100,
-                       child: Row(
-                         
-                         mainAxisAlignment: MainAxisAlignment.start,
-                         children: const [
-                     
-                     FaIcon(FontAwesomeIcons.github,color: Colors.white,),
-      
-                     SizedBox(width: 10,),
-                     
-                     Text("Github",style: TextStyle(color: Colors.white),),
-                     
-                     
-                     
-                       ]),
-                     ),onPressed: (){},)
-                   ),
-             ],
-           ),
-        ],
-      ),
+                   
+                   
+                   
+                   ],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              stops: [
+                0.1,
+                0.4,
+                0.6,
+              ]
 
-      largeScreen: Container(
-        margin: EdgeInsets.only(left: screenWidth*0.1),
-        child: Column(
-         
-         crossAxisAlignment: CrossAxisAlignment.start,
-         mainAxisAlignment: MainAxisAlignment.center,
-          
-     
-          children: [
-        
-         
-            RichText(
-              text: TextSpan(
-            text: "I'M ",
-            style: TextStyles.heading4?.copyWith(fontWeight: FontWeight.bold),
-            children: <TextSpan>[
-              TextSpan(
-                  text: "${myName.toUpperCase()} ",
-                  style: TextStyles.heading4
-                      ?.copyWith(fontWeight: FontWeight.bold)),
-            ],
-              ),
-            ),
-          Padding(
-            padding: const EdgeInsets.only(top:8.0,bottom: 10),
-            child: Text(designation.toUpperCase(),style: TextStyles.heading6?.copyWith(color: Colors.red),),
+
+
+
+
+)
+
+),
+
           ),
-            SizedBox(
-              width: screenWidth*0.4,
-              child: Text(
-                homeDesctiption,
-                style: TextStyles.subtitle1?.copyWith(color: Colors.white),
-                textAlign:
-                
-              
-                 TextAlign.start,
-              ),
-            ),
-
-            const SizedBox(height: 20,),
-             Row(
-            
-               children: [
-          
-          
-                  SizedBox(
-                   width: 200,
-                   height: 50,
-                   child:MaterialButtonWidget(
-                     borderColor: Colors.red,
-                     color: Colors.redAccent.shade400,
-                     hoverColor: Colors.black,
-                     
-                     
-                     child:const Text("Hire me",style: TextStyle(color: Colors.white),),onPressed: (){},)
-                  ),
-        const SizedBox(width: 10,),
-
-                     SizedBox(
-                       width: 200,
-                       height: 50,
-                       child:MaterialButtonWidget(
-                         
-                         
-                         borderColor: Colors.white,
-                         color: Colors.black,
-                         hoverColor: Colors.black45,
-                         child:SizedBox(
-        
-                         width: 100,
-                         child: Row(
-                           
-                           mainAxisAlignment: MainAxisAlignment.start,
-                           children: const [
-                       
-                       FaIcon(FontAwesomeIcons.github,color: Colors.white,),
-        
-                       SizedBox(width: 10,),
-                       
-                       Text("Github",style: TextStyle(color: Colors.white),),
-                       
-                       
-                       
-                         ]),
-                       ),onPressed: (){},)
-                     ),
-               ],
-             ),
-          ],
         ),
-      ),
+           SliverToBoxAdapter(
+          key: controller.projectGlobalKey,
+          child: Projects(),
+        ),
+       
+      ];
+
+
+
+
+
+  Widget _buildFab() {
+    return StreamBuilder<bool>(
+      stream: controller.scrollStream.stream,
+      builder: (_, AsyncSnapshot<bool> data) {
+        
+        final bool? showFab = data.hasData && data.data==true;
+        return AnimatedOpacity(
+          opacity:showFab!=null? showFab ? 1 : 0:0,
+          duration: const Duration(milliseconds: 500),
+          child: FloatingActionButton(
+            onPressed: showFab==true
+                ? controller.scrollToTop
+                : null, // make sure user cannot click when button hidden
+            mini: true,
+            child: Icon(Icons.arrow_upward),
+          ),
+        );
+      },
     );
-
-
-
   }
-
 }
+
+ 
   /*
 
  class HomePageContents extends StatelessWidget {
@@ -960,31 +661,46 @@ final List<String> flutterSkills=[
                 ),
 
               ],
+
             ),
 
-decoration: BoxDecoration(
+// decoration: BoxDecoration(
 
 
 
-                 gradient: LinearGradient(colors: [Colors.red.shade400,Color.fromARGB(255, 151, 6, 4)],
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
+//                  gradient: LinearGradient(colors: [
+                   
+                   
+//                   Color.fromRGBO(207, 0, 15, 1),
+                   
+//                   Color.fromRGBO(207, 0, 15, 1),
+//                   Color.fromRGBO(242, 38, 19, 1),
+
+
+                   
+                   
+                   
+//                    ],
+//             begin: Alignment.center,
+//             end: Alignment.centerRight,
 
 
 
 
 
-)
+// )
 
 
-),          ),
+// ),    
+color: Colors.black.withOpacity(0.5),
+      ),
       
       
       
-      addLeftSideTriangles(),
+      // addLeftSideTriangles(),
 
 
-     addLeftCornerTriangles(),
+    //  addLeftCornerTriangles(),
 
   
 
@@ -1161,11 +877,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
 
           TextButton(onPressed: (){
 
-_controller.addStatusListener((status) {
 
-_controller.dispose();
 
- });
+   _controller.addStatusListener((AnimationStatus status) {
+   
+        _controller.dispose();
+    });
 
           }, child: Text("kkk")),
           Center(
@@ -1181,4 +898,76 @@ _controller.dispose();
       ),
     );
   }
+}
+
+
+
+class Carroussel extends StatefulWidget {
+  @override
+  _CarrousselState createState() => new _CarrousselState();
+}
+
+class _CarrousselState extends State<Carroussel> {
+  PageController? controller;
+  int currentpage = 0;
+
+  @override
+  initState() {
+    super.initState();
+    controller = PageController(
+      initialPage: currentpage,
+      keepPage: false,
+      viewportFraction: 0.5,
+    );
+  }
+
+  @override
+  dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Container(
+          child: PageView.builder(
+              onPageChanged: (value) {
+                setState(() {
+                  currentpage = value;
+                });
+              },
+              controller: controller,
+              itemBuilder: (context, index) => builder(index)),
+        ),
+      ),
+    );
+  }
+
+  builder(int index) {
+    return AnimatedBuilder(
+      animation: controller!,
+      builder: (context, child) {
+        double value = 1.0;
+        if (controller!.position.haveDimensions) {
+          value = (controller!.page! - index);
+          value = (1 - (value.abs() * .5)).clamp(0.0, 1.0);
+        }
+
+        return Center(
+          child: SizedBox(
+            height: Curves.easeOut.transform(value) * 300,
+            width: Curves.easeOut.transform(value) * 250,
+            child: child,
+          ),
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.all(8.0),
+        color: index % 2 == 0 ? Colors.blue : Colors.red,
+      ),
+    );
+  }
+
 }

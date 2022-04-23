@@ -1,7 +1,10 @@
 
+import 'package:farmanullah_portfolio/constants/constants.dart';
+
 class Project {
   String? assetPath;
   String? projectId;
+  ProjectTypes? projectType;
 
   String? name;
   
@@ -14,6 +17,7 @@ class Project {
 
   Project(
       {this.projectId,
+      required this.projectType,
       this.assetPath,
       this.name,
       this.playstoreUrl,
@@ -25,6 +29,7 @@ class Project {
 
   Project.fromJson(Map<String, dynamic> json, String id) {
     projectId = id;
+    projectType:json["projectType"];
     playstoreUrl = json["playstore_url"];
     appStoreUrl = json["appstore_url"];
 

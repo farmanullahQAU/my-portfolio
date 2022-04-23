@@ -16,7 +16,7 @@ headlineMedium: TextStyle(color:Colors.white),
       titleSmall: TextStyle(color: blueDarkPrimaryColor)),
     primaryColor: blueDarkPrimaryColor,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: blueDarkPrimaryColor,
+      backgroundColor: Colors.black,
     ),
     bottomNavigationBarTheme:
         const BottomNavigationBarThemeData(selectedItemColor: blueDarkPrimaryColor),
