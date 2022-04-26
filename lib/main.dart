@@ -1,5 +1,6 @@
 import 'package:farmanullah_portfolio/binder.dart';
 import 'package:farmanullah_portfolio/firebase_options.dart';
+import 'package:farmanullah_portfolio/menue_controller.dart';
 import 'package:farmanullah_portfolio/pages.dart';
 import 'package:farmanullah_portfolio/route_names.dart';
 import 'package:farmanullah_portfolio/app_theme.dart';
@@ -8,6 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 // Import the generated file
 
@@ -16,12 +18,14 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  runApp(const MyApp());
+  await GetStorage.init();
+     Get.put(MenuController());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final getStorage=GetStorage();
+   MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +65,12 @@ class MyApp extends StatelessWidget {
         //       // background: Container(color: Color(0xFFF5F5F5))
         //     ),
         getPages: pages,
-        initialRoute: RouteNames.HOME);
+        initialRoute: 
+      Get.find<MenuController>().currentRoute??RouteNames.HOME
+        
+        
+        
+        
+        );
   }
 }

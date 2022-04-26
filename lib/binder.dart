@@ -7,8 +7,10 @@ import 'package:get/instance_manager.dart';
 class Binder extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => MenuController());
-    Get.lazyPut(() => HomeController());
+    Get.put(  MenuController());
+
+    Get.put(  HomeController());
+
     Get.lazyPut(() => ProjectsViewController());
     // Get.lazyPut(() => ContactUsController());
     // Get.lazyPut(() => AboutController());

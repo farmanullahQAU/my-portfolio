@@ -9,31 +9,36 @@ import '../textstyles.dart';
 import 'home_controller.dart';
 
 class IntroView extends GetView<HomeController> {
- final double screenWidth;
-   const IntroView({Key? key, required this.screenWidth }) : super(key: key);
+  final double screenWidth;
+      IntroView({Key? key ,required this.screenWidth}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return     Column(
-           crossAxisAlignment: CrossAxisAlignment.center,
-           mainAxisAlignment: MainAxisAlignment.center,
-           
-            
-         
-            children: [
-    
-           
-          
-           SizeTransition(
+
+
+    return     SingleChildScrollView(
+      child: Column(
+
+
+             crossAxisAlignment: CrossAxisAlignment.center,
+             mainAxisAlignment: MainAxisAlignment.center,
              
-               sizeFactor: controller.animation,
-            axis: Axis.vertical,
-            axisAlignment: -1,
-             child:  HomeContents(screenWidth: screenWidth,)),
-          const SizedBox(height: 20,),
-                 HomeButtons(screenWidth: screenWidth,),
-            ],
-          );
+              
+           
+              children: [
+            
+
+             SizeTransition(
+               
+                 sizeFactor: controller.animation,
+              axis: Axis.vertical,
+              axisAlignment: -1,
+               child:  HomeContents()),
+            const SizedBox(height: 20,),
+                   HomeButtons(screenWidth: screenWidth,),
+              ],
+            ),
+    );
 
 
 
@@ -43,11 +48,11 @@ class IntroView extends GetView<HomeController> {
 
 }
 class HomeContents extends StatelessWidget {
-  final double screenWidth;
-  const HomeContents({Key? key,required this.screenWidth}) : super(key: key);
+   const HomeContents({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth=Get.width;
 
     return ResponsiveWidget(
 
