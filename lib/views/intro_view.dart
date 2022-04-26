@@ -14,7 +14,6 @@ class IntroView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-final screenWidth=Get.width;
     return     Column(
            crossAxisAlignment: CrossAxisAlignment.center,
            mainAxisAlignment: MainAxisAlignment.center,

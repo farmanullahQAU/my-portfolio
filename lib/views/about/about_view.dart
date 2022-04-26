@@ -15,69 +15,69 @@ class About extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final screenWidth=Get.width;
     return ResponsiveWidget(
-      largeScreen: 
-      
-      
+      largeScreen:
+
+
       Container(
 color: Colors.white,
 
     child: Column(
-    
+
       children: [
-     
-    
-      
+
+
+
      Container(
 
 
 decoration: BoxDecoration(
-  
-                   gradient: LinearGradient(
-                   tileMode: TileMode.clamp,
-                   
-                   colors: [
-                   
-                   
-                  Color.fromRGBO(207, 0, 15, 1),
-Colors.red
-,
-                   
-                  Color.fromARGB(228, 214, 29, 1),
 
-                   
-                   
-                   
-                   ],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              stops: [
-                0.1,
-                0.4,
-                0.6,
-              ]
+    gradient: LinearGradient(
+        tileMode: TileMode.clamp,
+
+        colors: [
+          Colors.red,
+          Color.fromARGB(228, 214, 29, 1),
+
+          Color.fromRGBO(207, 0, 15, 1),
 
 
 
 
 
-)
- , 
-  
+
+
+        ],
+        begin: Alignment.topRight,
+        end: Alignment.bottomLeft,
+        stops: [
+          0.1,
+          0.4,
+          0.6,
+        ]
+
+
+
+
+
+    )
+ ,
+
   borderRadius: BorderRadius.only(topLeft: Radius.circular(500),bottomLeft: Radius.circular(500))),
         margin: EdgeInsets.only(left: screenWidth*0.1,top:0,bottom: 0,right: 0),
 
-    
+
        child: Row(
          mainAxisAlignment: MainAxisAlignment.start,
          crossAxisAlignment: CrossAxisAlignment.start,
-     
-        
-        
-    
+
+
+
+
        children: [
-     
-     
-     
+
+
+
          Flexible(
            flex: 1,
            child: AnimatedSize(
@@ -93,71 +93,71 @@ const SizedBox(width: 20,),
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-            
+
                 Text("About me",style: TextStyles.heading3,),
                 Text(aboutDescription,textAlign: TextAlign.justify,
-                
+
                 style: TextStyles.subtitle1?.copyWith(color: Colors.white),
-                
+
                 ),
               const SizedBox(height: 30,),
-                 Container(width: 200,height: 
+                 Container(width: 200,height:
                  5,color: Colors.red,),
-              
+
                  _addSocilaIcon(),
-            
+
               ],
             ),
           )
-      
-      
+
+
       ,
-      
-       
-     
+
+
+
        ],
        ),
      ),
       ],
     ),
-    
-    
+
+
       ),
-    
+
     smallScreen:
 
 
        Container(
          decoration: const BoxDecoration(
-           
+
         color: Colors.white,
-           
+
           //  image: DecorationImage(
-    
-          
+
+
           // opacity: 0.3,
           // fit: BoxFit.cover,
           // image: AssetImage('assets/pic2.jpg'))
-          
-          
+
+
           ),
     child: Column(
-    
+
       children: [
-     
-    
-      
+
+
+
      SizedBox(
-    
+
        child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
-     
-        
-        
-    
+
+
+
+
        children: [
-   
-     
+
+
          AnimatedSize(
                curve: Curves.easeIn,
                duration: const Duration(seconds: 1),
@@ -167,41 +167,41 @@ const SizedBox(width: 20,),
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-            
+
               Text("About me",style: TextStyles.heading3,),
               Text(aboutDescription,textAlign: TextAlign.center,
-              
+
               style: TextStyles.subtitle1?.copyWith(color: Colors.black87),
-              
+
               ),
             // SizedBox(height: 30,),
-            //    Container(width: 200,height: 
+            //    Container(width: 200,height:
             //    5,color: Colors.red,),
-            
+
                Align(
                    alignment: Alignment.center,
                    child: _addSocilaIcon()),
-          
+
             ],
           )
-      
-      
+
+
       ,
-      
-       
-     
+
+
+
        ],
        ),
      ),
       ],
     ),
-    
-    
+
+
       ),
-    
-    
-    
-    
+
+
+
+
     );
   }
 
@@ -215,8 +215,8 @@ backgroundColor: Colors.black,
     radius:ResponsiveWidget.isSmallScreen(context)?150:200,
     
     backgroundImage: Image.asset(
-    
-    
+
+
     "assets/pic.jpeg",fit: BoxFit.cover,).image,
     
     

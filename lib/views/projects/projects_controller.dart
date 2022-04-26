@@ -11,7 +11,7 @@ Project(
   projectType: ProjectTypes.company,
   
   
-  assetPath: "assets/freeco.png",description: "Each year workers’ compensation entitlements are indexed in  withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Unde"),
+  assetPath: "assets/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in  withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Unde"),
 Project(
   
   projectType: ProjectTypes.fiverr,

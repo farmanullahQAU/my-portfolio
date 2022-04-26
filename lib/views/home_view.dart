@@ -34,104 +34,100 @@ class HomeView extends GetView<HomeController> {
       backgroundColor: Colors.black,
       body:
        SingleChildScrollView(
-       
-        
+
           physics: const ScrollPhysics(),
-          child: Stack(
-            
-            children: [
-              Container(
-                height: Get.height,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/pic2.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                child: CustomScrollView(
-                  physics: ScrollPhysics(),
-                    controller: controller.scrollController,
-                    slivers: [
-                      
-                               SliverAppBar(
-                                 toolbarHeight: 30,
-                                 backgroundColor: Colors.black,
-                                 elevation: 0.0,
-        
-                       pinned: false,
-                                snap: true,
-                                floating: true,  
-                                  //    backgroundColor: Colors.transparent,
-        
-                                      actions: [
-                                        Row(
-                                          children: [
-                                            MaterialButton(
-                                              onPressed: (){
-        
-                   
-        
-                                              },
-                                              highlightColor: Colors.white60,
-                                              child: Column(
-                                                children: [
-       
-       
-                                                  Text(
-                                                    'About Meee',
-                                                    style: TextStyle(
-                                                        color: Colors.white, fontWeight: FontWeight.bold),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            MaterialButton(
-                                              hoverColor: Colors.grey[800],
-                                              onPressed: (){
-       
-                                                Get.to(()=>Carroussel());
-                                              },
-                                              child: Text(
-                                                'Experience',
-                                                style: TextStyle(
-                                                    color: Colors.white, fontWeight: FontWeight.bold),
-                                              ),
-                                            ),
-        
-                                            TextButton(
-                                              onPressed: (){
-                                                Get.to(()=>MyStatefulWidget());
-        
-                   
-        
-                                              },
-        
-                                              child: Text(
-                                                'Contact Me',
-                                                style: TextStyle(
-                                                    color: Colors.white, fontWeight: FontWeight.bold),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(width: MediaQuery.of(context).size.width * .15),
-                                      ],
-                                    ),
-                     
-                     
-                     
-                     
-                     
-                     
-                      ...slivers(screenWidth),
-                    ],
-                  ),
+          child: Container(
+            height: Get.height,
+            decoration: const BoxDecoration(
+              // image: DecorationImage(
+              //   image: AssetImage('assets/pic2.jpg'),
+              //   fit: BoxFit.cover,
+              // ),
+            ),
+            child: CustomScrollView(
+              physics: ScrollPhysics(),
+                controller: controller.scrollController,
+                slivers: [
+
+                           SliverAppBar(
+                             backgroundColor: Colors.black,
+                             elevation: 0.0,
+
+                             pinned: false,
+                             snap: false,
+                             floating: false,
+                             expandedHeight: 160.0,
+                             flexibleSpace: const FlexibleSpaceBar(
+                               title: Text('SliverAppBar'),
+                               background: FlutterLogo(),
+                             ),
+                              //    backgroundColor: Colors.transparent,
+
+                                  actions: [
+                                    // Row(
+                                    //   children: [
+                                    //     MaterialButton(
+                                    //       onPressed: (){
+                                    //
+                                    //
+                                    //
+                                    //       },
+                                    //       highlightColor: Colors.white60,
+                                    //       child: Column(
+                                    //         children: [
+                                    //
+                                    //
+                                    //           Text(
+                                    //             'About Meee',
+                                    //             style: TextStyle(
+                                    //                 color: Colors.white, fontWeight: FontWeight.bold),
+                                    //           ),
+                                    //         ],
+                                    //       ),
+                                    //     ),
+                                    //     MaterialButton(
+                                    //       hoverColor: Colors.grey[800],
+                                    //       onPressed: (){
+                                    //
+                                    //         Get.to(()=>Carroussel());
+                                    //       },
+                                    //       child: Text(
+                                    //         'Experience',
+                                    //         style: TextStyle(
+                                    //             color: Colors.white, fontWeight: FontWeight.bold),
+                                    //       ),
+                                    //     ),
+                                    //
+                                    //     TextButton(
+                                    //       onPressed: (){
+                                    //         Get.to(()=>MyStatefulWidget());
+                                    //
+                                    //
+                                    //
+                                    //       },
+                                    //
+                                    //       child: Text(
+                                    //         'Contact Me',
+                                    //         style: TextStyle(
+                                    //             color: Colors.white, fontWeight: FontWeight.bold),
+                                    //       ),
+                                    //     ),
+                                    //   ],
+                                    // ),
+                                    SizedBox(width: MediaQuery.of(context).size.width * .15),
+                                  ],
+                                ),
+
+
+
+
+
+
+                  ...slivers(screenWidth),
+                ],
               ),
-          
-          
-            ],
           ),
-        
+
            ),
     );
   }
@@ -140,95 +136,84 @@ class HomeView extends GetView<HomeController> {
         SliverToBoxAdapter(
           key:controller.homeGlobalKey ,
           child: Container(
-            padding: const EdgeInsets.only(top: 30),
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              tileMode: TileMode.mirror,
-              colors: [
-                Colors.black,
-                 Colors.black.withOpacity(0.9),
-
-                Colors.black.withOpacity(0.4),
-              ],
-            )),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            height: Get.height,
+color: Colors.black,
+            child:Column(
               children: [
+                SizedBox(height: 20,),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: 
-
-                  
-controller.getNavigationBarItems().map((e) {
-final index=e.index;
-
-  return 
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:
 
 
-  
+                    controller.getNavigationBarItems().map((e) {
+                      final index=e.index;
+
+                      return
 
 
-      Obx(()=>
-         Column(
-         children: [
-      
-      
-           controller.currentIdex==index?
-      
-           Container(
-             decoration: const BoxDecoration(
-             
-             color: Colors.red,
-             
-             shape: BoxShape.circle),
-             
-             width: 8,height: 8):Container(),
-             const SizedBox(height: 8,),
-      
-           TextButton(
-                              
-                              
-         style: ButtonStyle(
-         
-         
-           
-         foregroundColor: MaterialStateProperty.resolveWith<Color>(
-         (Set<MaterialState> states) {
-         if (states.contains(MaterialState.focused)) {
-           return Colors.yellow;
-         }
-         if (states.contains(MaterialState.hovered)) {
-           return Colors.red;
-         }
-         if (states.contains(MaterialState.pressed)) {
-           return Colors.blue;
-         }
-         return Colors.white; // null throus error in flutter 2.2+.
-         }),
-         ),
-         onPressed: e.onTap,
-         child:  
-         
-          
-                e.item!,
-           
-        
-           
-          
-         ),
-         ],
-         ),
-      );
-}
 
 
-    
+
+                        Obx(()=>
+                            Column(
+                              children: [
 
 
-).toList()
+                                controller.currentIdex==index?
+
+                                Container(
+                                    decoration: const BoxDecoration(
+
+                                        color: Colors.red,
+
+                                        shape: BoxShape.circle),
+
+                                    width: 8,height: 8):Container(),
+                                const SizedBox(height: 8,),
+
+                                TextButton(
+
+
+                                  style: ButtonStyle(
+
+
+
+                                    foregroundColor: MaterialStateProperty.resolveWith<Color>(
+                                            (Set<MaterialState> states) {
+                                          if (states.contains(MaterialState.focused)) {
+                                            return Colors.yellow;
+                                          }
+                                          if (states.contains(MaterialState.hovered)) {
+                                            return Colors.red;
+                                          }
+                                          if (states.contains(MaterialState.pressed)) {
+                                            return Colors.blue;
+                                          }
+                                          return Colors.white; // null throus error in flutter 2.2+.
+                                        }),
+                                  ),
+                                  onPressed: e.onTap,
+                                  child:
+
+
+                                  e.item!,
+
+
+
+
+                                ),
+                              ],
+                            ),
+                        );
+                    }
+
+
+
+
+
+                    ).toList()
 
 //                       MaterialButton(
 //                         onPressed: () {
@@ -245,12 +230,12 @@ final index=e.index;
 //                       ),
 
 //                       TextButton(
-                      
-                      
+
+
 // style: ButtonStyle(
 
 
-  
+
 // foregroundColor: MaterialStateProperty.resolveWith<Color>(
 // (Set<MaterialState> states) {
 // if (states.contains(MaterialState.focused))
@@ -267,17 +252,17 @@ final index=e.index;
 //                           'EXPERIENCE',
 //                           style: TextStyle(
 //                             letterSpacing: 3,
-                          
+
 //                             fontWeight: FontWeight.bold
 //                               ),
 //                         ),
 // ),
 //                         TextButton(
-                      
-                      
+
+
 // style: ButtonStyle(
 
-  
+
 // foregroundColor: MaterialStateProperty.resolveWith<Color>(
 // (Set<MaterialState> states) {
 // if (states.contains(MaterialState.focused))
@@ -294,7 +279,7 @@ final index=e.index;
 //                           'ABOUT',
 //                           style: TextStyle(
 //                             letterSpacing: 3,
-                          
+
 //                             fontWeight: FontWeight.bold
 //                               ),
 //                         ),
@@ -310,33 +295,60 @@ final index=e.index;
 //                           'EXPERIENCE',
 //                           style: TextStyle(
 //                             letterSpacing: 3,
-                          
+
 //                             fontWeight: FontWeight.bold
 //                               ),
 //                         ),
 //                       ),
-                  
+
                 ),
-
-
-                  Expanded(
-
-                   //first slide contents
-                    child: IntroView(screenWidth: screenWidth,
-                                  )),
-
-
+SizedBox(height: 20,),
+                IntroView(screenWidth: screenWidth,),
               ],
             ),
-            height: 700,
-            width: Get.width,
+            padding: const EdgeInsets.only(top: 30),
+            // decoration: BoxDecoration(
+            //     gradient: LinearGradient(
+            //   begin: Alignment.centerLeft,
+            //   end: Alignment.centerRight,
+            //   tileMode: TileMode.mirror,
+            //   colors: [
+            //     Colors.red,
+            //      Colors.red.withOpacity(0.9),
+            //
+            //     Colors.red.withOpacity(0.4),
+            //   ],
+            // )
+            //
+          //   ),
+
+
           ),
         ),
+    SliverToBoxAdapter(
+      child: Container(height: 500,color: Colors.blue,width: screenWidth,),
+    ),
+
+
+    SliverToBoxAdapter(
+      child: Container(height: 500,color: Colors.green,width: screenWidth,),
+    ),
          SliverToBoxAdapter(
           key: controller.aboutGlobalKey,
           child:const About()
         ),
+    SliverToBoxAdapter(
+      child: Container(height: 500,color: Colors.blue,width: screenWidth,),
+    ),
        SliverToBoxAdapter(child: ProjectView(screenWidth: screenWidth,)),
+    SliverToBoxAdapter(
+      child: Container(height: 500,color: Colors.red,width: screenWidth,),
+
+    ),
+    SliverToBoxAdapter(
+      child: Container(height: 500,color: Colors.orange,width: screenWidth,),
+    ),
+
 
       
        
@@ -388,6 +400,8 @@ Colors.red
           key: controller.projectGlobalKey,
           child: Projects(),
         ),
+
+    SliverToBoxAdapter(child: Container(height: 700,width: screenWidth,color: Colors.red,),)
        
       ];
 
@@ -399,12 +413,13 @@ Colors.red
     return StreamBuilder<bool>(
       stream: controller.scrollStream.stream,
       builder: (_, AsyncSnapshot<bool> data) {
-        
+
         final bool? showFab = data.hasData && data.data==true;
         return AnimatedOpacity(
           opacity:showFab!=null? showFab ? 1 : 0:0,
           duration: const Duration(milliseconds: 500),
           child: FloatingActionButton(
+            backgroundColor: Colors.red,
             onPressed: showFab==true
                 ? controller.scrollToTop
                 : null, // make sure user cannot click when button hidden
@@ -773,15 +788,15 @@ return Column(
   children: [
             SizedBox(height: 20,),
 
-        CircleAvatar(
-          backgroundColor: Colors.white,
-          radius: 60,
-          child: SizedBox(
-            
-            width: 100,
-            height: 100,
-            child: icon),
-        ),
+        // CircleAvatar(
+        //   backgroundColor: Colors.white,
+        //   radius: 60,
+        //   child: SizedBox(
+        //
+        //     width: 100,
+        //     height: 100,
+        //     child: icon),
+        // ),
 
           SizedBox(height: 20,),
 Text(title,style: TextStyles.skillsTitleTextStyle),
@@ -880,7 +895,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
 
 
    _controller.addStatusListener((AnimationStatus status) {
-   
+
         _controller.dispose();
     });
 
