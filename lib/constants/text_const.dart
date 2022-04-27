@@ -1,4 +1,9 @@
 const String myName="FARMAN ULLAH";
+
+const String aboutMe="about me";
+
+const String hireMe="hire me";
+
 const String designation="flutter developer";
 const String homeDesctiption="I am a senior flutter developer with 1+ year of experience. I build top quality apps for android,Ios and web using google's flutter";
 

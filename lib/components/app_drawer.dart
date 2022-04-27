@@ -1,4 +1,6 @@
+import 'package:farmanullah_portfolio/menue_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -19,22 +21,23 @@ class AppDrawer extends StatelessWidget {
         ),
         child: Text('Drawer Header'),
       ),
-      ListTile(
-        title: const Text('Item 1'),
-        onTap: () {
-          // Update the state of the app.
-          // ...
-        },
-      ),
-      ListTile(
-        title: const Text('Item 2'),
-        onTap: () {
-          // Update the state of the app.
-          // ...
-        },
-      ),
+      ..._addMenuButtons()
     ],
   ),
 );
+  }
+
+ _addMenuButtons() {
+
+return Get.find<MenuController>().getNavigationBarItems().map((item) {
+
+
+  return ListTile(title:item.item,
+  
+  onTap: item.onTap,
+  
+  );
+}).toList();
+
   }
 }

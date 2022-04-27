@@ -15,33 +15,19 @@ class HomeController extends   GetxController with GetTickerProviderStateMixin {
 
 
 
-final _scrollStream=StreamController<bool>();
-StreamController<bool> get scrollStream=>_scrollStream;
-  final _scrollController = ScrollController();
-ScrollController get scrollController=>_scrollController;
   AnimationController get animationController=>_controller;
  late final AnimationController _controller = AnimationController(
     value: 0.1,
-    duration: const Duration(seconds: 3),
+    duration: const Duration(seconds: 2),
     vsync: this,
   )..repeat(reverse: true);
   late final Animation<double> animation = CurvedAnimation(
     parent: _controller,
      curve: Curves.fastOutSlowIn,
   );
-late final AnimationController aboutAnimationController = AnimationController(
-    value: 0.1,
-    duration: const Duration(seconds: 2),
-    vsync: this,
-  )..repeat(reverse: false);
-  late final Animation<double> aboutAnimation = CurvedAnimation(
-    parent: aboutAnimationController,
-     curve: Curves.fastOutSlowIn,
-  );
+
   @override
   void onInit() {
-  // _scrollController.addListener(listner);
-    super.onInit();
      initHomeContentsAnimation();
   }
 
@@ -65,20 +51,9 @@ late final AnimationController aboutAnimationController = AnimationController(
   //   });
   //   aboutAnimationController.forward();
   // }
-    final aboutGlobalKey = GlobalKey();
-  final projectGlobalKey = GlobalKey();
-  final homeGlobalKey = GlobalKey();
     RxBool isHover=false.obs;
 
 
-  final _visible = 0.0.obs;
-  double get visible => _visible.value;
-
-  getVisibility() async {
-    _visible.value = 0.0;
-    await Future.delayed(const Duration(milliseconds: 200));
-    _visible.value = 1.0;
-  }
 
 //   void listner() {
 
@@ -97,12 +72,12 @@ late final AnimationController aboutAnimationController = AnimationController(
 //     }
 //   }
 
-  void scrollToTop() {
-    Scrollable.ensureVisible(
-      homeGlobalKey.currentContext!,
-      duration: const Duration(seconds: 1),
-    );
-  }
+  // void scrollToTop() {
+  //   Scrollable.ensureVisible(
+  //     homeGlobalKey.currentContext!,
+  //     duration: const Duration(seconds: 1),
+  //   );
+  // }
 
   
 }

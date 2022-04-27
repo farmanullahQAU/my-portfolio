@@ -41,83 +41,89 @@ class Header extends GetView<HomeController> {
       ),
 
         //for large screen show row 
-      largeScreen: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children:
+      largeScreen: Container(
+        margin: EdgeInsets.only(top: 40),
+//width fo nav bar
+        height: 60,
+        child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children:
     
     
-                        Get.find<MenuController>().getNavigationBarItems().map((e) {
-                        final index=e.index;
+                          Get.find<MenuController>().getNavigationBarItems().map((e) {
+                          final index=e.index;
     
-                        return
-    
-    
-    
-    
-    
-                          Obx(()=>
-                              Column(
-                                children: [
-    
-    
-                                    Get.find<MenuController>().currentIdex==index?
-    
-                                  Container(
-                                      decoration: const BoxDecoration(
-    
-                                          color: Colors.red,
-    
-                                          shape: BoxShape.circle),
-    
-                                      width: 8,height: 8):Container(),
-                                  const SizedBox(height: 8,),
-    
-                                  TextButton(
-    
-    
-                                    style: ButtonStyle(
+                          return
     
     
     
-                                      foregroundColor: MaterialStateProperty.resolveWith<Color>(
-                                              (Set<MaterialState> states) {
-                                            if (states.contains(MaterialState.focused)) {
-                                              return Colors.yellow;
-                                            }
-                                            if (states.contains(MaterialState.hovered)) {
-                                              return Colors.red;
-                                            }
-                                            if (states.contains(MaterialState.pressed)) {
-                                              return Colors.blue;
-                                            }
-                                            return Colors.white; // null throus error in flutter 2.2+.
-                                          }),
+    
+    
+                            Obx(()=>
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+    
+    
+                                      Get.find<MenuController>().currentIdex==index?
+    
+                                    Container(
+                                        decoration: const BoxDecoration(
+    
+                                            color: Colors.red,
+    
+                                            shape: BoxShape.circle),
+    
+                                        width: 8,height: 8):Container(),
+                                    const SizedBox(height: 8,),
+    
+                                    TextButton(
+    
+    
+                                      style: ButtonStyle(
+    
+    
+    
+                                        foregroundColor: MaterialStateProperty.resolveWith<Color>(
+                                                (Set<MaterialState> states) {
+                                              if (states.contains(MaterialState.focused)) {
+                                                return Colors.yellow;
+                                              }
+                                              if (states.contains(MaterialState.hovered)) {
+                                                return Colors.red;
+                                              }
+                                              if (states.contains(MaterialState.pressed)) {
+                                                return Colors.blue;
+                                              }
+                                              return Colors.white; // null throus error in flutter 2.2+.
+                                            }),
+                                      ),
+                                      onPressed: e.onTap,
+                                      child:
+    
+    
+                                      e.item!,
+    
+    
+    
+    
                                     ),
-                                    onPressed: e.onTap,
-                                    child:
-    
-    
-                                    e.item!,
-    
-    
-    
-    
-                                  ),
-                                ],
-                              ),
-                          );
-                      }
+                                  ],
+                                ),
+                            );
+                        }
     
     
     
     
     
-                      ).toList()
+                        ).toList()
     
     
     
-                  ),
+                    ),
+      ),
     );
       
   }

@@ -40,14 +40,22 @@ class MenuController extends GetxService {
       NavBar(
         item: const Text("HOME"),
         onTap: () async {
-          currentIdex = 0;
           //  Scrollable.ensureVisible(
           //           homeGlobalKey.currentContext!,
           //           duration: const Duration(seconds: 1),
-          //         );
-          await savCurrentIndex(RouteNames.HOME, 0);
+          //   
           Get.back();
-          Get.toNamed(RouteNames.HOME);
+          //      );
+          await savCurrentIndex(RouteNames.HOME, 0);
+
+
+          //delete the previous clicked view controller
+          //if we want to show animation each time when tab changes.
+
+          Get.offNamed(RouteNames.HOME);
+          //adds 
+          currentIdex = 0;
+
         },
         index: 0,
         routeName: RouteNames.HOME,
@@ -63,9 +71,12 @@ class MenuController extends GetxService {
           //         );
           //  currentIdex==1?null: Get.toNamed(RouteNames.ABOUT);
           //   currentIdex=1;
+
+          Get.back();
+
           await savCurrentIndex(RouteNames.ABOUT, 1);
 
-          Get.toNamed(RouteNames.ABOUT);
+          Get.offNamed(RouteNames.ABOUT);
           currentIdex = 1;
         },
         routeName: RouteNames.HOME,
@@ -74,15 +85,16 @@ class MenuController extends GetxService {
       ),
       NavBar(
         onTap: () async {
+          Get.back();
+
+        Get.back();
+
+          await savCurrentIndex(RouteNames.PROJECTS, 2);
+
+          Get.toNamed(RouteNames.PROJECTS);
           currentIdex = 2;
-
-          // await Scrollable.ensureVisible(
-
-          //           projectGlobalKey.currentContext!,
-          //           duration: const Duration(seconds: 1),
-          //         );
         },
-        routeName: RouteNames.HOME,
+        routeName: RouteNames.PROJECTS,
         item: const Text(
           "PROJECTS",
         ),
@@ -110,7 +122,7 @@ class MenuController extends GetxService {
 
   GlobalKey<ScaffoldState> get homeScaffoldKey => _homeScaffoldKey;
 
-  GlobalKey<ScaffoldState> get aboutScaffoldKey => _homeScaffoldKey;
+  GlobalKey<ScaffoldState> get aboutScaffoldKey => _aboutScaffoldKey;
 
   void controlHomeMenu() {
     if (!homeScaffoldKey.currentState!.isDrawerOpen) {
@@ -137,8 +149,8 @@ class MenuController extends GetxService {
 
   void _initKeys() {
 
-    _homeScaffoldKey=GlobalKey<ScaffoldState>();
     _aboutScaffoldKey=GlobalKey<ScaffoldState>();
+    _homeScaffoldKey=GlobalKey<ScaffoldState>();
 
   }
 }

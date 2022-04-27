@@ -11,3 +11,4 @@ const bgColor = Color(0xFF212332);
 const definitionColor = Color(0xFFFFA113);
 
 const defaultPadding = 16.0;
+ const socialIconColor=Colors.white;

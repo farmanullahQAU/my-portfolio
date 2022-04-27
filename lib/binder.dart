@@ -1,4 +1,5 @@
 import 'package:farmanullah_portfolio/menue_controller.dart';
+import 'package:farmanullah_portfolio/views/about/about_controller.dart';
 import 'package:farmanullah_portfolio/views/home_controller.dart';
 import 'package:farmanullah_portfolio/views/projects/projects_controller.dart';
 import 'package:get/get.dart';
@@ -9,9 +10,11 @@ class Binder extends Bindings {
   void dependencies() {
     Get.put(  MenuController());
 
-    Get.put(  HomeController());
+    Get.lazyPut( ()=> HomeController());
 
     Get.lazyPut(() => ProjectsViewController());
+    Get.lazyPut(() => AboutViewController());
+
     // Get.lazyPut(() => ContactUsController());
     // Get.lazyPut(() => AboutController());
 

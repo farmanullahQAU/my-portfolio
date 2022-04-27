@@ -18,8 +18,8 @@ class IntroView extends GetView<HomeController> {
 
     return     SingleChildScrollView(
       child: Column(
-
-
+        
+        
              crossAxisAlignment: CrossAxisAlignment.center,
              mainAxisAlignment: MainAxisAlignment.center,
              
@@ -27,7 +27,7 @@ class IntroView extends GetView<HomeController> {
            
               children: [
             
-
+        
              SizeTransition(
                
                  sizeFactor: controller.animation,
@@ -175,7 +175,7 @@ class HomeButtons extends StatelessWidget {
                        hoverColor: Colors.black,
                        
                        
-                       child:const Text("Hire me",style: TextStyle(color: Colors.white),),onPressed: (){},)
+                       child:const Text(hireMe,style: TextStyle(color: Colors.white),),onPressed: (){},)
                     ),
         const SizedBox(width: 10,),
 
@@ -226,7 +226,7 @@ class HomeButtons extends StatelessWidget {
               hoverColor: Colors.black,
               
               
-              child:const Text("Hire f",style: TextStyle(color: Colors.white),),onPressed: (){},)
+              child:const Text(hireMe,style: TextStyle(color: Colors.white),),onPressed: (){},)
            ),
         const SizedBox(height: 20,),
     
