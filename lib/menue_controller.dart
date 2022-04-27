@@ -91,7 +91,7 @@ class MenuController extends GetxService {
 
           await savCurrentIndex(RouteNames.PROJECTS, 2);
 
-          Get.toNamed(RouteNames.PROJECTS);
+          Get.offNamed(RouteNames.PROJECTS);
           currentIdex = 2;
         },
         routeName: RouteNames.PROJECTS,
@@ -115,12 +115,16 @@ class MenuController extends GetxService {
     ].obs;
   }
 
-  //to control menu for mobile and web
+  //to control drawer for mobile
 
   late final GlobalKey<ScaffoldState> _homeScaffoldKey;
   late final GlobalKey<ScaffoldState> _aboutScaffoldKey;
+  late final GlobalKey<ScaffoldState> _projectsViewKey;
+
 
   GlobalKey<ScaffoldState> get homeScaffoldKey => _homeScaffoldKey;
+  GlobalKey<ScaffoldState> get projectsViewKey => _projectsViewKey;
+
 
   GlobalKey<ScaffoldState> get aboutScaffoldKey => _aboutScaffoldKey;
 
@@ -135,6 +139,12 @@ class MenuController extends GetxService {
       aboutScaffoldKey.currentState!.openDrawer();
     }
   }
+    void controlProjectsMenu() {
+    if (!projectsViewKey.currentState!.isDrawerOpen) {
+      projectsViewKey.currentState!.openDrawer();
+    }
+  }
+  
 
 //to read last typed munu index and route name
   void readStorage() async {
@@ -142,15 +152,14 @@ class MenuController extends GetxService {
     currentRoute = storage.read("routeName");
     currentIdex = storage.read("index");
 
-    print(currentRoute);
 
-    print(currentIdex);
   }
 
   void _initKeys() {
 
     _aboutScaffoldKey=GlobalKey<ScaffoldState>();
     _homeScaffoldKey=GlobalKey<ScaffoldState>();
+    _projectsViewKey=GlobalKey<ScaffoldState>();
 
   }
 }

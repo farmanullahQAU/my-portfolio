@@ -1,12 +1,8 @@
-import 'package:farmanullah_portfolio/assets_path.dart';
 import 'package:farmanullah_portfolio/components/app_drawer.dart';
 import 'package:farmanullah_portfolio/components/navigationbar.dart';
-import 'package:farmanullah_portfolio/constants/text_const.dart';
 import 'package:farmanullah_portfolio/menue_controller.dart';
-import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:farmanullah_portfolio/views/intro_view.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../responsive/responsive_wrapper.dart';
@@ -21,6 +17,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
         final screenWidth=context.width;
+        final height=context.height;
 
 
 
@@ -38,8 +35,13 @@ Container(
      decoration: BoxDecoration(
         
         image: DecorationImage(
+
+
         
-        fit: BoxFit.cover,
+        fit: 
+        
+        
+        BoxFit.cover,
         image: 
 
 

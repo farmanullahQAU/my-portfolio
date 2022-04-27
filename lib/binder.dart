@@ -15,8 +15,6 @@ class Binder extends Bindings {
     Get.lazyPut(() => ProjectsViewController());
     Get.lazyPut(() => AboutViewController());
 
-    // Get.lazyPut(() => ContactUsController());
-    // Get.lazyPut(() => AboutController());
 
   }
 }

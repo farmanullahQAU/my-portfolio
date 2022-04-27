@@ -3,6 +3,7 @@ import 'package:farmanullah_portfolio/responsive/responsive_wrapper.dart';
 import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:farmanullah_portfolio/views/projects/projects_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 import '../../components/app_drawer.dart';
@@ -18,13 +19,12 @@ class ProjectView extends GetView<ProjectsViewController> {
     final double screenWidth=context.width;
     return     Scaffold(
 
-      drawer: AppDrawer(),
-        key: Get.find<MenuController>().aboutScaffoldKey,
+      drawer: const AppDrawer(),
+        key: Get.find<MenuController>().projectsViewKey,
         backgroundColor: Colors.black,
       body: Stack(
         children: [
           Container(
-      color: Colors.black,
     // decoration: BoxDecoration(
     
     
@@ -64,9 +64,15 @@ class ProjectView extends GetView<ProjectsViewController> {
     
             child: ResponsiveWidget(
     
-              smallScreen:addGrid(0,crossAxisSpacing: 40,mainAxisSpacing: 10,crossAxisCount: 1) ,
+              smallScreen:Container(
+                margin: EdgeInsets.only(top: 60),
+                child: addGrid(0,crossAxisSpacing: 40,mainAxisSpacing: 10,crossAxisCount: 1)) ,
               largeScreen:   addGrid(screenWidth*0.1,crossAxisSpacing: 80,mainAxisSpacing: 80,crossAxisCount: 3),
-              mediumScreen: addGrid(screenWidth*0.1,crossAxisSpacing: 30, mainAxisSpacing: 30, crossAxisCount: 2),
+              mediumScreen: Container(
+                              margin: EdgeInsets.only(top: 40),
+
+                child: addGrid(screenWidth*0.1,crossAxisSpacing: 30, mainAxisSpacing: 30, crossAxisCount: 2),
+              ),
             ),
           ),
      //shows drawer for mobile and menu row for tablet and desktop
@@ -76,16 +82,16 @@ class ProjectView extends GetView<ProjectsViewController> {
            
            duration: const Duration(milliseconds: 500),
               child:
-              controller.isDown.isTrue&&ResponsiveWidget.isLargeScreen(context)?
+              controller.isDown.isTrue&&!ResponsiveWidget.isSmallScreen(context)?
               
                Container(
-                 color: Colors.red.withOpacity(0.9),
+                 color: Colors.black,
             key: Key("coloredAppBar"),
                 
                 child: Header(onTap: (){
                 
                   //open and close drawer for mobile view
-                  Get.find<MenuController>().controlAboutMenu();
+                  Get.find<MenuController>().controlProjectsMenu();
                 
                 
                 },),
@@ -93,7 +99,7 @@ class ProjectView extends GetView<ProjectsViewController> {
                 key: Key("black"),
                 onTap: (){
                 
-                  Get.find<MenuController>().controlAboutMenu();
+                  Get.find<MenuController>().controlProjectsMenu();
                 
                 
                 },),
@@ -106,99 +112,113 @@ class ProjectView extends GetView<ProjectsViewController> {
   }
 
   Widget addGrid(double padding,{required double crossAxisSpacing, required double  mainAxisSpacing,required int crossAxisCount }) {
-    return GridView(
-
-      controller: controller.scrollController,
-      
-      
-      physics: ScrollPhysics(),
-        padding: EdgeInsets.symmetric(horizontal:padding,vertical: padding*0.9),
-        shrinkWrap: true,
-        
-        children: controller.myProjects.map((addImage)).toList(),
-        
-        gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-          mainAxisSpacing: mainAxisSpacing,
+    return AnimationLimiter(
+      child: GridView(
     
-          crossAxisSpacing: crossAxisSpacing,
-          crossAxisCount: crossAxisCount));
+        controller: controller.scrollController,
+        
+        
+        physics: ScrollPhysics(),
+          padding: EdgeInsets.symmetric(horizontal:padding,vertical: padding*0.9),
+          shrinkWrap: true,
+          
+          children: controller.myProjects.map((project){
+
+            int index=controller.myProjects.indexOf(project);
+
+            return addImage(project,index,crossAxisCount);
+          }).toList(),
+          
+          gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+            mainAxisSpacing: mainAxisSpacing,
+      
+            crossAxisSpacing: crossAxisSpacing,
+            crossAxisCount: crossAxisCount)),
+    );
   }
 
-  Widget addImage(Project project){
-return Banner(
-  color: Colors.black,
-message: controller.projecttype(project.projectType!),
-            location: BannerLocation.topEnd,
-  child:   Column(
-    children: [
+  Widget addImage(Project project,int index,int crossAxisCount){
+return  AnimationConfiguration.staggeredGrid(
+   position: index,
+              duration: const Duration(seconds: 1),
+              columnCount: crossAxisCount,
+  child:   ScaleAnimation(
+    child: Banner(
+      color: Colors.black,
+    message: controller.projecttype(project.projectType!),
+                location: BannerLocation.topEnd,
+      child:   Column(
+        children: [
+              Expanded(
+                child: Container(
+                  
+                  
+                  height: 150,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    
+      borderRadius: BorderRadius.only(topLeft: Radius.circular(5),topRight: Radius.circular(5)),
+                    
+                    image: DecorationImage(
+                    
+                    fit: BoxFit.cover,
+                    image: AssetImage(project.assetPath!))),
+                  
+                  ),
+              ),
+      
           Expanded(
             child: Container(
-              
-              
-              height: 150,
+    
+    
+    decoration: BoxDecoration(
+    
+    
+    //                  gradient: LinearGradient(colors: [
+                       
+                       
+    //                   Color.fromRGBO(207, 0, 15, 0.7),
+                       
+    //                   Color.fromARGB(228, 214, 29, 12),
+    
+    
+                       
+                       
+                       
+    //                    ],
+    //             begin: Alignment.centerLeft,
+    //             end: Alignment.centerRight,
+    
+    
+    
+    
+    
+    // )
+    color: Colors.white
+    
+    
+    ), 
+    
               width: double.infinity,
-              decoration: BoxDecoration(
-                
-  borderRadius: BorderRadius.only(topLeft: Radius.circular(5),topRight: Radius.circular(5)),
-                
-                image: DecorationImage(
-                
-                fit: BoxFit.cover,
-                image: AssetImage(project.assetPath!))),
               
-              ),
-          ),
-  
-      Expanded(
-        child: Container(
-
-
-decoration: BoxDecoration(
-
-
-//                  gradient: LinearGradient(colors: [
-                   
-                   
-//                   Color.fromRGBO(207, 0, 15, 0.7),
-                   
-//                   Color.fromARGB(228, 214, 29, 12),
-
-
-                   
-                   
-                   
-//                    ],
-//             begin: Alignment.centerLeft,
-//             end: Alignment.centerRight,
-
-
-
-
-
-// )
-color: Colors.white
-
-
-), 
-
-          width: double.infinity,
-          
-          height: 300,child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-            
-              
-            
-                Text("Freeco",style: TextStyles.heading5),
-                Expanded(child: Text(project.description!,style: TextStyles.subtitle1?.copyWith(color: Colors.grey),textAlign: TextAlign.start,)),
-              ],
-            ),
-          ),),
-      )
-    ],
+              height: 300,child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+    
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                
+                  
+                
+                    Text("Freeco",style: TextStyles.heading5),
+                    Expanded(child: Text(project.description!,style: TextStyles.subtitle1?.copyWith(color: Colors.grey),textAlign: TextAlign.start,)),
+                  ],
+                ),
+              ),),
+          )
+        ],
+      ),
+    ),
   ),
 );
     
