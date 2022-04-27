@@ -4,6 +4,7 @@ import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:farmanullah_portfolio/views/projects/projects_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../components/app_drawer.dart';
@@ -78,9 +79,9 @@ class ProjectView extends GetView<ProjectsViewController> {
      //shows drawer for mobile and menu row for tablet and desktop
           Obx(()=>
             AnimatedSwitcher(
-                                       transitionBuilder: (child,animation)=>ScaleTransition(scale: animation,child: child,),
+                                       transitionBuilder: (child,animation)=>SizeTransition(sizeFactor: animation,child: child,),
            
-           duration: const Duration(milliseconds: 500),
+           duration: const Duration(milliseconds: 400),
               child:
               controller.isDown.isTrue&&!ResponsiveWidget.isSmallScreen(context)?
               
@@ -140,7 +141,7 @@ class ProjectView extends GetView<ProjectsViewController> {
   Widget addImage(Project project,int index,int crossAxisCount){
 return  AnimationConfiguration.staggeredGrid(
    position: index,
-              duration: const Duration(seconds: 1),
+              duration: const Duration(milliseconds: 600),
               columnCount: crossAxisCount,
   child:   ScaleAnimation(
     child: Banner(
@@ -174,27 +175,26 @@ return  AnimationConfiguration.staggeredGrid(
     decoration: BoxDecoration(
     
     
-    //                  gradient: LinearGradient(colors: [
+                     gradient: LinearGradient(colors: [
                        
                        
-    //                   Color.fromRGBO(207, 0, 15, 0.7),
+                      Color.fromRGBO(207, 0, 15, 0.7),
                        
-    //                   Color.fromARGB(228, 214, 29, 12),
+                      Color.fromARGB(228, 214, 29, 12),
     
     
                        
                        
                        
-    //                    ],
-    //             begin: Alignment.centerLeft,
-    //             end: Alignment.centerRight,
+                       ],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
     
     
     
     
     
-    // )
-    color: Colors.white
+    )
     
     
     ), 
@@ -210,8 +210,11 @@ return  AnimationConfiguration.staggeredGrid(
                 
                   
                 
-                    Text("Freeco",style: TextStyles.heading5),
-                    Expanded(child: Text(project.description!,style: TextStyles.subtitle1?.copyWith(color: Colors.grey),textAlign: TextAlign.start,)),
+                    Text(project.name,style: TextStyles.heading5?.copyWith(color: Colors.white)),
+                    SizedBox(height: 10,),
+                    Expanded(child: Text(project.description!,style: TextStyles.subtitle1?.copyWith(color: Colors.white),textAlign: TextAlign.start,)),
+
+                    // MaterialButtonWidget(child: FaIcon(FontAwesomeIcons.googlePlay), onPressed: (){}, borderColor: Colors.white, color: Colors.red, hoverColor: Colors.black)
                   ],
                 ),
               ),),

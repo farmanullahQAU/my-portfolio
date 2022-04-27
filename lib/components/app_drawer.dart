@@ -1,3 +1,4 @@
+import 'package:farmanullah_portfolio/constants/constants.dart';
 import 'package:farmanullah_portfolio/menue_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,7 @@ class AppDrawer extends StatelessWidget {
     children: [
       const DrawerHeader(
         decoration: BoxDecoration(
-          color: Colors.blue,
+          color:primaryColor,
         ),
         child: Text('Drawer Header'),
       ),
@@ -32,10 +33,16 @@ class AppDrawer extends StatelessWidget {
 return Get.find<MenuController>().getNavigationBarItems().map((item) {
 
 
-  return ListTile(title:item.item,
-  
-  onTap: item.onTap,
-  
+  return Obx( ()=>
+     ListTile(
+       selected: Get.find<MenuController>().currentIdex==item.index,
+       selectedColor: Colors.white,
+       selectedTileColor: Colors.black,
+       title:item.item,
+    
+    onTap: item.onTap,
+    
+    ),
   );
 }).toList();
 

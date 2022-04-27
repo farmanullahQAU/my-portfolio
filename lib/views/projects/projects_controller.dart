@@ -13,8 +13,10 @@ final isDown=false.obs;
 
       isDown.value=false;
 
-if(scrollController.offset>0)
-{
+if(scrollController.offset>60)
+{//when scroll down more than 60px the set this value true to show colored appbar
+
+
 isDown.value=true;
 
 }
@@ -29,11 +31,11 @@ isDown.value=true;
 
 Project(
   projectType: ProjectTypes.company,
-  
+  name: "Expense manager",
   
   assetPath: "assets/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in  withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Unde"),
 Project(
-  
+  name: "Verbit",
   projectType: ProjectTypes.fiverr,
   
   assetPath: "assets/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Unde"),
@@ -41,25 +43,27 @@ Project(
 
 
 Project(
-  
+  name: "Self",
   projectType: ProjectTypes.company,
   
   assetPath: "assets/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
 
 
 Project(
+  name: "Freeco",
+  projectType: ProjectTypes.company,
+  
+  assetPath: "assets/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
+
+Project(
+  name: "Parametric",
   
   projectType: ProjectTypes.company,
   
   assetPath: "assets/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
 
 Project(
-  
-  projectType: ProjectTypes.company,
-  
-  assetPath: "assets/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
-
-Project(
+  name: "Lisu",
   
   projectType: ProjectTypes.company,
   

@@ -6,7 +6,7 @@ class Project {
   String? projectId;
   ProjectTypes? projectType;
 
-  String? name;
+  late String name;
   
   String? imageUrl;
   String? playstoreUrl;
@@ -19,7 +19,7 @@ class Project {
       {this.projectId,
       required this.projectType,
       this.assetPath,
-      this.name,
+      required this.name,
       this.playstoreUrl,
       this.appStoreUrl,
       this.imageUrl,
@@ -29,6 +29,7 @@ class Project {
 
   Project.fromJson(Map<String, dynamic> json, String id) {
     projectId = id;
+    name=json['name'];
     projectType:json["projectType"];
     playstoreUrl = json["playstore_url"];
     appStoreUrl = json["appstore_url"];

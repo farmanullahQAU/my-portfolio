@@ -8,13 +8,13 @@ import 'package:get/get.dart';
 
 List<GetPage> pages = [
   GetPage(name: RouteNames.HOME, page: () => const HomeView(), binding: Binder(),
-  transitionDuration: Duration(seconds: 1),
+  
 
   transition: Transition.fadeIn),
 
   GetPage(name: RouteNames.ABOUT, page: () =>  About(), binding: Binder(),transition:Transition.fadeIn,
   
-  transitionDuration: Duration(seconds: 1),
+  
   
   ),
   GetPage(name: RouteNames.PROJECTS, page: () =>  ProjectView(), binding: Binder(),transition: Transition.fadeIn),
