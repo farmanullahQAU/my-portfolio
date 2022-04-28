@@ -2,6 +2,8 @@ import 'package:farmanullah_portfolio/components/app_drawer.dart';
 import 'package:farmanullah_portfolio/components/navigationbar.dart';
 import 'package:farmanullah_portfolio/menue_controller.dart';
 import 'package:farmanullah_portfolio/views/intro_view.dart';
+import 'package:farmanullah_portfolio/views/skills/skills_controller.dart';
+import 'package:farmanullah_portfolio/views/skills/skills_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -61,10 +63,30 @@ Container(
   
   
   
-  Align(
-    
-    alignment: Alignment.center,
-    child: IntroView(screenWidth:  screenWidth,))
+  SingleChildScrollView(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+
+     
+
+        SizedBox(height: height*0.4,),
+        IntroView(screenWidth:  screenWidth,),
+           TextButton(onPressed: (){
+
+Get.find<SkillViewController>().pageController.animateToPage(Get.find<SkillViewController>().currentPageValue.floor(), duration: Duration(milliseconds: 200), curve: Curves.linear);
+
+        }, child: Icon(Icons.forward)),
+
+        SizedBox(height: 300,),
+        Container(
+          color: Colors.black,
+margin: EdgeInsets.only(left: screenWidth*0.1),
+          child: SkillsView())
+      ],
+    ),
+  )
   
   ,
   
@@ -187,23 +209,9 @@ Container(
   
   }
 
-  Widget _addImageAvatar(BuildContext context){
-return CircleAvatar(
-backgroundColor: Colors.black,
- radius: ResponsiveWidget.isSmallScreen(context)?155:205,
-  child:   CircleAvatar(
-    radius:ResponsiveWidget.isSmallScreen(context)?150:200,
-    
-    backgroundImage: Image.asset(
-
-
-    "assets/pic.jpeg",fit: BoxFit.cover,).image,
-    
-    
-    ),
-);
-
-  }
+ 
+ 
+ 
   }
 
 //   List<Widget> slivers(double screenWidth) => [
