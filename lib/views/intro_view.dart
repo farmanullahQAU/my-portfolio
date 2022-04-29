@@ -73,18 +73,17 @@ class HomeContents extends StatelessWidget {
             RichText(
               text: TextSpan(
             text: "I'M ",
-            style: TextStyles.heading4?.copyWith(fontWeight: FontWeight.bold),
+            style: TextStyles.heading4?.copyWith(fontWeight: FontWeight.normal),
             children: <TextSpan>[
               TextSpan(
                   text: "${myName.toUpperCase()} ",
-                  style: TextStyles.heading4
-                      ?.copyWith(fontWeight: FontWeight.bold)),
+                  style: TextStyles.heading4?.copyWith(fontWeight: FontWeight.bold)),
             ],
               ),
             ),
           Padding(
             padding: const EdgeInsets.only(top:8.0,bottom: 10),
-            child: Text(designation.toUpperCase(),style: TextStyles.heading6?.copyWith(color: Colors.red),),
+            child: Text(designation.toUpperCase(),style: TextStyles.headingTextStyle),
           ),
             SizedBox(
               width: screenWidth*0.4,

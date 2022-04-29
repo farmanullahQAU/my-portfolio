@@ -45,198 +45,25 @@ class About extends GetView<AboutViewController> {
             */
 
             
-            SizeTransition(
-
-                    sizeFactor: controller.aboutAnimation,
-              axis: Axis.horizontal,
-              axisAlignment: -1,
-              child: ResponsiveWidget(
-                largeScreen:
-              
-              
-                Container(
-                  color: Colors.black,
+            SingleChildScrollView(
+              child: Container(
+                height: 700,
+                
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                Expanded(child: Align(
                   
-                        child: Container(
-                  
-                  
-                  decoration: BoxDecoration(
-                  
-                  //       gradient: LinearGradient(
-                  // tileMode: TileMode.clamp,
-                  
-                  // colors: [
-                  //   Colors.red,
-                  //   Color.fromARGB(228, 214, 29, 1),
-                  
-                  //   Color.fromRGBO(207, 0, 15, 1),
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  // ],
-                  // begin: Alignment.topRight,
-                  // end: Alignment.bottomLeft,
-                  // stops: [
-                  //   0.1,
-                  //   0.4,
-                  //   0.6,
-                  // ]
-                  
-                  
-                  
-                  
-                  
-                  //       )
-                   
-                  
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(500),bottomLeft: Radius.circular(500))),
-                  margin: EdgeInsets.only(left: screenWidth*0.1,top:0,bottom: 0,right: 0),
-                  
-                  
-                 child: Row(
-                   mainAxisAlignment: MainAxisAlignment.start,
-                   crossAxisAlignment: CrossAxisAlignment.center,
-                  
-                  
-                  
-                  
-                 children: [
-                  
-                  
-                  
-                   Flexible(
-                     flex: 1,
-                     child: AnimatedSize(
-                          curve: Curves.easeIn,
-                          duration: const Duration(seconds: 1),
-                          child: _addImageAvatar(context)
-                        ),
-                   ),
-                  const SizedBox(width: 20,),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                  
-                         Text(aboutMe.capitalizeFirst!,style: TextStyles.heading3?.copyWith(color: Colors.white),),
-                         Text(aboutDescription,textAlign: TextAlign.justify,
-                  
-                         style: TextStyles.subtitle1?.copyWith(color: Colors.white),
-                  
-                         ),
-                        const SizedBox(height: 30,),
-                          Container(width: 200,height:
-                          5,color: Colors.red,),
-                  SizedBox(height: 10,),
-                          _addSocilaIcon(50),
-                  
-                        ],
-                      ),
-                    )
-                  
-                  
-                ,
-                  
-                  
-                  
-                 ],
-                 ),
-                        ),
-                  
-                  
+                  alignment: Alignment.center,
+                  child: _addAboutContents(screenWidth, context))),
+            
+            
+                  ],
                 ),
-              
-              smallScreen:
-              
-              
-                 Container(
-                   decoration: const BoxDecoration(
-                     
-                  color: Colors.black,
-                     
-                    //  image: DecorationImage(
-                     
-                     
-                    // opacity: 0.3,
-                    // fit: BoxFit.cover,
-                    // image: AssetImage('assets/pic2.jpg'))
-                     
-                     
-                    ),
-                           child: Column(
-                     mainAxisAlignment: MainAxisAlignment.center,
-                             children: [
-                     
-                     
-                     
-                            SizedBox(
-                     
-                 child: Column(
-                             mainAxisAlignment: MainAxisAlignment.center,
-                     
-                     
-                     
-                     
-                 children: [
-                     
-                     
-                   AnimatedSize(
-                         curve: Curves.easeIn,
-                         duration: const Duration(seconds: 1),
-                         child: _addImageAvatar(context)
-                       ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                       
-                          Text(aboutMe.capitalizeFirst!,style: TextStyles.heading3,),
-                          Text(aboutDescription,textAlign: TextAlign.center,
-                       
-                          style: TextStyles.subtitle1?.copyWith(color: Colors.white),
-                       
-                          ),
-                        // SizedBox(height: 30,),
-                        //    Container(width: 200,height:
-                        //    5,color: Colors.red,),
-
-                        SizedBox(height: 20,),
-                       
-                           Align(
-                               alignment: Alignment.center,
-                               child: _addSocilaIcon(30)),
-                       
-                        ],
-                      ),
-                    )
-                     
-                     
-                             ,
-                     
-                     
-                     
-                 ],
-                 ),
-                            ),
-                             ],
-                           ),
-                     
-                     
-                             ),
-              
-              
-              
-              
               ),
             ),
+
+            
         
         
         
@@ -256,6 +83,202 @@ class About extends GetView<AboutViewController> {
       
       ),
     );
+  }
+
+  SizeTransition _addAboutContents(double screenWidth, BuildContext context) {
+    return SizeTransition(
+
+                  sizeFactor: controller.aboutAnimation,
+            axis: Axis.horizontal,
+            axisAlignment: 0.0,
+            child: ResponsiveWidget(
+              largeScreen:
+            
+            
+              Container(
+                color: Colors.black,
+                
+                      child: Container(
+                
+                
+                decoration: BoxDecoration(
+                
+                //       gradient: LinearGradient(
+                // tileMode: TileMode.clamp,
+                
+                // colors: [
+                //   Colors.red,
+                //   Color.fromARGB(228, 214, 29, 1),
+                
+                //   Color.fromRGBO(207, 0, 15, 1),
+                
+                
+                
+                
+                
+                
+                
+                // ],
+                // begin: Alignment.topRight,
+                // end: Alignment.bottomLeft,
+                // stops: [
+                //   0.1,
+                //   0.4,
+                //   0.6,
+                // ]
+                
+                
+                
+                
+                
+                //       )
+                 
+                
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(500),bottomLeft: Radius.circular(500))),
+                margin: EdgeInsets.only(left: screenWidth*0.1,top:0,bottom: 0,right: 0),
+                
+                
+               child: Row(
+                 mainAxisAlignment: MainAxisAlignment.start,
+                 crossAxisAlignment: CrossAxisAlignment.center,
+                
+                
+                
+                
+               children: [
+                
+                
+                
+                 Flexible(
+                   flex: 1,
+                   child: AnimatedSize(
+                        curve: Curves.easeIn,
+                        duration: const Duration(seconds: 1),
+                        child: _addImageAvatar(context)
+                      ),
+                 ),
+                const SizedBox(width: 20,),
+                  Flexible(
+                    flex: 1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                
+                       Text(aboutMe.toUpperCase(),style:TextStyles.headingTextStyle),
+                       SizedBox(height: 10,),
+                       Text(aboutDescription,textAlign: TextAlign.justify,
+                
+                       style: TextStyles.subtitle1?.copyWith(color: Colors.white),
+                
+                       ),
+                      const SizedBox(height: 30,),
+                        Container(width: 200,height:
+                        5,color: Colors.red,),
+                SizedBox(height: 10,),
+                        _addSocilaIcon(50),
+                
+                      ],
+                    ),
+                  )
+                
+                
+              ,
+                
+                
+                
+               ],
+               ),
+                      ),
+                
+                
+              ),
+            
+            smallScreen:
+            
+            
+               Container(
+                 decoration: const BoxDecoration(
+                   
+                color: Colors.black,
+                   
+                  //  image: DecorationImage(
+                   
+                   
+                  // opacity: 0.3,
+                  // fit: BoxFit.cover,
+                  // image: AssetImage('assets/pic2.jpg'))
+                   
+                   
+                  ),
+                         child: Column(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                   
+                   
+                   
+                          SizedBox(
+                   
+               child: Column(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                   
+                   
+                   
+                   
+               children: [
+                   
+                   
+                 AnimatedSize(
+                       curve: Curves.easeIn,
+                       duration: const Duration(seconds: 1),
+                       child: _addImageAvatar(context)
+                     ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                     
+                        Text(aboutMe.capitalizeFirst!,style: TextStyles.heading3,),
+                        Text(aboutDescription,textAlign: TextAlign.center,
+                     
+                        style: TextStyles.subtitle1?.copyWith(color: Colors.white),
+                     
+                        ),
+                      // SizedBox(height: 30,),
+                      //    Container(width: 200,height:
+                      //    5,color: Colors.red,),
+
+                      SizedBox(height: 20,),
+                     
+                         Align(
+                             alignment: Alignment.center,
+                             child: _addSocilaIcon(30)),
+                     
+                      ],
+                    ),
+                  )
+                   
+                   
+                           ,
+                   
+                   
+                   
+               ],
+               ),
+                          ),
+                           ],
+                         ),
+                   
+                   
+                           ),
+            
+            
+            
+            
+            ),
+          );
   }
 
 

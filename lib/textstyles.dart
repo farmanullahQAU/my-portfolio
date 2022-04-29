@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TextStyles {
   static TextStyle? body1 = Theme.of(Get.context!).textTheme.bodyText1;
@@ -14,30 +15,19 @@ class TextStyles {
   static TextStyle? heading6 = Theme.of(Get.context!).textTheme.headline6;
   static TextStyle? bodyLarge = Theme.of(Get.context!).textTheme.bodyLarge;
 
-//headline theme
-
-  static TextStyle? headlin1 = Theme.of(Get.context!).textTheme.headline6;
 
 
 
+  static TextStyle? headingTextStyle = heading5?.copyWith(fontWeight: FontWeight.bold,color: Colors.red);
+
+  
 
 
-  // static TextStyle? getNavigationBarItemColor(int index) {
-  //   return Theme.of(Get.context!).textTheme.subtitle1?.copyWith(
-  //       color: Get.find<HomeController>().currentIdex == index
-  //           ? Colors.cyan[200]
-  //           : null);
-  // }
 
 
-  //MY SKILLS PAGE TEXTSTYLES
 
-  static TextStyle? skillsTitleTextStyle = Theme.of(Get.context!).textTheme.subtitle1?.copyWith(
-    fontWeight: FontWeight.bold,
-    letterSpacing: 1,
-    color: Colors.white);
-      static TextStyle? skillsDescTextStyle = Theme.of(Get.context!).textTheme.subtitle1?.copyWith(
-    color: Colors.white);
 
+ 
+    
 
 }

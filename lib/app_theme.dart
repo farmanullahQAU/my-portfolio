@@ -1,19 +1,22 @@
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static const blueDarkPrimaryColor = Color.fromARGB(255, 8, 135, 238);
 
 
   static final blueTheme = ThemeData(
+textTheme: GoogleFonts.openSansTextTheme(
 
-    
+  TextTheme(headline4: TextStyle(color: Colors.white))
+),
+// textTheme: GoogleFonts.montserratTextTheme(
+
+//   TextTheme(headline4: TextStyle(color: Colors.white))
+// ),
     iconTheme: const IconThemeData(color: Colors.black54),
-    textTheme: const TextTheme(
-      headlineLarge: TextStyle(color: Colors.white),
-headlineMedium: TextStyle(color:Colors.white),
-      
-      titleSmall: TextStyle(color: blueDarkPrimaryColor)),
+   
     primaryColor: blueDarkPrimaryColor,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.black,

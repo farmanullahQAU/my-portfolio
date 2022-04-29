@@ -17,7 +17,7 @@ class SkillsView extends GetView<SkillViewController> {
 
     return CarouselSlider(
   options: CarouselOptions(
-    
+    enableInfiniteScroll: false,
     pauseAutoPlayOnManualNavigate: true,
     height: 400.0,autoPlay: true,pageSnapping: false,disableCenter: true,viewportFraction: 1.0),
   items:controller.skills.map((i) {

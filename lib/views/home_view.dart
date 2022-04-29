@@ -73,17 +73,14 @@ Container(
 
         SizedBox(height: height*0.4,),
         IntroView(screenWidth:  screenWidth,),
-           TextButton(onPressed: (){
-
-Get.find<SkillViewController>().pageController.animateToPage(Get.find<SkillViewController>().currentPageValue.floor(), duration: Duration(milliseconds: 200), curve: Curves.linear);
-
-        }, child: Icon(Icons.forward)),
+        
 
         SizedBox(height: 300,),
         Container(
-          color: Colors.black,
-margin: EdgeInsets.only(left: screenWidth*0.1),
-          child: SkillsView())
+
+          height: height*0.2,
+          color: Colors.black.withOpacity(0.4),
+          )
       ],
     ),
   )
