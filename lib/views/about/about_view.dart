@@ -86,6 +86,7 @@ class About extends GetView<AboutViewController> {
   }
 
   SizeTransition _addAboutContents(double screenWidth, BuildContext context) {
+    var title = Text(aboutMe.toUpperCase(),style:TextStyles.headingTextStyle);
     return SizeTransition(
 
                   sizeFactor: controller.aboutAnimation,
@@ -102,38 +103,7 @@ class About extends GetView<AboutViewController> {
                 
                 
                 decoration: BoxDecoration(
-                
-                //       gradient: LinearGradient(
-                // tileMode: TileMode.clamp,
-                
-                // colors: [
-                //   Colors.red,
-                //   Color.fromARGB(228, 214, 29, 1),
-                
-                //   Color.fromRGBO(207, 0, 15, 1),
-                
-                
-                
-                
-                
-                
-                
-                // ],
-                // begin: Alignment.topRight,
-                // end: Alignment.bottomLeft,
-                // stops: [
-                //   0.1,
-                //   0.4,
-                //   0.6,
-                // ]
-                
-                
-                
-                
-                
-                //       )
-                 
-                
+ 
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(500),bottomLeft: Radius.circular(500))),
                 margin: EdgeInsets.only(left: screenWidth*0.1,top:0,bottom: 0,right: 0),
                 
@@ -165,7 +135,7 @@ class About extends GetView<AboutViewController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                 
-                       Text(aboutMe.toUpperCase(),style:TextStyles.headingTextStyle),
+                       title,
                        SizedBox(height: 10,),
                        Text(aboutDescription,textAlign: TextAlign.justify,
                 
@@ -239,8 +209,10 @@ class About extends GetView<AboutViewController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        SizedBox(height: 10,),
                      
-                        Text(aboutMe.capitalizeFirst!,style: TextStyles.heading3,),
+                        title,
+                        SizedBox(height: 10,),
                         Text(aboutDescription,textAlign: TextAlign.center,
                      
                         style: TextStyles.subtitle1?.copyWith(color: Colors.white),
