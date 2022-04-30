@@ -1,10 +1,8 @@
-import 'package:farmanullah_portfolio/components/material_button.dart';
 import 'package:farmanullah_portfolio/responsive/responsive_wrapper.dart';
 import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:farmanullah_portfolio/views/projects/projects_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../components/app_drawer.dart';
@@ -77,39 +75,43 @@ class ProjectView extends GetView<ProjectsViewController> {
             ),
           ),
      //shows drawer for mobile and menu row for tablet and desktop
-          Obx(()=>
-            AnimatedSwitcher(
-                                       transitionBuilder: (child,animation)=>SizeTransition(sizeFactor: animation,child: child,),
-           
-           duration: const Duration(milliseconds: 400),
-              child:
-              controller.isDown.isTrue&&!ResponsiveWidget.isSmallScreen(context)?
-              
-               Container(
-                 color: Colors.black,
-            key: Key("coloredAppBar"),
-                
-                child: Header(onTap: (){
-                
-                  //open and close drawer for mobile view
-                  Get.find<MenuController>().controlProjectsMenu();
-                
-                
-                },),
-              ):Header(
-                key: Key("black"),
-                onTap: (){
-                
-                  Get.find<MenuController>().controlProjectsMenu();
-                
-                
-                },),
-            ),
-          ), 
+          addHeader(context), 
               
         ],
       ),
     );
+  }
+
+  Widget addHeader(BuildContext context) {
+    return Obx(()=>
+          AnimatedSwitcher(
+                                     transitionBuilder: (child,animation)=>SizeTransition(sizeFactor: animation,child: child,),
+         
+         duration: const Duration(milliseconds: 400),
+            child:
+            controller.isDown.isTrue&&!ResponsiveWidget.isSmallScreen(context)?
+            
+             Container(
+               color: Colors.black,
+          key: Key("coloredAppBar"),
+              
+              child: Header(onTap: (){
+              
+                //open and close drawer for mobile view
+                Get.find<MenuController>().controlProjectsMenu();
+              
+              
+              },),
+            ):Header(
+              key: Key("black"),
+              onTap: (){
+              
+                Get.find<MenuController>().controlProjectsMenu();
+              
+              
+              },),
+          ),
+        );
   }
 
   Widget addGrid(double padding,{required double crossAxisSpacing, required double  mainAxisSpacing,required int crossAxisCount }) {

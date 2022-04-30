@@ -1,9 +1,22 @@
 const String myName="FARMAN ULLAH";
 
 const String aboutMe="about me";
+const String fyp="final year project";
+const String fypName="expense manager";
+const String fypDescription="fyp description";
+const String experienceTitle="industry experience";
+const String companyName="Esols Technologies";
+
+const String experienceDetails="I have 1 year experience of senier flutter developer at";
+
+
 
 const String hireMe="hire me";
 const String education="education";
+const String degree ="Computer science ";
+const String university ="Quaid-i- Azam university islamabad ";
+
+const String eductionDetails="I have completed my degree in computer science ";
 
 const String designation="flutter developer";
 const String homeDesctiption="I am a senior flutter developer with 1+ year of experience. I build top quality apps for android,Ios and web using google's flutter";

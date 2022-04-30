@@ -13,117 +13,134 @@ class Header extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return    ResponsiveWidget(
-//for mobile show menu button
-      smallScreen: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-        child: Align(
-          alignment: Alignment.topLeft,
-          child: SizedBox(
-            height: 40,
-            width: 45,
-            child: TextButton(
-          
-              style: ButtonStyle(
-          
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-          
-                
-                borderRadius: BorderRadius.circular(10.0),
-                side: BorderSide(color: Colors.red)
-              )
-            )
-          ),
-              onPressed:onTap,
-              child: Icon(Icons.menu,color: Colors.white,)),
-          )),
-      ),
+    return  
+    AnimatedSwitcher(
+    
+duration: Duration(milliseconds: 400),
 
-        //for large screen show row 
-      largeScreen: Container(
-        margin: EdgeInsets.only(top: 40),
-//width fo nav bar
-        height: 60,
-        child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children:
+                                     transitionBuilder: (child,animation)=>ScaleTransition(
+                                       
+                                       alignment: Alignment.topLeft,
+                                       scale: animation,child: child,),
+
+      child: ResponsiveWidget.isSmallScreen(context)?
+      
+        Container(
+
+          key: Key("drawer "),
+    //for mobile show menu button
+        child:Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: SizedBox(
+              height: 40,
+              width: 45,
+              child: TextButton(
+            
+                style: ButtonStyle(
+            
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+            
+                  
+                  borderRadius: BorderRadius.circular(10.0),
+                  side: BorderSide(color: Colors.red)
+                )
+              )
+            ),
+                onPressed:onTap,
+                child: Icon(Icons.menu,color: Colors.white,)),
+            )),
+        ),
     
-    
-                          Get.find<MenuController>().getNavigationBarItems().map((e) {
-                          final index=e.index;
-    
-                          return
-    
-    
-    
-    
-    
-                            Obx(()=>
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-    
-    
-                                      Get.find<MenuController>().currentIdex==index?
-    
-                                    Container(
-                                        decoration: const BoxDecoration(
-    
-                                            color: Colors.red,
-    
-                                            shape: BoxShape.circle),
-    
-                                        width: 8,height: 8):Container(),
-                                    const SizedBox(height: 8,),
-    
-                                    TextButton(
-    
-    
-                                      style: ButtonStyle(
-    
-    
-    
-                                        foregroundColor: MaterialStateProperty.resolveWith<Color>(
-                                                (Set<MaterialState> states) {
-                                              if (states.contains(MaterialState.focused)) {
-                                                return Colors.yellow;
-                                              }
-                                              if (states.contains(MaterialState.hovered)) {
-                                                return Colors.red;
-                                              }
-                                              if (states.contains(MaterialState.pressed)) {
-                                                return Colors.blue;
-                                              }
-                                              return Colors.white; // null throus error in flutter 2.2+.
-                                            }),
+          //for large screen show row 
+        
+      ):
+       Container(
+         key: Key("navigation bar"),
+          margin: EdgeInsets.only(top: 40),
+    //width fo nav bar
+          height: 60,
+          child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children:
+      
+      
+                            Get.find<MenuController>().getNavigationBarItems().map((e) {
+                            final index=e.index;
+      
+                            return
+      
+      
+      
+      
+      
+                              Obx(()=>
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+      
+      
+                                        Get.find<MenuController>().currentIdex==index?
+      
+                                      Container(
+                                          decoration: const BoxDecoration(
+      
+                                              color: Colors.red,
+      
+                                              shape: BoxShape.circle),
+      
+                                          width: 8,height: 8):Container(),
+                                      const SizedBox(height: 8,),
+      
+                                      TextButton(
+      
+      
+                                        style: ButtonStyle(
+      
+      
+      
+                                          foregroundColor: MaterialStateProperty.resolveWith<Color>(
+                                                  (Set<MaterialState> states) {
+                                                if (states.contains(MaterialState.focused)) {
+                                                  return Colors.yellow;
+                                                }
+                                                if (states.contains(MaterialState.hovered)) {
+                                                  return Colors.red;
+                                                }
+                                                if (states.contains(MaterialState.pressed)) {
+                                                  return Colors.blue;
+                                                }
+                                                return Colors.white; // null throus error in flutter 2.2+.
+                                              }),
+                                        ),
+                                        onPressed: e.onTap,
+                                        child:
+      
+      
+                                        e.item!,
+      
+      
+      
+      
                                       ),
-                                      onPressed: e.onTap,
-                                      child:
-    
-    
-                                      e.item!,
-    
-    
-    
-    
-                                    ),
-                                  ],
-                                ),
-                            );
-                        }
-    
-    
-    
-    
-    
-                        ).toList()
-    
-    
-    
-                    ),
-      ),
+                                    ],
+                                  ),
+                              );
+                          }
+      
+      
+      
+      
+      
+                          ).toList()
+      
+      
+      
+                      ),
+        ),
     );
       
   }

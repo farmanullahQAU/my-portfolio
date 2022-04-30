@@ -1,4 +1,6 @@
 
+import 'package:farmanullah_portfolio/models/skill_model.dart';
+import 'package:farmanullah_portfolio/responsive/responsive_wrapper.dart';
 import 'package:farmanullah_portfolio/views/skills/skills_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,29 +16,44 @@ class SkillsView extends GetView<SkillViewController> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth=context.width;
 
-    return CarouselSlider(
-  options: CarouselOptions(
-    enableInfiniteScroll: false,
-    pauseAutoPlayOnManualNavigate: true,
-    height: 400.0,autoPlay: true,pageSnapping: false,disableCenter: true,viewportFraction: 1.0),
-  items:controller.skills.map((i) {
-    return Builder(
-      builder: (BuildContext context) {
-        return Container(
-          width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.symmetric(horizontal: 5.0),
-          decoration: BoxDecoration(
-            color: Colors.amber
-          ),
-          child: Text(i.skillName, style: TextStyle(fontSize: 16.0),)
-        );
-      },
-    );
-  }).toList(),
-);
+    return ResponsiveWidget(largeScreen: _addSkillsGridView(screenWidth,10,10,3));
  
   }
 
+  GridView _addSkillsGridView(double screenWidth,double mainAxisSpacing,double crossAxisSpacing,int crossAxisCount) {
+    return GridView(
+      padding: EdgeInsets.only(left: screenWidth*0.1,right: screenWidth*0.1),
+      physics:NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      children: controller.skills.map((_addSkillCard)).toList(),
+      
+      gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+          mainAxisSpacing: mainAxisSpacing,
+    
+          crossAxisSpacing: crossAxisSpacing,
+          crossAxisCount: crossAxisCount));
+  }
 
+Widget _addSkillCard(Skill skill){
+
+return Container(
+  color: Colors.white,
+  
+  child: Column(
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+  CircleAvatar(
+    
+    radius: 60,
+    backgroundImage: 
+  
+  skill.iconUrl!=null?
+  
+  AssetImage(skill.iconUrl!):null),
+        Text(skill.skillName),
+  ],
+),);
+}
 }

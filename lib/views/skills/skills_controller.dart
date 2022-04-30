@@ -25,9 +25,18 @@ List<Skill> get skills=>_skills;
   void intiSkills() {
 
 _skills=[
-Skill(skillName: "Flutter", description: "Flutter is SDK for cross plateform app development"),
-Skill(skillName: "GetX", description: "GetX is development"),
-Skill(skillName: "Firebase", description: "Firebase is  is a....."),
+Skill(
+  
+  
+  skillName: "Flutter", description: "Flutter is SDK for cross plateform app development"),
+Skill(
+  
+  iconUrl: 'assets/getx_logo.png',
+  skillName: "GetX", description: "GetX is development"),
+Skill(
+  
+  iconUrl: 'assets/firebase_logo.png',
+  skillName: "Firebase", description: "Firebase is  is a....."),
 Skill(skillName: "Firebase", description: "Firebase is  is a....."),
 Skill(skillName: "Firebase", description: "Firebase is  is a....."),
 Skill(skillName: "Firebase", description: "Firebase is  is a.....")

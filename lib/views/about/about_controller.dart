@@ -3,11 +3,27 @@ import 'package:get/get.dart';
 
 class AboutViewController extends GetxController with GetTickerProviderStateMixin{
 
-
+  final scrollController=ScrollController();
+late RxBool isScrollDown;
 
 @override
   void onInit() {
     initAboutViewAnimationController();
+isScrollDown=false.obs;
+    scrollController.addListener(() { 
+
+      isScrollDown.value=false;
+
+if(scrollController.offset>60)
+{//when scroll down more than 60px the set this value true to show colored appbar
+
+
+isScrollDown.value=true;
+
+}
+
+
+    });
     super.onInit();
   }
 
