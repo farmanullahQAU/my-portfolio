@@ -1,8 +1,10 @@
 
 import 'package:farmanullah_portfolio/models/skill_model.dart';
 import 'package:farmanullah_portfolio/responsive/responsive_wrapper.dart';
+import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:farmanullah_portfolio/views/skills/skills_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
@@ -18,13 +20,26 @@ class SkillsView extends GetView<SkillViewController> {
   Widget build(BuildContext context) {
     final screenWidth=context.width;
 
-    return ResponsiveWidget(largeScreen: _addSkillsGridView(screenWidth,10,10,3));
+    return Container(
+      
+       color: Colors.white, 
+      
+      child: ResponsiveWidget(
+        
+        mediumScreen: Padding(
+      padding: EdgeInsets.symmetric(horizontal: screenWidth*0.1),
+        
+        child: _addSkillsGridView(screenWidth,0,0,2),
+      ) ,
+        
+        
+        largeScreen: _addSkillsGridView(screenWidth,5,5,3)));
  
   }
 
   GridView _addSkillsGridView(double screenWidth,double mainAxisSpacing,double crossAxisSpacing,int crossAxisCount) {
     return GridView(
-      padding: EdgeInsets.only(left: screenWidth*0.1,right: screenWidth*0.1),
+      
       physics:NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       children: controller.skills.map((_addSkillCard)).toList(),
@@ -39,21 +54,55 @@ class SkillsView extends GetView<SkillViewController> {
 Widget _addSkillCard(Skill skill){
 
 return Container(
-  color: Colors.white,
+// margin: EdgeInsets.only(top: 20),
+  decoration: BoxDecoration(
+
+  ),
   
-  child: Column(
-  crossAxisAlignment: CrossAxisAlignment.center,
-  children: [
-  CircleAvatar(
+  child: Align(
+    alignment: Alignment.center,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Column(
+          
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+        Container(
+          
+          child:
+        
+        skill.iconUrl!=null?
+        
+        Image.asset(skill.iconUrl!):Container()),
+              Text(skill.skillName,style: TextStyles.headingTextStyle,),
+        ],
+    ),
     
-    radius: 60,
-    backgroundImage: 
-  
-  skill.iconUrl!=null?
-  
-  AssetImage(skill.iconUrl!):null),
-        Text(skill.skillName),
-  ],
-),);
+    if(skill.subSkills!=null)
+    ...skill.subSkills!.map((subskill) =>Column(
+    
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+    
+    Stack(
+    alignment: Alignment.centerLeft,
+    children: [
+      Padding(
+                padding: EdgeInsets.only(left: 30),
+    
+        child: Text(subskill,style: TextStyles.subtitle1?.copyWith(color: Colors.black),),
+      ),
+      FaIcon(FontAwesomeIcons.checkCircle,color: Colors.black,)
+    ],
+    )
+    
+    
+    ],)).toList()
+    
+      ]
+    ),
+  ),);
 }
 }

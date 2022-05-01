@@ -52,25 +52,23 @@ class About extends GetView<AboutViewController> {
                 controller: controller.scrollController,
                 child: Padding(
                   padding: EdgeInsets.only(top: height * 0.2),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                          color: Colors.black.withOpacity(0.5),
-                          child: _addAboutContents(screenWidth, context)),
-                      SizeTransition(
-                        sizeFactor: controller.aboutAnimation,
-                        axis: Axis.horizontal,
-                        axisAlignment: -1.0,
-                        child: Container(
-                        child: SkillsView(),
-                          width: screenWidth,
-                          color: Colors.red,
-                        ),
-                      ),
-
-                      Container(height: 500,width: screenWidth,color:Colors.white,)
-                    ],
+                  child: SizeTransition(
+                       sizeFactor: controller.aboutAnimation,
+      axis: Axis.horizontal,
+      axisAlignment: -1.0,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                  
+                  
+                        Container(width:double.infinity,height: 50,color: Colors.black.withOpacity(0.2),),
+                        Container(
+                            color: Colors.black.withOpacity(0.5),
+                            child: _addAboutContents(screenWidth, context)),
+                        SkillsView(),
+                  
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -84,7 +82,7 @@ class About extends GetView<AboutViewController> {
     );
   }
 
-  SizeTransition _addAboutContents(double screenWidth, BuildContext context) {
+  Widget _addAboutContents(double screenWidth, BuildContext context) {
     var sizedBoxColumn = SizedBox(
       height: 10,
     );
@@ -156,100 +154,95 @@ class About extends GetView<AboutViewController> {
     var nameFyp =
         Text(fypName.toUpperCase(), style: TextStyles.headingTextStyle);
 
-    return SizeTransition(
-      sizeFactor: controller.aboutAnimation,
-      axis: Axis.horizontal,
-      axisAlignment: -1.0,
-      child: ResponsiveWidget(
-        largeScreen: Container(
-          child: Container(
-            decoration: BoxDecoration(),
-            margin: EdgeInsets.only(
-                left: screenWidth * 0.1, top: 0, bottom: 0, right: 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Flexible(
-                //   flex: 1,
-                //   child: AnimatedSize(
-                //       curve: Curves.easeIn,
-                //       duration: const Duration(seconds: 1),
-                //       child: _addImageAvatar(context,screenWidth)),
-                // ),
+    return ResponsiveWidget(
+      largeScreen: Container(
+        child: Container(
+          decoration: BoxDecoration(),
+          margin: EdgeInsets.only(
+              left: screenWidth * 0.1, top: 0, bottom: 0, right: 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Flexible(
+              //   flex: 1,
+              //   child: AnimatedSize(
+              //       curve: Curves.easeIn,
+              //       duration: const Duration(seconds: 1),
+              //       child: _addImageAvatar(context,screenWidth)),
+              // ),
 
-                Flexible(
-                  flex: 3,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        title,
-                        description,
-                        sizedBoxColumn2,
-                        educationTitle,
-                        educationDetails,
-                        sizedBoxColumn2,
-                        fypTitle,
-                        description,
-                        sizedBoxColumn2,
-                        titleExperience,
-                        detailsExperience,
-                        _addSocilaIcon(50),
-                      ],
-                    ),
+              Flexible(
+                flex: 3,
+                child: Container(
+                  // margin: EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      title,
+                      description,
+                      sizedBoxColumn2,
+                      educationTitle,
+                      educationDetails,
+                      sizedBoxColumn2,
+                      fypTitle,
+                      description,
+                      sizedBoxColumn2,
+                      titleExperience,
+                      detailsExperience,
+                      _addSocilaIcon(50),
+                    ],
                   ),
                 ),
-
-                Spacer(
-                  flex: 1,
-                )
-              ],
-            ),
-          ),
-        ),
-
-        //mobile
-        smallScreen: Container(
-          decoration: const BoxDecoration(
-            color: Colors.black,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // AnimatedSize(
-                    //     curve: Curves.easeIn,
-                    //     duration: const Duration(seconds: 1),
-                    //     child: _addImageAvatar(context, screenWidth)),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        title,
-                        description,
-                        sizedBoxColumn2,
-                        educationTitle,
-                        educationDetails,
-                        sizedBoxColumn2,
-                        fypTitle,
-                        description,
-                        sizedBoxColumn2,
-                        titleExperience,
-                        detailsExperience,
-                        _addSocilaIcon(50),
-                      ],
-                    ),
-                  ],
-                ),
               ),
+
+              Spacer(
+                flex: 1,
+              )
             ],
           ),
+        ),
+      ),
+
+      //mobile
+      smallScreen: Container(
+        decoration: const BoxDecoration(
+          color: Colors.black,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // AnimatedSize(
+                  //     curve: Curves.easeIn,
+                  //     duration: const Duration(seconds: 1),
+                  //     child: _addImageAvatar(context, screenWidth)),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      title,
+                      description,
+                      sizedBoxColumn2,
+                      educationTitle,
+                      educationDetails,
+                      sizedBoxColumn2,
+                      fypTitle,
+                      description,
+                      sizedBoxColumn2,
+                      titleExperience,
+                      detailsExperience,
+                      _addSocilaIcon(50),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
