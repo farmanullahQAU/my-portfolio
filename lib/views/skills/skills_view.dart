@@ -67,15 +67,26 @@ return Container(
       children: [
         Column(
           
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-        Container(
+        CircleAvatar(
+            backgroundColor: Colors.black,
+        
+          radius: 105,
+          child: CircleAvatar(
+            backgroundColor: Colors.white,
+            
+            radius: 100,
+            child: 
           
-          child:
-        
-        skill.iconUrl!=null?
-        
-        Image.asset(skill.iconUrl!):Container()),
+          skill.iconUrl!=null?
+          
+          Image.asset(skill.iconUrl!,fit: BoxFit.cover,):SizedBox(
+            
+            width: 100,
+            height: 100,
+            child: FlutterLogo())),
+        ),
               Text(skill.skillName,style: TextStyles.headingTextStyle,),
         ],
     ),
