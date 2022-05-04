@@ -5,7 +5,6 @@ import 'package:farmanullah_portfolio/components/navigationbar.dart';
 import 'package:farmanullah_portfolio/constants/constants.dart';
 import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:farmanullah_portfolio/views/about/about_controller.dart';
-import 'package:farmanullah_portfolio/views/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -33,7 +32,7 @@ class About extends GetView<AboutViewController> {
         key: Get.find<MenuController>().aboutScaffoldKey,
         backgroundColor: Colors.black,
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   fit: BoxFit.cover, image: AssetImage('assets/pic2.jpg'))),
           child: Stack(
@@ -46,7 +45,7 @@ class About extends GetView<AboutViewController> {
 
                     scale: controller.aboutAnimation,
              S
-              */
+              */  
 
               SingleChildScrollView(
                 controller: controller.scrollController,
@@ -56,7 +55,10 @@ class About extends GetView<AboutViewController> {
                        sizeFactor: controller.aboutAnimation,
       axis: Axis.horizontal,
       axisAlignment: -1.0,
-                    child: Column(
+                    child: 
+                    
+                    
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                   
@@ -65,8 +67,14 @@ class About extends GetView<AboutViewController> {
                         Container(
                             color: Colors.black.withOpacity(0.5),
                             child: _addAboutContents(screenWidth, context)),
-                        SkillsView(),
-                  
+
+
+                            Container(
+                              margin: EdgeInsets.symmetric(vertical: 400),
+                              
+                              child: FittedBox(child: Text("MY SKILLS",style: TextStyles.heading1?.copyWith(color: Colors.white),))),
+                       SkillsView(),
+               
                       ],
                     ),
                   ),
@@ -86,7 +94,7 @@ class About extends GetView<AboutViewController> {
     var sizedBoxColumn = SizedBox(
       height: 10,
     );
-    var sizedBoxColumn2 = SizedBox(
+    var sizedBoxColumn2 = const SizedBox(
       height: 30,
     );
     final educationDetails = RichText(
@@ -157,7 +165,7 @@ class About extends GetView<AboutViewController> {
     return ResponsiveWidget(
       largeScreen: Container(
         child: Container(
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           margin: EdgeInsets.only(
               left: screenWidth * 0.1, top: 0, bottom: 0, right: 0),
           child: Row(
@@ -191,13 +199,13 @@ class About extends GetView<AboutViewController> {
                       sizedBoxColumn2,
                       titleExperience,
                       detailsExperience,
-                      _addSocilaIcon(50),
+                      // _addSocilaIcon(50),
                     ],
                   ),
                 ),
               ),
 
-              Spacer(
+              const Spacer(
                 flex: 1,
               )
             ],
@@ -253,7 +261,7 @@ class About extends GetView<AboutViewController> {
     return Container(
       height: 400,
       decoration: BoxDecoration(
-        image: DecorationImage(
+        image: const DecorationImage(
             fit: BoxFit.cover, image: AssetImage('assets/pic.jpeg')),
         border: Border.all(color: Colors.white),
       ),
@@ -288,7 +296,7 @@ class About extends GetView<AboutViewController> {
               color: socialIconColor,
               size: iconSize,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             FaIcon(
@@ -296,7 +304,7 @@ class About extends GetView<AboutViewController> {
               color: socialIconColor,
               size: iconSize,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             FaIcon(
@@ -304,7 +312,7 @@ class About extends GetView<AboutViewController> {
               color: socialIconColor,
               size: iconSize,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             FaIcon(

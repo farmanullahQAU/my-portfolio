@@ -4,7 +4,6 @@ import 'package:get/state_manager.dart';
 import '../../models/skill_model.dart';
 
 class SkillViewController extends GetxController with GetTickerProviderStateMixin{
-
 late final List<Skill> _skills;
   
 List<Skill> get skills=>_skills;
@@ -37,9 +36,12 @@ Skill(
   subSkills: ["cloud firestore","firebase realtime","push notifications","firebase MlKit","firebase hosting"],
   iconUrl: 'assets/firebase_logo.png',
   skillName: "Firebase", description: "Firebase is  is a....."),
-Skill(skillName: "Firebase", description: "Firebase is  is a....."),
-Skill(skillName: "Firebase", description: "Firebase is  is a....."),
-Skill(skillName: "Firebase", description: "Firebase is  is a.....")
+Skill(
+  
+  subSkills: ["qraphQL","Rest","stripe/square","google map","agora etc.",],
+  
+  skillName: "api integration", description: "Firebase is  is a....."),
+
 
 
 
