@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
+import '../../assets_path.dart';
 import '../../constants/text_const.dart';
 import '../../menue_controller.dart';
 import '../../responsive/responsive_wrapper.dart';
@@ -32,9 +33,16 @@ class About extends GetView<AboutViewController> {
         key: Get.find<MenuController>().aboutScaffoldKey,
         backgroundColor: Colors.black,
         body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.cover, image: AssetImage('assets/pic2.jpg'))),
+          decoration:  BoxDecoration(
+              image: 
+              ResponsiveWidget.isSmallScreen(context)?
+              null:
+              DecorationImage(
+                  fit: BoxFit.cover, image:
+                  
+              
+                  
+                   AssetImage(backgroundImagePath))),
           child: Stack(
             alignment: Alignment.topLeft,
             children: [
@@ -91,11 +99,9 @@ class About extends GetView<AboutViewController> {
   }
 
   Widget _addAboutContents(double screenWidth, BuildContext context) {
-    var sizedBoxColumn = SizedBox(
-      height: 10,
-    );
+  
     var sizedBoxColumn2 = const SizedBox(
-      height: 30,
+      height: 50,
     );
     final educationDetails = RichText(
     textAlign: !ResponsiveWidget.isSmallScreen(context)?TextAlign.justify:TextAlign.center,
@@ -146,7 +152,6 @@ class About extends GetView<AboutViewController> {
     var title = Text(aboutMe.toUpperCase(), style: TextStyles.headingTextStyle);
 
     
-    var fyptitle = Text(fyp.toUpperCase(), style: TextStyles.headingTextStyle);
 
     var description = Text(
       aboutDescription,
@@ -159,57 +164,61 @@ class About extends GetView<AboutViewController> {
       style: TextStyles.subtitle1,
     );
     var fypTitle = Text(fyp.toUpperCase(), style: TextStyles.headingTextStyle);
-    var nameFyp =
-        Text(fypName.toUpperCase(), style: TextStyles.headingTextStyle);
 
+    var aboutWelcomeText = Text(welcomeAbout,style: TextStyles.heading4,textAlign:TextAlign.center,);
     return ResponsiveWidget(
       largeScreen: Container(
-        child: Container(
-          decoration: const BoxDecoration(),
-          margin: EdgeInsets.only(
-              left: screenWidth * 0.1, top: 0, bottom: 0, right: 0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Flexible(
-              //   flex: 1,
-              //   child: AnimatedSize(
-              //       curve: Curves.easeIn,
-              //       duration: const Duration(seconds: 1),
-              //       child: _addImageAvatar(context,screenWidth)),
-              // ),
+           margin: EdgeInsets.only(
+                  left: screenWidth * 0.1, top: 0, bottom: 0, right: 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
 
-              Flexible(
-                flex: 3,
-                child: Container(
-                  // margin: EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      title,
-                      description,
-                      sizedBoxColumn2,
-                      educationTitle,
-                      educationDetails,
-                      sizedBoxColumn2,
-                      fypTitle,
-                      description,
-                      sizedBoxColumn2,
-                      titleExperience,
-                      detailsExperience,
-                      // _addSocilaIcon(50),
-                    ],
+          aboutWelcomeText,
+          sizedBoxColumn2,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Flexible(
+                //   flex: 1,
+                //   child: AnimatedSize(
+                //       curve: Curves.easeIn,
+                //       duration: const Duration(seconds: 1),
+                //       child: _addImageAvatar(context,screenWidth)),
+                // ),
+
+                Flexible(
+                  flex: 3,
+                  child: Container(
+                    // margin: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        title,
+                        description,
+                        sizedBoxColumn2,
+                        educationTitle,
+                        educationDetails,
+                        sizedBoxColumn2,
+                        fypTitle,
+                        description,
+                        sizedBoxColumn2,
+                        titleExperience,
+                        detailsExperience,
+                        // _addSocilaIcon(50),
+                      ],
+                    ),
                   ),
                 ),
-              ),
 
-              const Spacer(
-                flex: 1,
-              )
-            ],
-          ),
+                const Spacer(
+                  flex: 1,
+                )
+              ],
+            ),
+          ],
         ),
       ),
 
@@ -233,17 +242,29 @@ class About extends GetView<AboutViewController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      _addImageAvatar(context, screenWidth),
+                      sizedBoxColumn2,
+                      aboutWelcomeText,
+                   SizedBox(height: 100,),
+                      
+                  
                       title,
                       description,
-                      sizedBoxColumn2,
+                   SizedBox(height: 100,),
+
                       educationTitle,
                       educationDetails,
+                   SizedBox(height: 100,),
+
                       sizedBoxColumn2,
                       fypTitle,
                       description,
-                      sizedBoxColumn2,
+                   SizedBox(height: 100,),
+
                       titleExperience,
                       detailsExperience,
+                   SizedBox(height: 100,),
+
                       _addSocilaIcon(50),
                     ],
                   ),
@@ -256,30 +277,23 @@ class About extends GetView<AboutViewController> {
     );
   }
 
-  Widget _addImageAvatar(BuildContext context, double screenWidth,
-      [String? imagePath]) {
-    return Container(
-      height: 400,
-      decoration: BoxDecoration(
-        image: const DecorationImage(
-            fit: BoxFit.cover, image: AssetImage('assets/pic.jpeg')),
-        border: Border.all(color: Colors.white),
+  Widget _addImageAvatar(BuildContext context, double screenWidth )
+{
+   return  CircleAvatar(
+      backgroundColor: Colors.white,
+      radius: ResponsiveWidget.isSmallScreen(context) ? 155 : 205,
+      child: CircleAvatar(
+        backgroundColor: Colors.red,
+        radius: ResponsiveWidget.isSmallScreen(context) ? 150 : 200,
+        backgroundImage: Image.asset(
+          profileImagePath,
+
+          fit: BoxFit.cover,
+        ).image,
       ),
     );
-
-    // CircleAvatar(
-    //   backgroundColor: Colors.white,
-    //   radius: ResponsiveWidget.isSmallScreen(context) ? 155 : 205,
-    //   child: CircleAvatar(
-    //     radius: ResponsiveWidget.isSmallScreen(context) ? 150 : 200,
-    //     backgroundImage: Image.asset(
-    //       imagePath??
-    //       "assets/pic.jpeg",
-    //       fit: BoxFit.cover,
-    //     ).image,
-    //   ),
-    // );
-  }
+}
+  
 
   Widget _addSocilaIcon(double iconSize) {
     return Row(

@@ -9,6 +9,7 @@ const String companyName="Esols Technologies";
 
 const String experienceDetails="I have 1 year experience of senier flutter developer at";
 
+const String resume="resume";
 
 
 const String hireMe="hire me";
@@ -19,6 +20,10 @@ const String university ="Quaid-i- Azam university islamabad ";
 const String eductionDetails="I have completed my degree in computer science ";
 
 const String designation="flutter developer";
-const String homeDesctiption="I am a senior flutter developer with 1+ year of experience. I build top quality apps for android,Ios and web using google's flutter";
+const String homeDesctiption="I am a senior flutter developer with 1+ year of experience, I build quality apps for android,iOS and web using google's flutter";
 
-const String aboutDescription="Without a portfolio, you can't get clients... But you don't possess a portfolio precisely because you have no clients. It’s the classic chicken or the egg scenario.Getting the opportunity to undertake a job on web design isn't easy when all you need is the experience, and you do not have any. Ex the portfolio in obtaining your first paid job.";
+//about page welcome text
+const String welcomeAbout ="Welcome to my mini portfolio website!";
+
+
+const String aboutDescription="My name is Farman Ullah. I am a flutter developer and currently staying in Islamabad pakistan. As a computer science graduate, I am a person who has high passion in development, desing and programming. i love my work and enjoy each new project as i got it. feel free to have a look at my portfolio and don't hesitate if you think i can benifit your company. thanks";

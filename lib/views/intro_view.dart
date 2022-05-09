@@ -33,8 +33,10 @@ class IntroView extends GetView<HomeController> {
                  sizeFactor: controller.animation,
               axis: Axis.vertical,
               axisAlignment: -1,
-               child:  HomeContents()),
+               child:  const HomeContents()),
             const SizedBox(height: 20,),
+
+            //add home buttons
                    HomeButtons(screenWidth: screenWidth,),
               ],
             ),
@@ -174,7 +176,7 @@ class HomeButtons extends StatelessWidget {
                        hoverColor: Colors.black,
                        
                        
-                       child:const Text(hireMe,style: TextStyle(color: Colors.white),),onPressed: (){},)
+                       child: Text(hireMe.capitalizeFirst!,style: const TextStyle(color: Colors.white),),onPressed: (){},)
                     ),
         const SizedBox(width: 10,),
 
@@ -193,13 +195,13 @@ class HomeButtons extends StatelessWidget {
                            child: Row(
                              
                              mainAxisAlignment: MainAxisAlignment.start,
-                             children: const [
+                             children:  [
                          
-                         FaIcon(FontAwesomeIcons.github,color: Colors.white,),
+                         const FaIcon(FontAwesomeIcons.solidFilePdf,color: Colors.white,),
         
-                         SizedBox(width: 10,),
+                         const SizedBox(width: 10,),
                          
-                         Text("Github",style: TextStyle(color: Colors.white),),
+                         Text(resume.capitalizeFirst!,style: const TextStyle(color: Colors.white),),
                          
                          
                          
@@ -225,7 +227,7 @@ class HomeButtons extends StatelessWidget {
               hoverColor: Colors.black,
               
               
-              child:const Text(hireMe,style: TextStyle(color: Colors.white),),onPressed: (){},)
+              child: Text(hireMe.capitalizeFirst!,style: const TextStyle(color: Colors.white),),onPressed: (){},)
            ),
         const SizedBox(height: 20,),
     
@@ -244,13 +246,13 @@ class HomeButtons extends StatelessWidget {
                   child: Row(
                     
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
+                    children:  [
                 
-                FaIcon(FontAwesomeIcons.github,color: Colors.white,),
+                const FaIcon(FontAwesomeIcons.solidFilePdf,color: Colors.white,),
         
-                SizedBox(width: 10,),
+                const SizedBox(width: 10,),
                 
-                Text("Github",style: TextStyle(color: Colors.white),),
+                Text(resume.capitalizeFirst!,style: const TextStyle(color: Colors.white),),
                 
                 
                 
