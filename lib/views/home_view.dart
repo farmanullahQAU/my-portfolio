@@ -64,24 +64,28 @@ Container(
   
   
   SingleChildScrollView(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+    child: Container(
+  color: Colors.black.withOpacity(0.6),
 
-     
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
 
-        SizedBox(height: height*0.4,),
-        IntroView(screenWidth:  screenWidth,),
-        
+       
 
-        SizedBox(height: 300,),
-        Container(
+          SizedBox(height: height*0.4,),
+          IntroView(screenWidth:  screenWidth,),
+          
 
-          height: height*0.2,
-          color: Colors.black.withOpacity(0.4),
-          )
-      ],
+          SizedBox(height: 300,),
+          Container(
+
+            height: height*0.2,
+            color: Colors.black.withOpacity(0.4),
+            )
+        ],
+      ),
     ),
   )
   

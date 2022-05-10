@@ -18,7 +18,7 @@ class TextStyles {
 
 
 
-  static TextStyle? headingTextStyle = heading6?.copyWith(fontWeight: FontWeight.bold,color: Colors.red);
+  static TextStyle? headingTextStyle = heading6?.copyWith(fontWeight: FontWeight.bold,color: Colors.white);
 
   
 

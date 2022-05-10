@@ -1,3 +1,5 @@
+import 'package:farmanullah_portfolio/constants/constants.dart';
+import 'package:farmanullah_portfolio/contact/contact_me.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -10,7 +12,7 @@ import 'home_controller.dart';
 
 class IntroView extends GetView<HomeController> {
   final double screenWidth;
-      IntroView({Key? key ,required this.screenWidth}) : super(key: key);
+      const IntroView({Key? key ,required this.screenWidth}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +36,15 @@ class IntroView extends GetView<HomeController> {
               axis: Axis.vertical,
               axisAlignment: -1,
                child:  const HomeContents()),
-            const SizedBox(height: 20,),
+             _addContacts(),
+            const SizedBox(height: 100,),
+
+
 
             //add home buttons
                    HomeButtons(screenWidth: screenWidth,),
+
+
               ],
             ),
     );
@@ -45,6 +52,65 @@ class IntroView extends GetView<HomeController> {
 
 
   }
+//email and phone number
+Widget _addContacts(
+
+  
+){
+  final emailRow = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+
+          children: [
+            Icon(Icons.email,color:primaryColor,size: 40,),
+        SizedBox(width: 8,),
+
+            Text(myEmail,style: TextStyles.subtitle1?.copyWith( color: Colors.white,)),
+          ],
+        );
+    final mobileNoRow=      Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.call,color: primaryColor,size: 40,),
+        SizedBox(width: 8,),
+
+
+            Text(myPhone,style: TextStyles.subtitle1?.copyWith( color: Colors.white,),),
+          ],
+        );
+  return ResponsiveWidget(
+    
+    
+    smallScreen: Align(
+      alignment: Alignment.center,
+      child: Column(
+        
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+    SizedBox(height: 50,),
+    
+        emailRow,
+          SizedBox(height: 20,),
+    
+        mobileNoRow,
+      ],),
+    ),
+    largeScreen: Container(
+           margin:  EdgeInsets.only(left: screenWidth*0.1),
+
+    child: Row(
+     crossAxisAlignment: CrossAxisAlignment.start,
+           mainAxisAlignment: MainAxisAlignment.start,
+            
+            
+      children: [
+    
+        emailRow,
+        SizedBox(width: 30,),
+     mobileNoRow
+      ],
+    ),
+  ));
+}
 
  
 
@@ -54,7 +120,7 @@ class HomeContents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth=Get.width;
+    final screenWidth=context.width;
 
     return ResponsiveWidget(
 
@@ -85,7 +151,8 @@ class HomeContents extends StatelessWidget {
             ),
           Padding(
             padding: const EdgeInsets.only(top:8.0,bottom: 10),
-            child: Text(designation.toUpperCase(),style: TextStyles.headingTextStyle),
+                     child: Text(designation.toUpperCase(),style: TextStyles.heading6?.copyWith(color: Colors.red),),
+
           ),
             SizedBox(
               width: screenWidth*0.4,
@@ -155,7 +222,6 @@ class HomeButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth=Get.width;
     return ResponsiveWidget(
 
       largeScreen: 
@@ -176,7 +242,10 @@ class HomeButtons extends StatelessWidget {
                        hoverColor: Colors.black,
                        
                        
-                       child: Text(hireMe.capitalizeFirst!,style: const TextStyle(color: Colors.white),),onPressed: (){},)
+                       child: Text(hireMe.capitalizeFirst!,style: const TextStyle(color: Colors.white),),onPressed: (){
+
+                         Get.to(()=>ContactMeView());
+                       },)
                     ),
         const SizedBox(width: 10,),
 

@@ -53,6 +53,7 @@ dependencies:
   get_storage: ^2.0.3
   flutter_staggered_animations: ^1.0.0
   advance_pdf_viewer: ^2.0.1
+  native_pdf_view: ^6.0.0+1
 
 dev_dependencies:
   flutter_test:

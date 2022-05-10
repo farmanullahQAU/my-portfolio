@@ -29,7 +29,7 @@ class About extends GetView<AboutViewController> {
         return true;
       },
       child: Scaffold(
-        drawer: AppDrawer(),
+        drawer: const AppDrawer(),
         key: Get.find<MenuController>().aboutScaffoldKey,
         backgroundColor: Colors.black,
         body: Container(
@@ -37,7 +37,7 @@ class About extends GetView<AboutViewController> {
               image: 
               ResponsiveWidget.isSmallScreen(context)?
               null:
-              DecorationImage(
+              const DecorationImage(
                   fit: BoxFit.cover, image:
                   
               
@@ -57,8 +57,8 @@ class About extends GetView<AboutViewController> {
 
               SingleChildScrollView(
                 controller: controller.scrollController,
-                child: Padding(
-                  padding: EdgeInsets.only(top: height * 0.2),
+                child: Container(
+                  margin: EdgeInsets.only(top: height * 0.2),
                   child: SizeTransition(
                        sizeFactor: controller.aboutAnimation,
       axis: Axis.horizontal,
@@ -73,15 +73,19 @@ class About extends GetView<AboutViewController> {
                   
                         Container(width:double.infinity,height: 50,color: Colors.black.withOpacity(0.2),),
                         Container(
-                            color: Colors.black.withOpacity(0.5),
+                            // color: Colors.black.withOpacity(0.5),
                             child: _addAboutContents(screenWidth, context)),
 
 
                             Container(
-                              margin: EdgeInsets.symmetric(vertical: 400),
+                              width: double.infinity,
+                              height: 600,
+                             color: Colors.black.withOpacity(0.5),
+
+                              //  padding: const EdgeInsets.only(top: 100),
                               
-                              child: FittedBox(child: Text("MY SKILLS",style: TextStyles.heading1?.copyWith(color: Colors.white),))),
-                       SkillsView(),
+                              child: Center(child: FittedBox(child: Text("MY SKILLS",style: TextStyles.heading1?.copyWith(color: Colors.red),)))),
+                       const SkillsView(),
                
                       ],
                     ),
@@ -102,6 +106,9 @@ class About extends GetView<AboutViewController> {
   
     var sizedBoxColumn2 = const SizedBox(
       height: 50,
+    );
+      final tenPxheightSizedBox = const  SizedBox(
+      height: 10,
     );
     final educationDetails = RichText(
     textAlign: !ResponsiveWidget.isSmallScreen(context)?TextAlign.justify:TextAlign.center,
@@ -164,9 +171,21 @@ class About extends GetView<AboutViewController> {
       style: TextStyles.subtitle1,
     );
     var fypTitle = Text(fyp.toUpperCase(), style: TextStyles.headingTextStyle);
+      var fypdescription = Text(
+      fypDescription,
+      textAlign: 
+      
+     !ResponsiveWidget.isSmallScreen(context)?
+
+      
+      TextAlign.justify:TextAlign.center,
+      style: TextStyles.subtitle1,
+    );
 
     var aboutWelcomeText = Text(welcomeAbout,style: TextStyles.heading4,textAlign:TextAlign.center,);
+    var icon = ResponsiveWidget.isSmallScreen(context)? const Icon(Icons.circle,color: Colors.red,):const Icon(Icons.square,color: Colors.red,);
     return ResponsiveWidget(
+      //desktop or tablet view
       largeScreen: Container(
            margin: EdgeInsets.only(
                   left: screenWidth * 0.1, top: 0, bottom: 0, right: 0),
@@ -196,16 +215,43 @@ class About extends GetView<AboutViewController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        title,
+                        Row(
+                          children: [
+                            icon,
+                            const SizedBox(width: 5,),
+                            title,
+                          ],
+                        ),
                         description,
                         sizedBoxColumn2,
-                        educationTitle,
+                        Row(
+                          children: [
+                         icon,
+                            const SizedBox(width: 5,),
+
+                            educationTitle,
+                          ],
+                        ),
                         educationDetails,
                         sizedBoxColumn2,
-                        fypTitle,
-                        description,
+                        Row(
+                          children: [
+                             icon,
+                            const SizedBox(width: 5,),
+
+                            fypTitle,
+                          ],
+                        ),
+                        fypdescription,
                         sizedBoxColumn2,
-                        titleExperience,
+                        Row(
+                          children: [
+                            icon,
+                            const SizedBox(width: 5,),
+                            
+                            titleExperience,
+                          ],
+                        ),
                         detailsExperience,
                         // _addSocilaIcon(50),
                       ],
@@ -218,6 +264,10 @@ class About extends GetView<AboutViewController> {
                 )
               ],
             ),
+            sizedBoxColumn2,
+            _addSocilaIcon(30),
+            sizedBoxColumn2,
+
           ],
         ),
       ),
@@ -245,25 +295,51 @@ class About extends GetView<AboutViewController> {
                       _addImageAvatar(context, screenWidth),
                       sizedBoxColumn2,
                       aboutWelcomeText,
-                   SizedBox(height: 100,),
+                   const SizedBox(height: 100,),
                       
                   
-                      title,
+                      Column(
+                        children: [
+                          icon,
+                          title,
+                          tenPxheightSizedBox,
+                        ],
+                      ),
+                  
                       description,
-                   SizedBox(height: 100,),
+                   const SizedBox(height: 100,),
 
-                      educationTitle,
+                      Column(
+                        children: [
+                          icon,
+
+                          educationTitle,
+                          tenPxheightSizedBox
+                        ],
+                      ),
                       educationDetails,
-                   SizedBox(height: 100,),
+                   const SizedBox(height: 100,),
 
                       sizedBoxColumn2,
-                      fypTitle,
+                      Column(
+                        children: [
+                          icon,
+                          fypTitle,
+                          tenPxheightSizedBox
+                        ],
+                      ),
                       description,
-                   SizedBox(height: 100,),
+                   const SizedBox(height: 100,),
 
-                      titleExperience,
+                      Column(
+                        children: [
+                          icon,
+                          titleExperience,
+                          tenPxheightSizedBox
+                        ],
+                      ),
                       detailsExperience,
-                   SizedBox(height: 100,),
+                   const SizedBox(height: 100,),
 
                       _addSocilaIcon(50),
                     ],
@@ -381,7 +457,7 @@ class About extends GetView<AboutViewController> {
                 !ResponsiveWidget.isSmallScreen(context)
             ? Container(
                 color: Colors.black,
-                key: Key("coloredAppBar"),
+                key: const Key("coloredAppBar"),
                 child: Header(
                   onTap: () {
                     //open and close drawer for mobile view
@@ -390,7 +466,7 @@ class About extends GetView<AboutViewController> {
                 ),
               )
             : Header(
-                key: Key("black"),
+                key: const Key("black"),
                 onTap: () {
                   Get.find<MenuController>().controlAboutMenu();
                 },

@@ -25,7 +25,7 @@ List<Skill> get skills=>_skills;
 
 _skills=[
 Skill(
-  subSkills: ["flutter mobile","flutter web","flutter desktop","flutter responsive and adaptive Ui","custom animations"],
+  subSkills: ["flutter mobile","flutter web","flutter desktop","flutter responsive ui","custom animations"],
   
   skillName: "Flutter", description: "Flutter is SDK for cross plateform app development"),
 Skill(

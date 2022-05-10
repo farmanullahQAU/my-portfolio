@@ -1,14 +1,7 @@
-import 'dart:async';
 
-import 'package:farmanullah_portfolio/views/about/about_view.dart';
-import 'package:farmanullah_portfolio/views/intro_view.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
-import '../menue_controller.dart';
-import '../route_names.dart';
-import 'home_view.dart';
 
 class HomeController extends   GetxController with GetTickerProviderStateMixin {
 

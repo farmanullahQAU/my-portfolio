@@ -112,6 +112,12 @@ class MenuController extends GetxService {
         item: const FaIcon(FontAwesomeIcons.linkedin),
         index: 4,
       ),
+       NavBar(
+         onTap: (){},
+        routeName: RouteNames.HOME,
+        item: const FaIcon(FontAwesomeIcons.github),
+        index: 5,
+      ),
     ].obs;
   }
 

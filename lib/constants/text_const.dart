@@ -3,13 +3,14 @@ const String myName="FARMAN ULLAH";
 const String aboutMe="about me";
 const String fyp="final year project";
 const String fypName="expense manager";
-const String fypDescription="fyp description";
 const String experienceTitle="industry experience";
 const String companyName="Esols Technologies";
 
 const String experienceDetails="I have 1 year experience of senier flutter developer at";
 
 const String resume="resume";
+const String myEmail="farmanullahk437@gmail.com";
+const String myPhone="+923049575366";
 
 
 const String hireMe="hire me";
@@ -24,6 +25,7 @@ const String homeDesctiption="I am a senior flutter developer with 1+ year of ex
 
 //about page welcome text
 const String welcomeAbout ="Welcome to my mini portfolio website!";
+const String fypDescription ="Cross-plateform android and iOS app to manage expenses of running projects of a construction company.";
 
 
 const String aboutDescription="My name is Farman Ullah. I am a flutter developer and currently staying in Islamabad pakistan. As a computer science graduate, I am a person who has high passion in development, desing and programming. i love my work and enjoy each new project as i got it. feel free to have a look at my portfolio and don't hesitate if you think i can benifit your company. thanks";

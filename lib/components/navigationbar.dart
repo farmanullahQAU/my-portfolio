@@ -81,7 +81,7 @@ duration: Duration(milliseconds: 400),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
-      
+      //add red dot for selected 
       
                                         Get.find<MenuController>().currentIdex==index?
       
