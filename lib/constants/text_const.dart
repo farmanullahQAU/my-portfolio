@@ -26,6 +26,9 @@ const String homeDesctiption="I am a senior flutter developer with 1+ year of ex
 //about page welcome text
 const String welcomeAbout ="Welcome to my mini portfolio website!";
 const String fypDescription ="Cross-plateform android and iOS app to manage expenses of running projects of a construction company.";
+const String cvUrl="https://drive.google.com/file/d/1v5o_913giUE5Yks7ZhRfGVAfmpTir1g-/view?usp=sharing";
+const String linkedInProfile="https://www.linkedin.com/in/farman4";
+
 
 
 const String aboutDescription="My name is Farman Ullah. I am a flutter developer and currently staying in Islamabad pakistan. As a computer science graduate, I am a person who has high passion in development, desing and programming. i love my work and enjoy each new project as i got it. feel free to have a look at my portfolio and don't hesitate if you think i can benifit your company. thanks";

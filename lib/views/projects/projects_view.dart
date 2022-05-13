@@ -18,7 +18,10 @@ class ProjectView extends GetView<ProjectsViewController> {
     final double screenWidth=context.width;
     return     Scaffold(
 
-      drawer: const AppDrawer(),
+      drawer: 
+      
+      ResponsiveWidget.isSmallScreen(context)?
+      const AppDrawer():null,
         key: Get.find<MenuController>().projectsViewKey,
         backgroundColor: Colors.black,
       body: Stack(

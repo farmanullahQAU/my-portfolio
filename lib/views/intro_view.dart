@@ -1,8 +1,12 @@
 import 'package:farmanullah_portfolio/constants/constants.dart';
 import 'package:farmanullah_portfolio/contact/contact_me.dart';
+import 'package:farmanullah_portfolio/contact/contact_me_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:pdf_render/pdf_render.dart';
+import 'package:pdf_render/pdf_render_widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../components/material_button.dart';
 import '../constants/text_const.dart';
@@ -244,7 +248,7 @@ class HomeButtons extends StatelessWidget {
                        
                        child: Text(hireMe.capitalizeFirst!,style: const TextStyle(color: Colors.white),),onPressed: (){
 
-                         Get.to(()=>ContactMeView());
+                         Get.to(()=>ContactMeView(),binding: BindingsBuilder.put(()=>ContactUsController()));
                        },)
                     ),
         const SizedBox(width: 10,),
@@ -275,7 +279,16 @@ class HomeButtons extends StatelessWidget {
                          
                          
                            ]),
-                         ),onPressed: (){},)
+                         ),onPressed: ()async{
+
+
+ if (await canLaunch(cvUrl)) {
+                await launch(cvUrl, forceWebView: true);
+              } else {
+                Get.defaultDialog(title: "Error",middleText: "There is an issue with the file ");
+                throw 'Could not launch';
+              }
+                         },)
                        ),
                  ],
                ),
@@ -326,13 +339,41 @@ class HomeButtons extends StatelessWidget {
                 
                 
                   ]),
-                ),onPressed: (){},)
+                ),onPressed: ()  {
+                  print("sllsslslslslsl");
+
+
+                },)
               ),
         ],
       ),
     );
   }
 }
+
+class OpenResume extends StatelessWidget {
+
+
+
+  @override
+  Widget build(BuildContext context) {
+   return PdfViewer(doc: PdfDocument.openAsset("farid_cv.pdf"));
+      // return  PdfDocumentLoader(
+      //       documentBuilder: (context, pdfDocument, pageCount) => LayoutBuilder(
+      //         builder: (context, constraints) => ListView.builder(
+      //           itemCount: pageCount,
+      //           itemBuilder: (context, index) => Container(
+      //             color: Colors.black12,
+      //             child: PdfPageView(
+      //               pdfDocument: pdfDocument,
+      //               pageNumber: index + 1,
+      //             )
+      //           )
+      //         )
+      //       ), doc: PdfDocument.openAsset('images/aa.pdf'));
+  }
+}
+
  
  
  

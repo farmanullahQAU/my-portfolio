@@ -1,12 +1,13 @@
 
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pdf_render/pdf_render_widgets.dart';
 
 
 class HomeController extends   GetxController with GetTickerProviderStateMixin {
 
-
-
+late final PdfViewerController pdfController;
 
   AnimationController get animationController=>_controller;
  late final AnimationController _controller = AnimationController(
@@ -20,8 +21,13 @@ class HomeController extends   GetxController with GetTickerProviderStateMixin {
   );
 
   @override
-  void onInit() {
+ onInit() async {
+pdfController= PdfViewerController(
+  );
      initHomeContentsAnimation();
+     
+
+
   }
 
   void initHomeContentsAnimation() {
@@ -45,6 +51,25 @@ class HomeController extends   GetxController with GetTickerProviderStateMixin {
   //   aboutAnimationController.forward();
   // }
     RxBool isHover=false.obs;
+/*
+  Future<Uint8List> getCvUrl() async {
+
+    DocumentSnapshot<Map<String, dynamic>> documentSnapshot=  await FirebaseFirestore.instance.collection("profile").doc("cv").get();
+ 
+ 
+ return await InternetFile.get(documentSnapshot.data()!['cvUrl'],
+ 
+     headers: {
+  "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+  "Access-Control-Allow-Headers": "Origin,Content-Type,X-Requested-With",
+  "Access-Control-Allow-Methods": "GET"
+     }
+ 
+ 
+ );
+ 
+  }
+  */
 
 
 

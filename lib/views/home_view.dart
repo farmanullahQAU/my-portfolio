@@ -2,15 +2,17 @@ import 'package:farmanullah_portfolio/components/app_drawer.dart';
 import 'package:farmanullah_portfolio/components/navigationbar.dart';
 import 'package:farmanullah_portfolio/menue_controller.dart';
 import 'package:farmanullah_portfolio/views/intro_view.dart';
-import 'package:farmanullah_portfolio/views/skills/skills_controller.dart';
-import 'package:farmanullah_portfolio/views/skills/skills_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../responsive/responsive_wrapper.dart';
 import 'home_controller.dart';
 
+
+
+
 class HomeView extends GetView<HomeController> {
+
 
 
 
@@ -51,10 +53,10 @@ Container(
 
         ResponsiveWidget.isSmallScreen(context)?
         
-        AssetImage('assets/pic.jpeg',):
+        AssetImage('pic.jpeg',):
         
         
-        AssetImage('assets/pic2.jpg',))
+        AssetImage('pic2.jpg',))
         ),
   child:   Stack(
     alignment: Alignment.topLeft,
@@ -103,6 +105,10 @@ Container(
     ],
   ),
 )
+
+
+
+
 
      /*  SingleChildScrollView(
 
@@ -214,6 +220,8 @@ Container(
  
  
   }
+
+
 
 //   List<Widget> slivers(double screenWidth) => [
 //         SliverToBoxAdapter(

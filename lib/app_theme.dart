@@ -7,6 +7,12 @@ class AppTheme {
 
 
   static final blueTheme = ThemeData(
+
+    inputDecorationTheme: InputDecorationTheme(
+      
+      errorStyle: TextStyle(color: Colors.grey),
+      
+      prefixIconColor:Colors.grey),
 textTheme: GoogleFonts.openSansTextTheme(
 
   TextTheme(
@@ -19,6 +25,8 @@ textTheme: GoogleFonts.openSansTextTheme(
 //   TextTheme(headline4: TextStyle(color: Colors.white))
 // ),
     iconTheme: const IconThemeData(color: Colors.black54),
+
+    
    
     primaryColor: blueDarkPrimaryColor,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
@@ -28,6 +36,7 @@ textTheme: GoogleFonts.openSansTextTheme(
         const BottomNavigationBarThemeData(selectedItemColor: blueDarkPrimaryColor),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
+
       textStyle: const TextStyle(color: Colors.white),
       padding: const EdgeInsets.symmetric(vertical: 15),
       shape: RoundedRectangleBorder(

@@ -52,7 +52,7 @@ class TxtField extends StatelessWidget {
 
         //   labelText: lblTxt,
 
-        hintStyle: TextStyle(color: Colors.grey.shade400),
+        hintStyle: TextStyle(color: Colors.grey),
         //  labelStyle: TextStyle(color: Colors.grey.shade500),
         //   errorText: 'Error message',
         focusedBorder: OutlineInputBorder(
@@ -89,7 +89,8 @@ class TxtField extends StatelessWidget {
         prefixIcon: prefixIcon,
         hintText: hintTxt,
 
-        //    fillColor: AppConstants.cardBgColor,
+          fillColor: fillColor,
+          
       ),
     );
   }

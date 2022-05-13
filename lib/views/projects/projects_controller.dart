@@ -34,12 +34,12 @@ Project(
   projectType: ProjectTypes.company,
   name: "Expense manager",
   
-  assetPath: "assets/verbit.jpg",description: fypDescription),
+  assetPath: "images/verbit.jpg",description: fypDescription),
 Project(
   name: "Verbit",
   projectType: ProjectTypes.fiverr,
   
-  assetPath: "assets/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Unde"),
+  assetPath: "images/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Unde"),
 
 
 
@@ -47,28 +47,28 @@ Project(
   name: "Self",
   projectType: ProjectTypes.company,
   
-  assetPath: "assets/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
+  assetPath: "images/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
 
 
 Project(
   name: "Freeco",
   projectType: ProjectTypes.company,
   
-  assetPath: "assets/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
+  assetPath: "images/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
 
 Project(
   name: "Parametric",
   
   projectType: ProjectTypes.company,
   
-  assetPath: "assets/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
+  assetPath: "images/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
 
 Project(
   name: "Lisu",
   
   projectType: ProjectTypes.company,
   
-  assetPath: "assets/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
+  assetPath: "images/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
 
 
 

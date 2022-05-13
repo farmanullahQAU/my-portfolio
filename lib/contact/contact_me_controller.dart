@@ -5,6 +5,12 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class ContactUsController extends GetxController {
+
+
+  final scrollController=ScrollController();
+
+
+
   var _isSending = false.obs;
   bool get isSending => _isSending.value;
   set isSending(bool isSending) => this._isSending.value = isSending;
@@ -14,7 +20,6 @@ class ContactUsController extends GetxController {
   GlobalKey<FormState> get key => _key;
   late TextEditingController nameController;
   late TextEditingController eamilController;
-  late TextEditingController phoneController;
   late TextEditingController subjectController;
   late TextEditingController messageController;
 
@@ -22,24 +27,24 @@ class ContactUsController extends GetxController {
   void onInit() {
     nameController = TextEditingController();
     eamilController = TextEditingController();
-    phoneController = TextEditingController();
     subjectController = TextEditingController();
     messageController = TextEditingController();
+       
 
     super.onInit();
   }
 
   Future sendEmail({
-    required String name,
-    required String phone,
-    required String email,
-    required String subject,
-    required String message,
+    required String userName,
+    required String userEmail,
+    required String userSubject,
+
+    required String userMessage,
   }) async {
     isSending = true;
-    final serviceId = 'service_74riaze';
-    final templateId = 'template_61lpg5u';
-    final userId = 'user_UzbgBz5lpaaRaoi7mEpyQ';
+    final serviceId = 'service_o3do969';
+    final templateId = 'template_yjn20ey';
+    final userId = 'HbqE-eqcaROAOkNLU';
 
     final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
 
@@ -53,11 +58,10 @@ class ContactUsController extends GetxController {
             'template_id': templateId,
             'user_id': userId,
             'template_params': {
-              'user_name': name,
-              'phone_no': phone,
-              'user_email': email,
-              'user_subject': subject,
-              'user_message': message
+              'user_name': userName,
+              'user_subject': userSubject,
+              'user_email': userEmail,
+              'user_message': userMessage
             }
           },
         ));

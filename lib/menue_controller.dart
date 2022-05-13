@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import 'constants/text_const.dart';
+import 'models/nav_bar.dart';
 import 'route_names.dart';
 
 class MenuController extends GetxService {
@@ -101,13 +104,35 @@ class MenuController extends GetxService {
         index: 2,
       ),
       NavBar(
-        routeName: RouteNames.HOME,
+        onTap: () async {
+
+
+
+            await savCurrentIndex(RouteNames.CONTACT, 3);
+
+          Get.offNamed(RouteNames.CONTACT);
+          currentIdex = 3;
+        },
         item: const Text(
           "CONTACT",
         ),
-        index: 3,
+        index: 3, routeName: '',
       ),
       NavBar(
+
+        onTap: ()async{
+          //open linkedin profile
+
+           if (await canLaunch(linkedInProfile)) {
+                await launch(linkedInProfile, forceWebView: true);
+              } else {
+                Get.defaultDialog(
+                  
+                  
+                  title: "Error",middleText: "Could not launch");
+                throw 'Could not launch';
+              }
+        },
         routeName: RouteNames.HOME,
         item: const FaIcon(FontAwesomeIcons.linkedin),
         index: 4,
@@ -126,6 +151,7 @@ class MenuController extends GetxService {
   late final GlobalKey<ScaffoldState> _homeScaffoldKey;
   late final GlobalKey<ScaffoldState> _aboutScaffoldKey;
   late final GlobalKey<ScaffoldState> _projectsViewKey;
+  late final GlobalKey<ScaffoldState> _contactScaffoldKey;
 
 
   GlobalKey<ScaffoldState> get homeScaffoldKey => _homeScaffoldKey;
@@ -133,6 +159,8 @@ class MenuController extends GetxService {
 
 
   GlobalKey<ScaffoldState> get aboutScaffoldKey => _aboutScaffoldKey;
+  GlobalKey<ScaffoldState> get contactScaffoldKey => _contactScaffoldKey;
+
 
   void controlHomeMenu() {
     if (!homeScaffoldKey.currentState!.isDrawerOpen) {
@@ -145,6 +173,12 @@ class MenuController extends GetxService {
       aboutScaffoldKey.currentState!.openDrawer();
     }
   }
+  void controlContactMenu() {
+    if (!contactScaffoldKey.currentState!.isDrawerOpen) {
+      contactScaffoldKey.currentState!.openDrawer();
+    }
+  }
+  
     void controlProjectsMenu() {
     if (!projectsViewKey.currentState!.isDrawerOpen) {
       projectsViewKey.currentState!.openDrawer();
@@ -166,15 +200,10 @@ class MenuController extends GetxService {
     _aboutScaffoldKey=GlobalKey<ScaffoldState>();
     _homeScaffoldKey=GlobalKey<ScaffoldState>();
     _projectsViewKey=GlobalKey<ScaffoldState>();
+    _contactScaffoldKey=GlobalKey<ScaffoldState>();
+
 
   }
 }
 
-class NavBar {
-  Widget? item;
-  String routeName;
-  int? index;
 
-  VoidCallback? onTap;
-  NavBar({this.item, this.index, required this.routeName, this.onTap});
-}

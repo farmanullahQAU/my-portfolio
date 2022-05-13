@@ -58,7 +58,7 @@ class About extends GetView<AboutViewController> {
               SingleChildScrollView(
                 controller: controller.scrollController,
                 child: Container(
-                  margin: EdgeInsets.only(top: height * 0.2),
+                  margin: EdgeInsets.only(top: height * 0.1+20),
                   child: SizeTransition(
                        sizeFactor: controller.aboutAnimation,
       axis: Axis.horizontal,
