@@ -1,9 +1,9 @@
 [
   {
-      "family": "RobotoBlack",
+      "family": "MaterialIcons",
       "fonts": [
         {
-          "asset": "fonts/Roboto-black.ttf"
+          "asset": "fonts/MaterialIcons-Regular.ttf"
         }
       ]
     }

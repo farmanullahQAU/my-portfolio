@@ -4,10 +4,17 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-class ContactUsController extends GetxController {
+class ContactUsController extends GetxController with GetTickerProviderStateMixin {
 
-
-  final scrollController=ScrollController();
+late final AnimationController _contactAnimationController = AnimationController(
+    value: 0.1,
+    duration: const Duration(milliseconds: 1500),
+    vsync: this,
+  )..repeat(reverse: false);
+  late final Animation<double> contactViewAnimation = CurvedAnimation(
+    parent: _contactAnimationController,
+     curve: Curves.fastOutSlowIn,
+  );
 
 
 
@@ -25,6 +32,7 @@ class ContactUsController extends GetxController {
 
   @override
   void onInit() {
+    initContactViewAnimationController();
     nameController = TextEditingController();
     eamilController = TextEditingController();
     subjectController = TextEditingController();
@@ -68,13 +76,15 @@ class ContactUsController extends GetxController {
 
     this.isSending = false;
   }
-
-    final _visible = 0.0.obs;
-  double get visible => _visible.value;
-
-  getVisibility() async {
-    _visible.value = 0.0;
-    await Future.delayed(const Duration(milliseconds: 200));
-    _visible.value = 1.0;
+    void initContactViewAnimationController() {
+    _contactAnimationController.addStatusListener((AnimationStatus status) {
+      if (status == AnimationStatus.completed) {
+        _contactAnimationController.dispose();
+      } else if (status == AnimationStatus.dismissed) {
+        _contactAnimationController.dispose();
+      }
+    });
+    _contactAnimationController.forward();
   }
+  
 }

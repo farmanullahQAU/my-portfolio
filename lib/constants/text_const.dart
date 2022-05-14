@@ -33,5 +33,7 @@ const String freecoAppDescription="Grocery management app that helps you to gene
 
 const String lisuAppDescription="A dictionary app that help you to learn vocabulary with example and description in English, Burmese and Lisu languages.";
 const String parametricAppDescription="An ecommerce app for a specific organizaion to sell thier products.";
+const String couponProjectDescription="Flutter web app allows users to subscribe and view/redeem coupons.";
 
-const String aboutDescription="My name is Farman Ullah. I am a flutter developer and currently staying in Islamabad pakistan. As a computer science graduate, I am a person who has high passion in development, desing and programming. i love my work and enjoy each new project as i got it. feel free to have a look at my portfolio and don't hesitate if you think i can benifit your company. thanks";
+
+const String aboutDescription="My name is Farman Ullah. I am a flutter developer and currently staying in Islamabad pakistan. As a computer science graduate, I am a person who has high passion in development, desing, programming and learning new technology.I love my work and enjoy each new project as i got it. So feel free to have a look at my portfolio and don't hesitate if you think i can benifit your company. thanks";

@@ -94,13 +94,18 @@ Container(
   ,
   
    //shows drawer for mobile and menu row for tablet and desktop
-  Header(onTap: (){
-  
-    //open and close drawer for mobile view
-      Get.find<MenuController>().controlHomeMenu();
-  
-  
-  },),  
+  Container(
+              height: 90,
+
+    color: Colors.black,
+    child: Header(onTap: (){
+    
+      //open and close drawer for mobile view
+        Get.find<MenuController>().controlHomeMenu();
+    
+    
+    },),
+  ),  
   
     ],
   ),

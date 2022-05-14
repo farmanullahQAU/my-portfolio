@@ -67,6 +67,13 @@ Project(
   projectType: ProjectTypes.fiverr,
   
   assetPath: "verbit.jpg",description: parametricAppDescription),
+  Project(
+  projectCategory: "Coupon",
+  name: "The community coupon",
+  
+  projectType: ProjectTypes.company,
+  
+  assetPath: "verbit.jpg",description: couponProjectDescription),
 
 Project(
   projectCategory: "dictionary",

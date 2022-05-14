@@ -54,7 +54,10 @@ dependencies:
   flutter_staggered_animations: ^1.0.0
   pdf_render: ^1.0.23
   mailto: ^2.0.0
-
+  flutter_native_splash: ^2.1.6
+flutter_native_splash:
+  color: "#0a0a08"
+  image: "assets/splash.png"
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -95,9 +98,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: RobotoBlack
+    - family: MaterialIcons
       fonts:
-        - asset: fonts/Roboto-Black.ttf
+        - asset: fonts/MaterialIcons-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

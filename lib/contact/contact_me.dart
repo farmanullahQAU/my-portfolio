@@ -152,137 +152,140 @@ drawer:
               largeScreen: Center(
                 child: SizedBox(
                   
-                  width: ResponsiveWidget.isLargeScreen(context)?screenWidth*0.6:screenWidth*0.9,
+                  width: ResponsiveWidget.isLargeScreen(context)?screenWidth*0.6:screenWidth*0.98,
                   child: Form(
                     key: Get.find<ContactUsController>().key,
-                    child: Card(
-                      margin: 
-                      
-                      ResponsiveWidget.isSmallScreen(context)?  EdgeInsets.only(top: 60):
-                      
-                      EdgeInsets.only(top: 300),
-                      color:Color.fromARGB(255, 114, 18, 18).withOpacity(0.7),
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            // Padding(
-                            //   padding: const EdgeInsets.only(top:20,bottom: 20),
-                            //   child: AutoSizeText("SEND YOUR MESSAGE",
-                            //       style: TextStyles.subtitle2?.copyWith(color: Colors.black,fontWeight: FontWeight.bold)),
-                            // ),
-                            TxtField(
-                              prefixIcon:Icon(Icons.person),
-                              fillColor: Colors.black,
-                              controller: controller.nameController,
-                              hintTxt: "Name",
-                            ),
-                          sizedBox,
-                            TxtField(
-                              prefixIcon: Icon(Icons.email),
-                              fillColor:Colors.black,
-                              controller: controller.eamilController,
-                              hintTxt: "Email",
-                            ),
+                    child: ScaleTransition(
+                         scale: controller.contactViewAnimation,
+                      child: Card(
+                        margin: 
+                        
+                        ResponsiveWidget.isSmallScreen(context)?  EdgeInsets.only(top: 60):
+                        
+                        EdgeInsets.only(top: 300),
+                        color:Color.fromARGB(255, 114, 18, 18).withOpacity(0.7),
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              // Padding(
+                              //   padding: const EdgeInsets.only(top:20,bottom: 20),
+                              //   child: AutoSizeText("SEND YOUR MESSAGE",
+                              //       style: TextStyles.subtitle2?.copyWith(color: Colors.black,fontWeight: FontWeight.bold)),
+                              // ),
+                              TxtField(
+                                prefixIcon:Icon(Icons.person),
+                                fillColor: Colors.black,
+                                controller: controller.nameController,
+                                hintTxt: "Name",
+                              ),
                             sizedBox,
-                                
-                            TxtField(
-                              prefixIcon: Icon(Icons.subject),
-                              fillColor: Colors.black,
-                        
-                              controller: controller.subjectController,
-                              hintTxt: "Subject",
-                            ),
+                              TxtField(
+                                prefixIcon: Icon(Icons.email),
+                                fillColor:Colors.black,
+                                controller: controller.eamilController,
+                                hintTxt: "Email",
+                              ),
+                              sizedBox,
+                                  
+                              TxtField(
+                                prefixIcon: Icon(Icons.subject),
+                                fillColor: Colors.black,
+                          
+                                controller: controller.subjectController,
+                                hintTxt: "Subject",
+                              ),
+                              sizedBox,
+                              TxtField(
+                                prefixIcon: Icon(Icons.message_rounded),
+                                fillColor: Colors.black,
+                          
+                                controller: controller.messageController,
+                                  
+                                maxLines: 6,
+                                  
+                                //  prefixIcon: Icon(Icons.lock),
+                                hintTxt: "Message",
+                              ),
+                                  
                             sizedBox,
-                            TxtField(
-                              prefixIcon: Icon(Icons.message_rounded),
-                              fillColor: Colors.black,
-                        
-                              controller: controller.messageController,
-                                
-                              maxLines: 6,
-                                
-                              //  prefixIcon: Icon(Icons.lock),
-                              hintTxt: "Message",
-                            ),
-                                
-                          sizedBox,
-                                
-                            Obx(
-                              () => Get.find<ContactUsController>().isSending == true
-                                  ? CircularProgressIndicator()
-                        
-                        
-                                  :
-                        
-                        
-                             SizedBox(
-                               width: 200,
-                               height: 50,
-                               child:MaterialButtonWidget(
-                                 
-                                 
-                                 borderColor: Colors.white,
-                                 color: Colors.black,
-                                 hoverColor: Colors.black45,
-                                 child:SizedBox(
-                                
-                                 width: 100,
-                                 child: Row(
+                                  
+                              Obx(
+                                () => Get.find<ContactUsController>().isSending == true
+                                    ? CircularProgressIndicator(color:primaryColor,)
+                          
+                          
+                                    :
+                          
+                          
+                               SizedBox(
+                                 width: 200,
+                                 height: 50,
+                                 child:MaterialButtonWidget(
                                    
-                                   mainAxisAlignment: MainAxisAlignment.center,
-                                   children:  [
-                               Text("send".capitalizeFirst!,style: const TextStyle(color: Colors.white),),
-                               const SizedBox(width: 10,),
-                        
-                               
-                               const Icon(Icons.send,color: Colors.white,),
-                                
-                               
-                               
-                               
-                               
-                                 ]),
+                                   
+                                   borderColor: Colors.white,
+                                   color: Colors.black,
+                                   hoverColor: Colors.black45,
+                                   child:SizedBox(
+                                  
+                                   width: 100,
+                                   child: Row(
+                                     
+                                     mainAxisAlignment: MainAxisAlignment.center,
+                                     children:  [
+                                 Text("send".capitalizeFirst!,style: const TextStyle(color: Colors.white),),
+                                 const SizedBox(width: 10,),
+                          
+                                 
+                                 const Icon(Icons.send,color: Colors.white,),
+                                  
+                                 
+                                 
+                                 
+                                 
+                                   ]),
+                                 ),
+                                 
+                                      onPressed: () async {
+                                            final _controller = Get.find<ContactUsController>();
+                                            if (_controller.key.currentState!.validate()) {
+                                              await Get.find<ContactUsController>().sendEmail(
+                                                  userName: _controller.nameController.text,
+                                                  userEmail: _controller.eamilController.text,
+                                                  userSubject: _controller.subjectController.text,
+                                                  userMessage: _controller.messageController.text);
+                                            }
+                                          },
+                                 
+                                 
+                                 )
                                ),
-                               
-                                    onPressed: () async {
-                                          final _controller = Get.find<ContactUsController>();
-                                          if (_controller.key.currentState!.validate()) {
-                                            await Get.find<ContactUsController>().sendEmail(
-                                                userName: _controller.nameController.text,
-                                                userEmail: _controller.eamilController.text,
-                                                userSubject: _controller.subjectController.text,
-                                                userMessage: _controller.messageController.text);
-                                          }
-                                        },
-                               
-                               
-                               )
-                             ),
-                                  // : Container(
-                                  //     height: 50,
-                                  //     width: 200,
-                                  //     child: TextButton(
-                                  //       onPressed: () async {
-                                  //         final _controller = Get.find<ContactUsController>();
-                                  //         if (_controller.key.currentState!.validate()) {
-                                  //           await Get.find<ContactUsController>().sendEmail(
-                                  //               userName: _controller.nameController.text,
-                                  //               userEmail: _controller.eamilController.text,
-                                  //               userSubject: _controller.subjectController.text,
-                                  //               userMessage: _controller.messageController.text);
-                                  //         }
-                                  //       },
-                                  //       child: Text("SEND MESSAGE")
-                                  //     ),
-                                  //   ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                          ],
+                                    // : Container(
+                                    //     height: 50,
+                                    //     width: 200,
+                                    //     child: TextButton(
+                                    //       onPressed: () async {
+                                    //         final _controller = Get.find<ContactUsController>();
+                                    //         if (_controller.key.currentState!.validate()) {
+                                    //           await Get.find<ContactUsController>().sendEmail(
+                                    //               userName: _controller.nameController.text,
+                                    //               userEmail: _controller.eamilController.text,
+                                    //               userSubject: _controller.subjectController.text,
+                                    //               userMessage: _controller.messageController.text);
+                                    //         }
+                                    //       },
+                                    //       child: Text("SEND MESSAGE")
+                                    //     ),
+                                    //   ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

@@ -442,7 +442,7 @@ class About extends GetView<AboutViewController> {
                 !ResponsiveWidget.isSmallScreen(context)
             ? Container(
                 color: Colors.black,
-                key: const Key("coloredAppBar"),
+                key: const Key("colored"),
                 child: Header(
                   onTap: () {
                     //open and close drawer for mobile view
@@ -450,12 +450,16 @@ class About extends GetView<AboutViewController> {
                   },
                 ),
               )
-            : Header(
-                key: const Key("black"),
-                onTap: () {
-                  Get.find<MenuController>().controlAboutMenu();
-                },
-              ),
+            : Container(
+              color: Colors.black,
+              height: 90,
+              child: Header(
+                  key: const Key("sim"),
+                  onTap: () {
+                    Get.find<MenuController>().controlAboutMenu();
+                  },
+                ),
+            ),
       ),
     );
   }
