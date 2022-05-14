@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:farmanullah_portfolio/components/app_drawer.dart';
+import 'package:farmanullah_portfolio/components/image_avatar.dart';
 import 'package:farmanullah_portfolio/components/navigationbar.dart';
 import 'package:farmanullah_portfolio/constants/constants.dart';
 import 'package:farmanullah_portfolio/textstyles.dart';
@@ -265,7 +266,7 @@ class About extends GetView<AboutViewController> {
               ],
             ),
             sizedBoxColumn2,
-            _addSocilaIcon(30),
+            // _addSocilaIcon(30),
             sizedBoxColumn2,
 
           ],
@@ -292,7 +293,7 @@ class About extends GetView<AboutViewController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      _addImageAvatar(context, screenWidth),
+                      const ImageAvatar(),
                       sizedBoxColumn2,
                       aboutWelcomeText,
                    const SizedBox(height: 100,),
@@ -341,7 +342,7 @@ class About extends GetView<AboutViewController> {
                       detailsExperience,
                    const SizedBox(height: 100,),
 
-                      _addSocilaIcon(50),
+                      // _addSocilaIcon(50),
                     ],
                   ),
                 ],
@@ -353,23 +354,7 @@ class About extends GetView<AboutViewController> {
     );
   }
 
-  Widget _addImageAvatar(BuildContext context, double screenWidth )
-{
-   return  CircleAvatar(
-      backgroundColor: Colors.white,
-      radius: ResponsiveWidget.isSmallScreen(context) ? 155 : 205,
-      child: CircleAvatar(
-        backgroundColor: Colors.red,
-        radius: ResponsiveWidget.isSmallScreen(context) ? 150 : 200,
-        backgroundImage: Image.asset(
-          profileImagePath,
 
-          fit: BoxFit.cover,
-        ).image,
-      ),
-    );
-}
-  
 
   Widget _addSocilaIcon(double iconSize) {
     return Row(

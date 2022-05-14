@@ -1,3 +1,4 @@
+import 'package:farmanullah_portfolio/constants/constants.dart';
 import 'package:farmanullah_portfolio/responsive/responsive_wrapper.dart';
 import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:farmanullah_portfolio/views/projects/projects_controller.dart';
@@ -67,8 +68,8 @@ class ProjectView extends GetView<ProjectsViewController> {
             child: ResponsiveWidget(
     
               smallScreen:Container(
-                margin: EdgeInsets.only(top: 60),
-                child: addGrid(0,crossAxisSpacing: 40,mainAxisSpacing: 10,crossAxisCount: 1)) ,
+                margin: EdgeInsets.symmetric(vertical: 60,horizontal: 10),
+                child: addGrid(0,crossAxisSpacing: 0,mainAxisSpacing: 40,crossAxisCount: 1)) ,
               largeScreen:   addGrid(screenWidth*0.1,crossAxisSpacing: 80,mainAxisSpacing: 80,crossAxisCount: 3),
               mediumScreen: Container(
                               margin: EdgeInsets.only(top: 40),
@@ -151,7 +152,7 @@ return  AnimationConfiguration.staggeredGrid(
   child:   ScaleAnimation(
     child: Banner(
       
-      color: Colors.black,
+      color:primaryColor,
     message: controller.projecttype(project.projectType!),
                 location: BannerLocation.topEnd,
       child:   Column(

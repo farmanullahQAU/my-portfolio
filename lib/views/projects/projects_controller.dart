@@ -39,9 +39,9 @@ Project(
 Project(
   projectCategory: "education",
   name: "Verbit",
-  projectType: ProjectTypes.fiverr,
+  projectType: ProjectTypes.company,
   
-  assetPath: "verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Unde"),
+  assetPath: "verbit.jpg",description: verbitProjectDescription),
 
 
 
@@ -50,7 +50,7 @@ Project(
   name: "Self",
   projectType: ProjectTypes.company,
   
-  assetPath: "verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
+  assetPath: "verbit.jpg",  description: selfAppDescriptions),
 
 
 Project(
@@ -58,23 +58,23 @@ Project(
   name: "Freeco",
   projectType: ProjectTypes.company,
   
-  assetPath: "verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
+  assetPath: "verbit.jpg",description: freecoAppDescription),
 
 Project(
   projectCategory: "e-commerce",
   name: "Parametric",
   
-  projectType: ProjectTypes.company,
+  projectType: ProjectTypes.fiverr,
   
-  assetPath: "verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
+  assetPath: "verbit.jpg",description: parametricAppDescription),
 
 Project(
   projectCategory: "dictionary",
-  name: "Lisu",
+  name: "MM dictionary",
   
-  projectType: ProjectTypes.company,
+  projectType: ProjectTypes.fiverr,
   
-  assetPath: "verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
+  assetPath: "verbit.jpg",description: lisuAppDescription),
 
 
 
