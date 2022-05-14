@@ -3,6 +3,7 @@ enum ProjectTypes{
    company, 
    fiverr, 
    personal, 
+   fyp
 }
 const double textFieldBorder = 5.0;
 const primaryColor =

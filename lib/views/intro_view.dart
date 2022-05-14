@@ -1,6 +1,7 @@
 import 'package:farmanullah_portfolio/constants/constants.dart';
 import 'package:farmanullah_portfolio/contact/contact_me.dart';
 import 'package:farmanullah_portfolio/contact/contact_me_controller.dart';
+import 'package:farmanullah_portfolio/menue_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../components/material_button.dart';
 import '../constants/text_const.dart';
 import '../responsive/responsive_wrapper.dart';
+import '../route_names.dart';
 import '../textstyles.dart';
 import 'home_controller.dart';
 
@@ -217,7 +219,7 @@ class HomeContents extends StatelessWidget {
   }
 }
 
-class HomeButtons extends StatelessWidget {
+class HomeButtons extends GetView<HomeController> {
   final double screenWidth;
   const  HomeButtons({
     Key? key,
@@ -248,7 +250,8 @@ class HomeButtons extends StatelessWidget {
                        
                        child: Text(hireMe.capitalizeFirst!,style: const TextStyle(color: Colors.white),),onPressed: (){
 
-                         Get.to(()=>ContactMeView(),binding: BindingsBuilder.put(()=>ContactUsController()));
+controller.navigateToContactView();
+
                        },)
                     ),
         const SizedBox(width: 10,),
@@ -281,14 +284,10 @@ class HomeButtons extends StatelessWidget {
                            ]),
                          ),onPressed: ()async{
 
+                           controller.openResume();
 
- if (await canLaunch(cvUrl)) {
-                await launch(cvUrl, forceWebView: true);
-              } else {
-                Get.defaultDialog(title: "Error",middleText: "There is an issue with the file ");
-                throw 'Could not launch';
-              }
-                         },)
+
+       },)
                        ),
                  ],
                ),
@@ -309,7 +308,16 @@ class HomeButtons extends StatelessWidget {
               hoverColor: Colors.black,
               
               
-              child: Text(hireMe.capitalizeFirst!,style: const TextStyle(color: Colors.white),),onPressed: (){},)
+              child: Text(hireMe.capitalizeFirst!,style: const TextStyle(color: Colors.white),),onPressed: ()async{
+
+
+
+
+controller.navigateToContactView();
+
+          
+
+              },)
            ),
         const SizedBox(height: 20,),
     
@@ -340,7 +348,7 @@ class HomeButtons extends StatelessWidget {
                 
                   ]),
                 ),onPressed: ()  {
-                  print("sllsslslslslsl");
+                controller.openResume();
 
 
                 },)

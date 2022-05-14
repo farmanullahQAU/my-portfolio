@@ -31,44 +31,50 @@ isDown.value=true;
 
 
 Project(
-  projectType: ProjectTypes.company,
+  projectCategory: "management",
+  projectType: ProjectTypes.fyp,
   name: "Expense manager",
   
-  assetPath: "images/verbit.jpg",description: fypDescription),
+  assetPath: "verbit.jpg",description: fypDescription),
 Project(
+  projectCategory: "education",
   name: "Verbit",
   projectType: ProjectTypes.fiverr,
   
-  assetPath: "images/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Unde"),
+  assetPath: "verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Unde"),
 
 
 
 Project(
+  projectCategory: "editing",
   name: "Self",
   projectType: ProjectTypes.company,
   
-  assetPath: "images/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
+  assetPath: "verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
 
 
 Project(
+  projectCategory: "store management",
   name: "Freeco",
   projectType: ProjectTypes.company,
   
-  assetPath: "images/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
+  assetPath: "verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
 
 Project(
+  projectCategory: "e-commerce",
   name: "Parametric",
   
   projectType: ProjectTypes.company,
   
-  assetPath: "images/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
+  assetPath: "verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
 
 Project(
+  projectCategory: "dictionary",
   name: "Lisu",
   
   projectType: ProjectTypes.company,
   
-  assetPath: "images/verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
+  assetPath: "verbit.jpg",description: "Each year workers’ compensation entitlements are indexed in accordance withQueensland Ordinary Time Earnings (QOTE) to ensure the relative value of entitlementsover time.Under section 10A"),
 
 
 
@@ -77,19 +83,10 @@ Project(
   List<Project> get myProjects => _myProjects;
 
 
-  Query<Map<String, dynamic>> fetchProjectQuery() {
-    return FirebaseFirestore.instance.collection("projects");
-  }
 
-  final _visible = 0.0.obs;
-  double get visible => _visible.value;
 
-  getVisibility() async {
-    _visible.value = 0.0;
-    await Future.delayed(const Duration(milliseconds: 200));
-    _visible.value = 1.0;
-  }
 
+ 
   String projecttype(ProjectTypes type){
 
       switch(type) {
@@ -98,6 +95,8 @@ Project(
      
   
         case ProjectTypes.fiverr:return "Fiverr";
+        case ProjectTypes.fyp:return "Fyp";
+
   }
   }
 }

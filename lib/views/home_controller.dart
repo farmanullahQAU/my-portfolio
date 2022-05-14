@@ -3,6 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pdf_render/pdf_render_widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../constants/text_const.dart';
+import '../menue_controller.dart';
+import '../route_names.dart';
 
 
 class HomeController extends   GetxController with GetTickerProviderStateMixin {
@@ -39,6 +44,27 @@ pdfController= PdfViewerController(
       }
     });
     _controller.forward();
+  }
+
+
+
+  navigateToContactView() async {
+
+      await  Get.find<MenuController>().savCurrentIndex(RouteNames.CONTACT, 3);
+
+          Get.offNamed(RouteNames.CONTACT);
+     Get.find<MenuController>().     currentIdex = 3;
+  }
+
+  openResume()async{
+
+     if (await canLaunch(cvUrl)) {
+                await launch(cvUrl, forceWebView: true);
+              } else {
+                Get.defaultDialog(title: "Error",middleText: "There is an issue with the file ");
+                throw 'Could not launch';
+              }
+                  
   }
   // void initAboutContentsAnimation() {
   //   aboutAnimationController.addStatusListener((AnimationStatus status) {

@@ -150,6 +150,7 @@ return  AnimationConfiguration.staggeredGrid(
               columnCount: crossAxisCount,
   child:   ScaleAnimation(
     child: Banner(
+      
       color: Colors.black,
     message: controller.projecttype(project.projectType!),
                 location: BannerLocation.topEnd,
@@ -206,15 +207,18 @@ return  AnimationConfiguration.staggeredGrid(
     
               width: double.infinity,
               
-              height: 300,child: Padding(
+              height: 400,child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
     
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                 
+Align(
+  alignment: Alignment.center,
+  child: Text(project.projectCategory.toString().capitalizeFirst??"".capitalizeFirst!,style: TextStyles.heading5?.copyWith(color: Colors.grey,fontWeight: FontWeight.bold),)),
                   
-                
+                SizedBox(height: 20,),
                     Text(project.name,style: TextStyles.heading5?.copyWith(color: Colors.white)),
                     SizedBox(height: 10,),
                     Expanded(child: Text(project.description!,style: TextStyles.subtitle1?.copyWith(color: Colors.white),textAlign: TextAlign.start,)),

@@ -3,6 +3,8 @@ import 'package:farmanullah_portfolio/constants/constants.dart';
 
 class Project {
   String? assetPath;
+  //e.g education, music etc
+  String? projectCategory;
   String? projectId;
   ProjectTypes? projectType;
 
@@ -18,6 +20,7 @@ class Project {
   Project(
       {this.projectId,
       required this.projectType,
+       this.projectCategory,
       this.assetPath,
       required this.name,
       this.playstoreUrl,
