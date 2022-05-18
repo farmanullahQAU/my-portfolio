@@ -5,6 +5,8 @@ enum ProjectTypes{
    personal, 
    fyp
 }
+const String cvUrl="https://drive.google.com/file/d/1SDdgIUn168NoWhuXh_2EgLW0PPx-orPT/view?usp=sharing";
+
 const double textFieldBorder = 5.0;
 const primaryColor =
 
@@ -16,3 +18,5 @@ const definitionColor = Color(0xFFFFA113);
 
 const defaultPadding = 16.0;
  const socialIconColor=Colors.white;
+
+ const navigationBarColor=Colors.black;

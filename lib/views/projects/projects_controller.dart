@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmanullah_portfolio/assets_path.dart';
 import 'package:farmanullah_portfolio/constants/constants.dart';
 import 'package:farmanullah_portfolio/constants/text_const.dart';
 import 'package:farmanullah_portfolio/models/project_model.dart';
@@ -31,57 +31,83 @@ isDown.value=true;
 
 
 Project(
+  status: true,
   projectCategory: "management",
   projectType: ProjectTypes.fyp,
   name: "Expense manager",
   
-  assetPath: "verbit.jpg",description: fypDescription),
+  assetPath: expenseManagerBannerPath,description: fypDescription),
 Project(
+  status: true,
   projectCategory: "education",
   name: "Verbit",
   projectType: ProjectTypes.company,
   
-  assetPath: "verbit.jpg",description: verbitProjectDescription),
+  assetPath: "assets/verbit.jpg",description: verbitProjectDescription),
 
 
 
 Project(
+  status: true,
   projectCategory: "editing",
   name: "Self",
   projectType: ProjectTypes.company,
   
-  assetPath: "verbit.jpg",  description: selfAppDescriptions),
+  assetPath: selfAppBannerPath,  description: selfAppDescriptions),
+
+
+  Project(
+    status: true,
+  projectCategory: "Property portal",
+  name: "Property chowk",
+  projectType: ProjectTypes.company,
+  
+  assetPath:propertyChowkAppBannerPath,  description: propertyChowkAppDescription),
+
 
 
 Project(
+  status: true,
   projectCategory: "store management",
   name: "Freeco",
   projectType: ProjectTypes.company,
   
-  assetPath: "verbit.jpg",description: freecoAppDescription),
+  assetPath: freecoAppBannerPath,description: freecoAppDescription),
 
 Project(
+  status: false,
   projectCategory: "e-commerce",
   name: "Parametric",
   
   projectType: ProjectTypes.fiverr,
   
-  assetPath: "verbit.jpg",description: parametricAppDescription),
+  assetPath:bannerParametricAppPath,description: parametricAppDescription),
   Project(
+    status: false,
   projectCategory: "Coupon",
   name: "The community coupon",
   
   projectType: ProjectTypes.company,
   
-  assetPath: "verbit.jpg",description: couponProjectDescription),
+  assetPath:couponWebAppBannerPath,description: couponProjectDescription),
+
+   Project(
+    status: false,
+  projectCategory: "News",
+  name: "Ten bro",
+  
+  projectType: ProjectTypes.fiverr,
+  
+  assetPath:tenbroAppBannerPath,description: tenbroAppDescription),
 
 Project(
+  status: true,
   projectCategory: "dictionary",
   name: "MM dictionary",
   
   projectType: ProjectTypes.fiverr,
   
-  assetPath: "verbit.jpg",description: lisuAppDescription),
+  assetPath: lisuDictionaryBannerPath,description: lisuAppDescription),
 
 
 

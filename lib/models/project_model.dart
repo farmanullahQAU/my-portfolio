@@ -2,6 +2,7 @@
 import 'package:farmanullah_portfolio/constants/constants.dart';
 
 class Project {
+  late bool status;
   String? assetPath;
   //e.g education, music etc
   String? projectCategory;
@@ -18,7 +19,9 @@ class Project {
   List<String>? languages;
 
   Project(
+    
       {this.projectId,
+      required this.status,
       required this.projectType,
        this.projectCategory,
       this.assetPath,
@@ -34,6 +37,7 @@ class Project {
     projectId = id;
     name=json['name'];
     projectType:json["projectType"];
+    status=json['status'];
     playstoreUrl = json["playstore_url"];
     appStoreUrl = json["appstore_url"];
 

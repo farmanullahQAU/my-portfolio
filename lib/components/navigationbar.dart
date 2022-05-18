@@ -4,16 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 
+import '../constants/constants.dart';
 import '../menue_controller.dart';
+import '../textstyles.dart';
 
 class Header extends GetView<HomeController> {
+//title only for mobile view
+  final String title;
 //to controll menu only for mobile view
   final VoidCallback? onTap;
-  const Header({Key? key,this.onTap}) : super(key: key);
+  const Header({Key? key,this.onTap,required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth=context.width;
     return  
+
+
     AnimatedSwitcher(
     
 duration: Duration(milliseconds: 400),
@@ -24,46 +31,52 @@ duration: Duration(milliseconds: 400),
                                        scale: animation,child: child,),
 
       child: ResponsiveWidget.isSmallScreen(context)?
+
+      //drawer button
       
         Container(
+          color: Colors.black,
 
-          key: Key("drawer "),
-    //for mobile show menu button
-        child:Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: SizedBox(
-              height: 40,
-              width: 45,
-              child: TextButton(
-            
-                style: ButtonStyle(
-            
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-            
-                  
-                  borderRadius: BorderRadius.circular(10.0),
-                  side: BorderSide(color: Colors.red)
-                )
-              )
-            ),
-                onPressed:onTap,
-                child: Icon(Icons.menu,color: Colors.white,)),
-            )),
-        ),
-    
-          //for large screen show row 
-        
-      ):
-       Container(
-         key: Key("navigation bar"),
-          margin: EdgeInsets.only(top: 40),
-    //width fo nav bar
+
           height: 60,
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 40,
+                  width: 45,
+                  child: TextButton(
+                
+                    style: ButtonStyle(
+                backgroundColor:MaterialStateProperty.all<Color> (Colors.black),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                
+                      
+                      borderRadius: BorderRadius.circular(10.0),
+                      side: BorderSide(color: Colors.red)
+                    )
+                  )
+                ),
+                    onPressed:onTap,
+                    child: Icon(Icons.menu,color: Colors.white,)),
+                ),
+          Padding(padding: EdgeInsets.only(left: screenWidth*0.3), child: Text(title.toUpperCase(),style: TextStyles.subtitle1,),)
+        
+              ],
+            ),
+          ),
+        ):
+       Container(
+         color: navigationBarColor,
+         key: Key("navigation bar"),
+    //width fo nav bar
+          height: 100,
           child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children:
       
@@ -78,24 +91,29 @@ duration: Duration(milliseconds: 400),
       
       
                               Obx(()=>
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  Stack(
+                                    alignment: Alignment.center,
                                     children: [
       //add red dot for selected 
       
-                                        Get.find<MenuController>().currentIdex==index?
+                                     
+                                  
       
-                                      Container(
-                                          decoration: const BoxDecoration(
+                                      Get.find<MenuController>().currentIdex==index?
       
-                                              color: Colors.red,
+                                      Padding(
+                                        padding: const EdgeInsets.only(bottom:40.0),
+                                        child: Container(
+                                          
+                                            decoration: const BoxDecoration(
       
-                                              shape: BoxShape.circle),
+                                                color: Colors.red,
       
-                                          width: 8,height: 8):Container(),
-                                      const SizedBox(height: 8,),
+                                                shape: BoxShape.circle),
       
-                                      TextButton(
+                                            width: 8,height: 8),
+                                      ):Container(),
+                                         TextButton(
       
       
                                         style: ButtonStyle(
@@ -113,7 +131,7 @@ duration: Duration(milliseconds: 400),
                                                 if (states.contains(MaterialState.pressed)) {
                                                   return Colors.blue;
                                                 }
-                                                return Colors.white; // null throus error in flutter 2.2+.
+                                                return Colors.white; 
                                               }),
                                         ),
                                         onPressed: e.onTap,

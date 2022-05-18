@@ -1,30 +1,4 @@
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
 
-// class ResponsiveWidget extends StatelessWidget {
-//   final Widget? desktopScreen;
-//   final Widget? tabletScreen;
-//   final Widget? mobileScreen;
-
-//   final double screenWidth;
-
-//   const ResponsiveWidget(
-//       {Key? key,  this.desktopScreen, this.tabletScreen,  this.mobileScreen,required this.screenWidth})
-//       : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-
-//     if (screenWidth > 950) {
-//       return desktopScreen ?? tabletScreen ?? mobileScreen!;
-//     }
-//     if (screenWidth > 600) {
-//       return tabletScreen ?? mobileScreen ?? desktopScreen!;
-//     }
-
-//     return mobileScreen ?? tabletScreen ?? desktopScreen!;
-//   }
-// }
 
 
 

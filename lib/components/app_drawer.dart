@@ -1,5 +1,7 @@
 import 'package:farmanullah_portfolio/constants/constants.dart';
+import 'package:farmanullah_portfolio/constants/text_const.dart';
 import 'package:farmanullah_portfolio/menue_controller.dart';
+import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,18 +11,22 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-  // Add a ListView to the drawer. This ensures the user can scroll
-  // through the options in the drawer if there isn't enough vertical
-  // space to fit everything.
+  
   child: ListView(
-    // Important: Remove any padding from the ListView.
     padding: EdgeInsets.zero,
     children: [
-      const DrawerHeader(
+       DrawerHeader(
+         margin: EdgeInsets.zero,
         decoration: BoxDecoration(
           color:primaryColor,
         ),
-        child: Text('Drawer Header'),
+        child: Column(
+          children: [
+            Text(myName,style: TextStyles.subtitle1,),
+            SizedBox(height: 10,),
+            Text(designation,style: TextStyles.body1?.copyWith(color: Colors.white,fontStyle:FontStyle.italic ),)
+          ],
+        ),
       ),
       ..._addMenuButtons()
     ],

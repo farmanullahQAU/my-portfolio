@@ -38,7 +38,7 @@ Skill(
   skillName: "Firebase", description: "Firebase is  is a....."),
 Skill(
   
-  subSkills: ["qraphQL","Rest","stripe/square","google map","agora etc.",],
+  subSkills: ["GraphQL","Rest","stripe/square","google map","agora etc.",],
   
   skillName: "api integration", description: "Firebase is  is a....."),
 

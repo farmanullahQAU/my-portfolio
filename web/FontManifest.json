@@ -3,7 +3,7 @@
       "family": "MaterialIcons",
       "fonts": [
         {
-          "asset": "fonts/MaterialIcons-Regular.ttf"
+          "asset": "assets/fonts/MaterialIcons-Regular.ttf"
         }
       ]
     }

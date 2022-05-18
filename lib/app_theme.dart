@@ -18,6 +18,7 @@ textTheme: GoogleFonts.openSansTextTheme(
   TextTheme(
     
     subtitle1: TextStyle(color: Colors.white),
+    headline3: TextStyle(color: Colors.white),
     headline4: TextStyle(color: Colors.white))
 ),
 // textTheme: GoogleFonts.montserratTextTheme(

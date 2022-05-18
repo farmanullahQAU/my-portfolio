@@ -29,7 +29,7 @@ isScrollDown.value=true;
 
   late final AnimationController _aboutAnimationController = AnimationController(
     value: 0.1,
-    duration: const Duration(milliseconds: 1500),
+    duration: const Duration(milliseconds: 2000),
     vsync: this,
   )..repeat(reverse: false);
   late final Animation<double> aboutAnimation = CurvedAnimation(

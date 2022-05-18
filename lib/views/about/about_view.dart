@@ -30,78 +30,93 @@ class About extends GetView<AboutViewController> {
         return true;
       },
       child: Scaffold(
+      
         drawer: const AppDrawer(),
         key: Get.find<MenuController>().aboutScaffoldKey,
         backgroundColor: Colors.black,
         body: Container(
           decoration:  BoxDecoration(
+
+            
               image: 
               ResponsiveWidget.isSmallScreen(context)?
               null:
-              const DecorationImage(
+               DecorationImage(
+                
                   fit: BoxFit.cover, image:
                   
               
                   
                    AssetImage(backgroundImagePath))),
-          child: Stack(
-            alignment: Alignment.topLeft,
-            children: [
-              /*
+          child: Container(
+  color: Colors.black.withOpacity(0.6),
 
+            child: Stack(
+              alignment: Alignment.topLeft,
+              children: [
+       
 
-           ScaleTransition(
-
-                    scale: controller.aboutAnimation,
-             S
-              */  
-
-              SingleChildScrollView(
-                controller: controller.scrollController,
-                child: Container(
-                  margin: EdgeInsets.only(top: height * 0.1+20),
-                  child: SizeTransition(
-                       sizeFactor: controller.aboutAnimation,
+                SingleChildScrollView(
+                  controller: controller.scrollController,
+                  child: Container(
+                    
+                    margin: EdgeInsets.only(top: height * 0.1+20),
+                    child: SizeTransition(
+                         sizeFactor: controller.aboutAnimation,
       axis: Axis.horizontal,
       axisAlignment: -1.0,
-                    child: 
+                      child: 
+                      
+                      
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
                     
                     
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 50),
+                              // color: Colors.black.withOpacity(0.5),
+                              child: _addAboutContents(screenWidth, context)),
+
+
+                              Container(
+  color: Colors.black.withOpacity(0.5),
+
+                                width: double.infinity,
+                                height: 600,
+                             
+
+                                //  padding: const EdgeInsets.only(top: 100),
+                                
+                                child: Center(child: FittedBox(child: Text("MY SKILLS",
+                                
+                                
+                                
+                                style: 
+                                
+                                ResponsiveWidget.isLargeScreen(context)?
+                                
+                                TextStyles.heading2?.copyWith(color: Colors.white):TextStyles.heading3)))),
+                         const SkillsView(),
                   
-                  
-                        Container(width:double.infinity,height: 50,color: Colors.black.withOpacity(0.2),),
-                        Container(
-                            // color: Colors.black.withOpacity(0.5),
-                            child: _addAboutContents(screenWidth, context)),
-
-
-                            Container(
-                              width: double.infinity,
-                              height: 600,
-                             color: Colors.black.withOpacity(0.5),
-
-                              //  padding: const EdgeInsets.only(top: 100),
-                              
-                              child: Center(child: FittedBox(child: Text("MY SKILLS",style: TextStyles.heading1?.copyWith(color: Colors.red),)))),
-                       const SkillsView(),
-               
-                      ],
+                 
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
 
-              //shows drawer for mobile and menu row for tablet and desktop
-              addHeader(context)
-            ],
+                //shows drawer for mobile and menu row for tablet and desktop
+                addHeader(context)
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+
+
 
   Widget _addAboutContents(double screenWidth, BuildContext context) {
   
@@ -200,18 +215,11 @@ class About extends GetView<AboutViewController> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Flexible(
-                //   flex: 1,
-                //   child: AnimatedSize(
-                //       curve: Curves.easeIn,
-                //       duration: const Duration(seconds: 1),
-                //       child: _addImageAvatar(context,screenWidth)),
-                // ),
+            
 
                 Flexible(
                   flex: 3,
                   child: Container(
-                    // margin: EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -285,10 +293,7 @@ class About extends GetView<AboutViewController> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // AnimatedSize(
-                  //     curve: Curves.easeIn,
-                  //     duration: const Duration(seconds: 1),
-                  //     child: _addImageAvatar(context, screenWidth)),
+              
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -401,67 +406,22 @@ class About extends GetView<AboutViewController> {
     );
   }
 
-//   _addEducationContents(BuildContext context,double screenWidth) {
 
-// final educationDetails=RichText(
-//   text: TextSpan(
-//     text: eductionDetails,
-//      style: TextStyles.subtitle1?.copyWith(color: Colors.white),
-//     children:  <TextSpan>[
-//       TextSpan(text: "from ", style: TextStyles.subtitle1?.copyWith(color: Colors.white)),
-
-//       TextSpan(text: university, style: TextStyles.subtitle1?.copyWith(color: Colors.red,fontWeight: FontWeight.bold)),
-//       TextSpan(text: " in 2018", style: TextStyles.subtitle1?.copyWith(color: Colors.white)),
-
-//     ],
-//   ),
-// );
-
-//     var title = Text(education.toUpperCase(), style: TextStyles.headingTextStyle);
-
-// return Container(
-//   child: Column(
-//     crossAxisAlignment: CrossAxisAlignment.start,
-//     children: [
-// title,
-
-//       educationDetails,
-//     ],
-//   ));
-
-//   }
-  Obx addHeader(BuildContext context) {
-    return Obx(
-      () => AnimatedSwitcher(
+  Widget addHeader(BuildContext context) {
+    return AnimatedSwitcher(
         transitionBuilder: (child, animation) => SizeTransition(
           sizeFactor: animation,
           child: child,
         ),
         duration: const Duration(milliseconds: 400),
-        child: controller.isScrollDown.isTrue &&
-                !ResponsiveWidget.isSmallScreen(context)
-            ? Container(
-                color: Colors.black,
-                key: const Key("colored"),
-                child: Header(
-                  onTap: () {
-                    //open and close drawer for mobile view
-                    Get.find<MenuController>().controlAboutMenu();
-                  },
-                ),
-              )
-            : Container(
-              color: Colors.black,
-              height: 90,
-              child: Header(
-                  key: const Key("sim"),
-                  onTap: () {
-                    Get.find<MenuController>().controlAboutMenu();
-                  },
-                ),
-            ),
-      ),
-    );
+        child: Header(
+          title: aboutViewTitle,
+            key: const Key("sim"),
+            onTap: () {
+              Get.find<MenuController>().controlAboutMenu();
+            },
+          ),
+      );
   }
 }
 

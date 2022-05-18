@@ -1,11 +1,14 @@
 import 'package:farmanullah_portfolio/constants/constants.dart';
+import 'package:farmanullah_portfolio/constants/text_const.dart';
 import 'package:farmanullah_portfolio/responsive/responsive_wrapper.dart';
 import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:farmanullah_portfolio/views/projects/projects_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
+import '../../assets_path.dart';
 import '../../components/app_drawer.dart';
 import '../../components/navigationbar.dart';
 import '../../menue_controller.dart';
@@ -18,6 +21,7 @@ class ProjectView extends GetView<ProjectsViewController> {
   Widget build(BuildContext context) {
     final double screenWidth=context.width;
     return     Scaffold(
+      
 
       drawer: 
       
@@ -27,35 +31,30 @@ class ProjectView extends GetView<ProjectsViewController> {
         backgroundColor: Colors.black,
       body: Stack(
         children: [
-          Container(
-    // decoration: BoxDecoration(
+          
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+
+                 decoration: BoxDecoration(
+
+color: Colors.white
+  
+    //                  gradient: LinearGradient(colors: [
+                       
+                       
+    //                   Color.fromRGBO(207, 0, 15, 0.7),
+                       
+    //                   Color.fromARGB(228, 214, 29, 12),
     
     
-    
-    
-    //                  gradient: LinearGradient(
-    //                    tileMode: TileMode.clamp,
-                     
-    //                    colors: [
-                     
-                     
-    //                   Color.fromRGBO(207, 0, 15, 1),
-    // Colors.red
-    // ,
-                     
-    //                   Color.fromARGB(228, 214, 29, 1),
-    
-                     
-                     
-                     
+                       
+                       
+                       
     //                    ],
-    //               begin: Alignment.topRight,
-    //               end: Alignment.bottomLeft,
-    //               stops: [
-    //                 0.1,
-    //                 0.4,
-    //                 0.6,
-    //               ]
+    //             begin: Alignment.centerLeft,
+    //             end: Alignment.centerRight,
     
     
     
@@ -63,58 +62,99 @@ class ProjectView extends GetView<ProjectsViewController> {
     
     // )
     
-    // ),
-    
-            child: ResponsiveWidget(
-    
-              smallScreen:Container(
-                margin: EdgeInsets.symmetric(vertical: 60,horizontal: 10),
-                child: addGrid(0,crossAxisSpacing: 0,mainAxisSpacing: 40,crossAxisCount: 1)) ,
-              largeScreen:   addGrid(screenWidth*0.1,crossAxisSpacing: 80,mainAxisSpacing: 80,crossAxisCount: 3),
-              mediumScreen: Container(
-                              margin: EdgeInsets.only(top: 40),
 
-                child: addGrid(screenWidth*0.1,crossAxisSpacing: 30, mainAxisSpacing: 30, crossAxisCount: 2),
-              ),
+
+                 ),
+              
+              
+              
+              
+                  child: ResponsiveWidget(
+              //grid view for mobile
+                    smallScreen:Container(
+                      margin: const EdgeInsets.symmetric(vertical: 60,horizontal: 10),
+                      child: addGrid(2,crossAxisSpacing: 0,mainAxisSpacing: 150,crossAxisCount: 1)) ,
+
+                      //for desktop
+                    largeScreen:   addGrid(screenWidth*0.1,crossAxisSpacing: 80,mainAxisSpacing: 80,crossAxisCount: 3),
+
+                    //for tablet
+                    mediumScreen: Container(
+                                    margin: const EdgeInsets.only(top: 40),
+          
+                      child: addGrid(screenWidth*0.1,crossAxisSpacing: 30, mainAxisSpacing: 30, crossAxisCount: 2),
+                    ),
+                  ),
+                ),
+           _addPortfolioSS(context)
+
+
+              ],
             ),
           ),
+
+
      //shows drawer for mobile and menu row for tablet and desktop
           addHeader(context), 
+
+          
               
         ],
       ),
     );
   }
+  Container _addPortfolioSS(BuildContext context) {
+    return Container(
+                color: Colors.black,
+                child: Column(
+                  children: [
 
+                    SizedBox(height: 30,),
+
+
+                    Container(
+
+                    
+                      width: 200,
+                      height: 150,
+                      child: FlutterLogo(),),
+                     FittedBox(child: Text("Flutter is Awesome",style: 
+                     
+                     ResponsiveWidget.isLargeScreen(context)?
+                     
+                     
+                     TextStyles.heading2?.copyWith(color: Colors.white):
+                     
+                     TextStyles.heading3)),
+                     
+
+                    Align(
+                      
+                      alignment: Alignment.center,
+                      child: Image.asset(portfolioDesktopSSpath)),
+                  ],
+                ),
+              );
+  }
   Widget addHeader(BuildContext context) {
-    return Obx(()=>
+    return 
           AnimatedSwitcher(
                                      transitionBuilder: (child,animation)=>SizeTransition(sizeFactor: animation,child: child,),
          
          duration: const Duration(milliseconds: 400),
             child:
-            controller.isDown.isTrue&&!ResponsiveWidget.isSmallScreen(context)?
+          
             
-             Container(
-               color: Colors.black,
-          key: Key("coloredAppBar"),
-              
-              child: Header(onTap: (){
-              
-                //open and close drawer for mobile view
-                Get.find<MenuController>().controlProjectsMenu();
-              
-              
-              },),
-            ):Header(
-              key: Key("black"),
-              onTap: (){
-              
-                Get.find<MenuController>().controlProjectsMenu();
-              
-              
-              },),
-          ),
+             Header(
+               
+               title: projectsViewTitle,
+               onTap: (){
+             
+               //open and close drawer for mobile view
+               Get.find<MenuController>().controlProjectsMenu();
+             
+             
+             },)
         );
   }
 
@@ -125,7 +165,7 @@ class ProjectView extends GetView<ProjectsViewController> {
         controller: controller.scrollController,
         
         
-        physics: ScrollPhysics(),
+        physics: const ScrollPhysics(),
           padding: EdgeInsets.symmetric(horizontal:padding,vertical: padding*0.9),
           shrinkWrap: true,
           
@@ -150,9 +190,11 @@ return  AnimationConfiguration.staggeredGrid(
               duration: const Duration(milliseconds: 600),
               columnCount: crossAxisCount,
   child:   ScaleAnimation(
+
+    //company,fiverr or self project banner
     child: Banner(
       
-      color:primaryColor,
+      color:Colors.black,
     message: controller.projecttype(project.projectType!),
                 location: BannerLocation.topEnd,
       child:   Column(
@@ -160,12 +202,13 @@ return  AnimationConfiguration.staggeredGrid(
               Expanded(
                 child: Container(
                   
-                  
                   height: 150,
                   width: double.infinity,
                   decoration: BoxDecoration(
+
+
                     
-      borderRadius: BorderRadius.only(topLeft: Radius.circular(5),topRight: Radius.circular(5)),
+      borderRadius: const BorderRadius.only(topLeft: Radius.circular(5),topRight: Radius.circular(5)),
                     
                     image: DecorationImage(
                     
@@ -179,15 +222,19 @@ return  AnimationConfiguration.staggeredGrid(
             child: Container(
     
     
-    decoration: BoxDecoration(
+    decoration:  BoxDecoration(
+
+
+
+      color: Colors.white10,
     
     
                      gradient: LinearGradient(colors: [
                        
                        
-                      Color.fromRGBO(207, 0, 15, 0.7),
+                      Colors.grey,
                        
-                      Color.fromARGB(228, 214, 29, 12),
+                      Colors.white10,
     
     
                        
@@ -209,7 +256,7 @@ return  AnimationConfiguration.staggeredGrid(
               width: double.infinity,
               
               height: 400,child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
     
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -219,12 +266,14 @@ Align(
   alignment: Alignment.center,
   child: Text(project.projectCategory.toString().capitalizeFirst??"".capitalizeFirst!,style: TextStyles.heading5?.copyWith(color: Colors.grey,fontWeight: FontWeight.bold),)),
                   
-                SizedBox(height: 20,),
-                    Text(project.name,style: TextStyles.heading5?.copyWith(color: Colors.white)),
-                    SizedBox(height: 10,),
-                    Expanded(child: Text(project.description!,style: TextStyles.subtitle1?.copyWith(color: Colors.white),textAlign: TextAlign.start,)),
+                const SizedBox(height: 20,),
+                    Text(project.name,style: TextStyles.heading5?.copyWith(color: Colors.black)),
+                    const SizedBox(height: 10,),
+                   Expanded(child: Text(project.description!,style: TextStyles.subtitle1?.copyWith(color:Colors.grey),textAlign: TextAlign.start,)),
 
-                    // MaterialButtonWidget(child: FaIcon(FontAwesomeIcons.googlePlay), onPressed: (){}, borderColor: Colors.white, color: Colors.red, hoverColor: Colors.black)
+
+//completed or running status row
+_addStatusRow(project)
                   ],
                 ),
               ),),
@@ -235,5 +284,22 @@ Align(
   ),
 );
     
+  }
+
+  Widget _addStatusRow(Project project) {
+    return     project.status?Center(child: Row(
+      children: [
+        Text("Completed",style: TextStyles.body1?.copyWith(color: Colors.black),),
+        const SizedBox(width: 10,),
+            const FaIcon(FontAwesomeIcons.checkCircle,color: Colors.red,),
+      ],
+    )):Row(
+      
+      children: [
+        
+        Text("Running",style: TextStyles.body1?.copyWith(color: Colors.black),),
+        const SizedBox(width: 10,),
+        for(int i=0;i<3;i++)
+        const Icon(Icons.circle_sharp,color: Colors.green,),],);
   }
 }

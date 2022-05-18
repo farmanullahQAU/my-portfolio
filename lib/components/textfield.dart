@@ -45,16 +45,12 @@ class TxtField extends StatelessWidget {
 
       style: TextStyles.subtitle2?.copyWith(fontSize: 12, color: Colors.grey),
 
-      //  initialValue: 'Input text',
       decoration: InputDecoration(
 
         filled: true,
 
-        //   labelText: lblTxt,
 
         hintStyle: TextStyle(color: Colors.grey),
-        //  labelStyle: TextStyle(color: Colors.grey.shade500),
-        //   errorText: 'Error message',
         focusedBorder: OutlineInputBorder(
           borderRadius: isunique == false
               ? BorderRadius.circular(radius)

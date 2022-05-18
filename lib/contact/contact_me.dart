@@ -15,6 +15,7 @@ import 'package:responsive_framework/responsive_wrapper.dart';
 import '../components/app_drawer.dart';
 import '../components/material_button.dart';
 import '../components/navigationbar.dart';
+import '../constants/text_const.dart';
 import '../menue_controller.dart';
 import '../textstyles.dart';
 import 'contact_me_controller.dart';
@@ -170,11 +171,7 @@ drawer:
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top:20,bottom: 20),
-                              //   child: AutoSizeText("SEND YOUR MESSAGE",
-                              //       style: TextStyles.subtitle2?.copyWith(color: Colors.black,fontWeight: FontWeight.bold)),
-                              // ),
+                         
                               TxtField(
                                 prefixIcon:Icon(Icons.person),
                                 fillColor: Colors.black,
@@ -263,23 +260,7 @@ drawer:
                                  
                                  )
                                ),
-                                    // : Container(
-                                    //     height: 50,
-                                    //     width: 200,
-                                    //     child: TextButton(
-                                    //       onPressed: () async {
-                                    //         final _controller = Get.find<ContactUsController>();
-                                    //         if (_controller.key.currentState!.validate()) {
-                                    //           await Get.find<ContactUsController>().sendEmail(
-                                    //               userName: _controller.nameController.text,
-                                    //               userEmail: _controller.eamilController.text,
-                                    //               userSubject: _controller.subjectController.text,
-                                    //               userMessage: _controller.messageController.text);
-                                    //         }
-                                    //       },
-                                    //       child: Text("SEND MESSAGE")
-                                    //     ),
-                                    //   ),
+                                  
                               ),
                               SizedBox(
                                 height: 10,
@@ -318,7 +299,11 @@ drawer:
              Container(
           key: Key("sss"),
               
-              child: Header(onTap: (){
+              child: Header(
+                
+                title: contactViewTitle,
+                
+                onTap: (){
               
                 //open and close drawer for mobile view
                 Get.find<MenuController>().controlContactMenu();
@@ -326,6 +311,7 @@ drawer:
               
               },),
             ):Header(
+              title: contactViewTitle,
               key: Key("ttt"),
               onTap: (){
               

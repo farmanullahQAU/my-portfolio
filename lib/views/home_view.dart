@@ -1,6 +1,9 @@
+import 'package:farmanullah_portfolio/assets_path.dart';
 import 'package:farmanullah_portfolio/components/app_drawer.dart';
 import 'package:farmanullah_portfolio/components/navigationbar.dart';
+import 'package:farmanullah_portfolio/constants/text_const.dart';
 import 'package:farmanullah_portfolio/menue_controller.dart';
+import 'package:farmanullah_portfolio/textstyles.dart';
 import 'package:farmanullah_portfolio/views/intro_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -53,10 +56,10 @@ Container(
 
         ResponsiveWidget.isSmallScreen(context)?
         
-        AssetImage('pic.jpeg',):
+        AssetImage(profileImagePath):
         
         
-        AssetImage('pic2.jpg',))
+        AssetImage(backgroundImagePath,))
         ),
   child:   Stack(
     alignment: Alignment.topLeft,
@@ -65,8 +68,15 @@ Container(
   
   
   
-  SingleChildScrollView(
-    child: Container(
+  CustomScrollView(
+    slivers: [
+
+
+
+      SliverToBoxAdapter(child: 
+      
+      
+      Container(
   color: Colors.black.withOpacity(0.6),
 
       child: Column(
@@ -85,27 +95,42 @@ Container(
 
             height: height*0.2,
             color: Colors.black.withOpacity(0.4),
-            )
+            ),
+                
+Stack(
+  alignment: Alignment.center,
+  children: [
+        Align(
+      
+      alignment: Alignment.center,
+      child: Image.asset('assets/images/home_banner.png',fit: BoxFit.cover,)),
+
+      Container(height: 800,     color: Colors.black.withOpacity(0.4),)
+  ],
+)
+
         ],
       ),
     ),
+      
+      )
+    ],
   )
   
   ,
   
    //shows drawer for mobile and menu row for tablet and desktop
-  Container(
-              height: 90,
+  Header(
+    
+    title: homeViewttitle,
+    onTap: (){
+  
+    //open and close drawer for mobile view
+      Get.find<MenuController>().controlHomeMenu();
+  
+  
+  },),  
 
-    color: Colors.black,
-    child: Header(onTap: (){
-    
-      //open and close drawer for mobile view
-        Get.find<MenuController>().controlHomeMenu();
-    
-    
-    },),
-  ),  
   
     ],
   ),

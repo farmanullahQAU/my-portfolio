@@ -1,18 +1,11 @@
 import 'package:farmanullah_portfolio/constants/constants.dart';
-import 'package:farmanullah_portfolio/contact/contact_me.dart';
-import 'package:farmanullah_portfolio/contact/contact_me_controller.dart';
-import 'package:farmanullah_portfolio/menue_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:pdf_render/pdf_render.dart';
-import 'package:pdf_render/pdf_render_widgets.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../components/material_button.dart';
 import '../constants/text_const.dart';
 import '../responsive/responsive_wrapper.dart';
-import '../route_names.dart';
 import '../textstyles.dart';
 import 'home_controller.dart';
 
@@ -228,159 +221,142 @@ class HomeButtons extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveWidget(
-
-      largeScreen: 
-      
-      
-         Container(
-           margin:  EdgeInsets.only(left: screenWidth*0.1),
-           child: Row(
-              
-                 children: [
-            
-                    SizedBox(
-                     width: 200,
-                     height: 50,
-                     child:MaterialButtonWidget(
-                       borderColor: Colors.red,
-                       color: Colors.redAccent.shade400,
-                       hoverColor: Colors.black,
-                       
-                       
-                       child: Text(hireMe.capitalizeFirst!,style: const TextStyle(color: Colors.white),),onPressed: (){
-
-controller.navigateToContactView();
-
-                       },)
-                    ),
-        const SizedBox(width: 10,),
-
-                       SizedBox(
-                         width: 200,
-                         height: 50,
-                         child:MaterialButtonWidget(
-                           
-                           
-                           borderColor: Colors.white,
-                           color: Colors.black,
-                           hoverColor: Colors.black45,
-                           child:SizedBox(
-        
-                           width: 100,
-                           child: Row(
-                             
-                             mainAxisAlignment: MainAxisAlignment.start,
-                             children:  [
-                         
-                         const FaIcon(FontAwesomeIcons.solidFilePdf,color: Colors.white,),
-        
-                         const SizedBox(width: 10,),
-                         
-                         Text(resume.capitalizeFirst!,style: const TextStyle(color: Colors.white),),
-                         
-                         
-                         
-                           ]),
-                         ),onPressed: ()async{
-
-                           controller.openResume();
-
-
-       },)
-                       ),
-                 ],
-               ),
-         ),
-      
-      smallScreen: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-            
-        children: [
-          
-          
-           SizedBox(
-            width: 200,
-            height: 50,
-            child:MaterialButtonWidget(
-              borderColor: Colors.red,
-              color: Colors.redAccent.shade400,
-              hoverColor: Colors.black,
-              
-              
-              child: Text(hireMe.capitalizeFirst!,style: const TextStyle(color: Colors.white),),onPressed: ()async{
-
-
-
-
-controller.navigateToContactView();
-
-          
-
-              },)
-           ),
-        const SizedBox(height: 20,),
+    return ScaleTransition(
+      alignment: Alignment.centerLeft,
+      scale: controller.animation,
+      child: ResponsiveWidget(
     
-              SizedBox(
-                width: 200,
-                height: 50,
-                child:MaterialButtonWidget(
-                  
-                  
-                  borderColor: Colors.white,
-                  color: Colors.black,
-                  hoverColor: Colors.black45,
-                  child:SizedBox(
+        largeScreen: 
         
-                  width: 100,
-                  child: Row(
-                    
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children:  [
-                
-                const FaIcon(FontAwesomeIcons.solidFilePdf,color: Colors.white,),
         
-                const SizedBox(width: 10,),
+           Container(
+             margin:  EdgeInsets.only(left: screenWidth*0.1),
+             child: Row(
                 
-                Text(resume.capitalizeFirst!,style: const TextStyle(color: Colors.white),),
+                   children: [
+              
+                      SizedBox(
+                       width: 200,
+                       height: 50,
+                       child:MaterialButtonWidget(
+                         borderColor: Colors.red,
+                         color: Colors.redAccent.shade400,
+                         hoverColor: Colors.black,
+                         
+                         
+                         child: Text(hireMe.capitalizeFirst!,style: const TextStyle(color: Colors.white),),onPressed: (){
+    
+    controller.navigateToContactView();
+    
+                         },)
+                      ),
+          const SizedBox(width: 10,),
+    
+                         SizedBox(
+                           width: 200,
+                           height: 50,
+                           child:MaterialButtonWidget(
+                             
+                             
+                             borderColor: Colors.white,
+                             color: Colors.black,
+                             hoverColor: Colors.black45,
+                             child:SizedBox(
+          
+                             width: 100,
+                             child: Row(
+                               
+                               mainAxisAlignment: MainAxisAlignment.start,
+                               children:  [
+                           
+                           const FaIcon(FontAwesomeIcons.solidFilePdf,color: Colors.white,),
+          
+                           const SizedBox(width: 10,),
+                           
+                           Text(resume.capitalizeFirst!,style: const TextStyle(color: Colors.white),),
+                           
+                           
+                           
+                             ]),
+                           ),onPressed: ()async{
+    
+                             controller.openResume();
+    
+    
+         },)
+                         ),
+                   ],
+                 ),
+           ),
+        
+        smallScreen: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+              
+          children: [
+            
+            
+             SizedBox(
+              width: 200,
+              height: 50,
+              child:MaterialButtonWidget(
+                borderColor: Colors.red,
+                color: Colors.redAccent.shade400,
+                hoverColor: Colors.black,
                 
                 
-                
-                  ]),
-                ),onPressed: ()  {
-                controller.openResume();
-
-
+                child: Text(hireMe.capitalizeFirst!,style: const TextStyle(color: Colors.white),),onPressed: ()async{
+    
+    
+    
+    
+    controller.navigateToContactView();
+    
+            
+    
                 },)
-              ),
-        ],
+             ),
+          const SizedBox(height: 20,),
+      
+                SizedBox(
+                  width: 200,
+                  height: 50,
+                  child:MaterialButtonWidget(
+                    
+                    
+                    borderColor: Colors.white,
+                    color: Colors.black,
+                    hoverColor: Colors.black45,
+                    child:SizedBox(
+          
+                    width: 100,
+                    child: Row(
+                      
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children:  [
+                  
+                  const FaIcon(FontAwesomeIcons.solidFilePdf,color: Colors.white,),
+          
+                  const SizedBox(width: 10,),
+                  
+                  Text(resume.capitalizeFirst!,style: const TextStyle(color: Colors.white),),
+                  
+                  
+                  
+                    ]),
+                  ),onPressed: ()  {
+                  controller.openResume();
+    
+    
+                  },)
+                ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class OpenResume extends StatelessWidget {
 
-
-
-  @override
-  Widget build(BuildContext context) {
-   return PdfViewer(doc: PdfDocument.openAsset("farid_cv.pdf"));
-      // return  PdfDocumentLoader(
-      //       documentBuilder: (context, pdfDocument, pageCount) => LayoutBuilder(
-      //         builder: (context, constraints) => ListView.builder(
-      //           itemCount: pageCount,
-      //           itemBuilder: (context, index) => Container(
-      //             color: Colors.black12,
-      //             child: PdfPageView(
-      //               pdfDocument: pdfDocument,
-      //               pageNumber: index + 1,
-      //             )
-      //           )
-      //         )
-      //       ), doc: PdfDocument.openAsset('images/aa.pdf'));
-  }
-}
 
  
  
