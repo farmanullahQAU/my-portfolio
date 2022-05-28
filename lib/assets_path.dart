@@ -17,6 +17,8 @@
 
  const couponWebAppBannerPath="assets/images/banner_coupon_web.png";
 
+ const babyTrackerBannerPath="assets/images/banner_babytracker.png";
+
  const propertyChowkAppBannerPath="assets/images/banner_property_chowk.png";
 
  const tenbroAppBannerPath="assets/images/banner_tenbro.png";

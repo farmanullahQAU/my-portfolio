@@ -91,6 +91,16 @@ Project(
   
   assetPath:couponWebAppBannerPath,description: couponProjectDescription),
 
+
+  Project(
+  status: false,
+  projectCategory: "Tracker",
+  name: "Baby Tracker",
+  
+  projectType: ProjectTypes.fiverr,
+  
+  assetPath: babyTrackerBannerPath),
+
    Project(
     status: false,
   projectCategory: "News",

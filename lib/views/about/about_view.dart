@@ -334,7 +334,7 @@ class About extends GetView<AboutViewController> {
                           tenPxheightSizedBox
                         ],
                       ),
-                      description,
+                      fypdescription,
                    const SizedBox(height: 100,),
 
                       Column(

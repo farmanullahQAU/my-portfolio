@@ -269,7 +269,7 @@ Align(
                 const SizedBox(height: 20,),
                     Text(project.name,style: TextStyles.heading5?.copyWith(color: Colors.black)),
                     const SizedBox(height: 10,),
-                   Expanded(child: Text(project.description!,style: TextStyles.subtitle1?.copyWith(color:Colors.grey),textAlign: TextAlign.start,)),
+                   Expanded(child: Text(project.description??"",style: TextStyles.subtitle1?.copyWith(color:Colors.grey),textAlign: TextAlign.start,)),
 
 
 //completed or running status row
